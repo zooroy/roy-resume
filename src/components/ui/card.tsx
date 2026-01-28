@@ -8,15 +8,15 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, glow = "cyan", ...props }, ref) => {
     const glowStyles = {
-      cyan: "border-cyan-400 shadow-neon-cyan",
-      pink: "border-pink-500 shadow-neon-pink",
-      orange: "border-orange-400 shadow-neon-orange",
+      cyan: "border-purple-300 shadow-[0_2px_8px_rgba(115,79,156,0.15)]",
+      pink: "border-pink-300 shadow-[0_2px_8px_rgba(196,123,180,0.15)]",
+      orange: "border-purple-200 shadow-[0_2px_8px_rgba(181,159,214,0.15)]",
     }
 
     return (
       <div
         className={cn(
-          "border rounded-xl p-6 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl",
+          "border rounded-2xl p-6 bg-white/50 transition-all duration-300 hover:shadow-lg",
           glowStyles[glow],
           className
         )}
@@ -53,7 +53,7 @@ const CardDescription = React.forwardRef<
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
   <p
-    className={cn("text-sm text-gray-400 font-mono", className)}
+    className={cn("text-sm text-gray-600 font-mono", className)}
     ref={ref}
     {...props}
   />

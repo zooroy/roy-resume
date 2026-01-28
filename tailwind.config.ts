@@ -9,16 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'neon-cyan': '#00FFFF',
-        'neon-pink': '#FF00FF',
-        'neon-orange': '#FF9900',
-        'vaporwave-dark': '#0a0e27',
-        'vaporwave-purple': '#1a0033',
+        'neon-cyan': '#734F9C',
+        'neon-pink': '#C47BB4',
+        'neon-orange': '#B59FD6',
+        'primary-purple': '#734F9C',
+        'secondary-pink': '#C47BB4',
+        'background-light': '#9F9CCB',
       },
       boxShadow: {
-        'neon-cyan': '0 0 12px 2px rgba(0, 255, 255, 0.8), 0 0 24px 4px rgba(0, 255, 255, 0.4)',
-        'neon-pink': '0 0 12px 2px rgba(255, 0, 255, 0.8), 0 0 24px 4px rgba(255, 0, 255, 0.4)',
-        'neon-orange': '0 0 12px 2px rgba(255, 153, 0, 0.8), 0 0 24px 4px rgba(255, 153, 0, 0.4)',
+        'neon-cyan': '0 2px 8px rgba(115, 79, 156, 0.15)',
+        'neon-pink': '0 2px 8px rgba(196, 123, 180, 0.15)',
+        'neon-orange': '0 2px 8px rgba(181, 159, 214, 0.15)',
       },
       fontFamily: {
         mono: ['var(--font-mono)', 'monospace'],
@@ -31,19 +32,16 @@ const config: Config = {
       keyframes: {
         'grid-animation': {
           '0%': { backgroundPosition: '0 0, 0 0' },
-          '100%': { backgroundPosition: '60px 60px, 60px 60px' },
+          '100%': { backgroundPosition: '0 0, 0 0' },
         },
         'glow-pulse': {
-          '0%, 100%': { textShadow: '0 0 10px rgba(0, 255, 255, 0.5)' },
+          '0%, 100%': { opacity: '1' },
           '50%': {
-            textShadow:
-              '0 0 20px rgba(0, 255, 255, 0.9), 0 0 30px rgba(255, 0, 255, 0.6)',
+            opacity: '0.8',
           },
         },
         'neon-flicker': {
-          '0%': { opacity: '0.95' },
-          '5%': { opacity: '0.8' },
-          '10%': { opacity: '0.95' },
+          '0%': { opacity: '1' },
           '100%': { opacity: '1' },
         },
       },

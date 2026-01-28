@@ -9,19 +9,19 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "default", size = "md", ...props }, ref) => {
-    const baseStyles = "font-mono font-medium transition-all duration-300 rounded-lg inline-flex items-center justify-center"
+    const baseStyles = "font-mono font-medium transition-all duration-300 rounded-xl inline-flex items-center justify-center"
 
     const variants = {
       default:
-        "bg-cyan-500/20 border border-cyan-400 text-cyan-300 hover:bg-cyan-500/40 hover:shadow-neon-cyan",
+        "bg-purple-300/30 border border-purple-400 text-purple-700 hover:bg-purple-300/50 hover:shadow-[0_2px_8px_rgba(115,79,156,0.15)]",
       outline:
-        "border border-pink-500/50 text-pink-300 hover:border-pink-500 hover:bg-pink-500/10 hover:shadow-[0_0_8px_rgba(255,0,255,0.4)]",
+        "border border-pink-400/50 text-pink-600 hover:border-pink-500 hover:bg-pink-300/10 hover:shadow-[0_2px_8px_rgba(196,123,180,0.15)]",
       "neon-cyan":
-        "bg-cyan-500/10 border border-cyan-400 text-cyan-300 hover:bg-cyan-500/30 hover:shadow-neon-cyan hover:scale-105",
+        "bg-purple-300/20 border border-purple-400 text-purple-700 hover:bg-purple-300/40 hover:shadow-[0_2px_8px_rgba(115,79,156,0.15)] hover:scale-105",
       "neon-pink":
-        "bg-pink-500/10 border border-pink-500 text-pink-300 hover:bg-pink-500/30 hover:shadow-neon-pink hover:scale-105",
+        "bg-pink-300/20 border border-pink-400 text-pink-700 hover:bg-pink-300/40 hover:shadow-[0_2px_8px_rgba(196,123,180,0.15)] hover:scale-105",
       "neon-orange":
-        "bg-orange-500/10 border border-orange-400 text-orange-300 hover:bg-orange-500/30 hover:shadow-neon-orange hover:scale-105",
+        "bg-purple-200/20 border border-purple-300 text-purple-600 hover:bg-purple-200/40 hover:shadow-[0_2px_8px_rgba(181,159,214,0.15)] hover:scale-105",
     }
 
     const sizes = {

@@ -28,7 +28,7 @@ export function NeonTag({
   );
 }
 
-// 霓虹卡片
+// 卡片
 export function NeonCard({
   children,
   className = '',
@@ -38,27 +38,26 @@ export function NeonCard({
   className?: string;
   glow?: 'cyan' | 'pink' | 'orange';
 }) {
-  const glowClass = {
-    cyan: 'shadow-[0_0_12px_2px_rgba(0,255,255,0.8),0_0_24px_4px_rgba(0,255,255,0.4)]',
-    pink: 'shadow-[0_0_12px_2px_rgba(255,0,255,0.8),0_0_24px_4px_rgba(255,0,255,0.4)]',
-    orange:
-      'shadow-[0_0_12px_2px_rgba(255,153,0,0.8),0_0_24px_4px_rgba(255,153,0,0.4)]',
+  const shadowClass = {
+    cyan: 'shadow-[0_2px_8px_rgba(115,79,156,0.15)]',
+    pink: 'shadow-[0_2px_8px_rgba(196,123,180,0.15)]',
+    orange: 'shadow-[0_2px_8px_rgba(181,159,214,0.15)]',
+  };
+
+  const borderClass = {
+    cyan: 'border-purple-300',
+    pink: 'border-pink-300',
+    orange: 'border-purple-200',
   };
 
   return (
     <div
       className={`
-        border rounded-xl p-6 backdrop-blur-sm
-        border-current transition-all duration-300
-        hover:scale-105 hover:shadow-xl
-        ${
-          glow === 'cyan'
-            ? 'border-cyan-400'
-            : glow === 'pink'
-            ? 'border-pink-500'
-            : 'border-orange-400'
-        }
-        ${glowClass[glow]}
+        border rounded-2xl p-6 transition-all duration-300
+        hover:shadow-lg
+        ${borderClass[glow]}
+        ${shadowClass[glow]}
+        bg-white/50
         ${className}
       `}
     >
@@ -101,24 +100,19 @@ export function TerminalText({
 }) {
   return (
     <span className={`font-mono ${className}`}>
-      <span className="text-cyan-400">{prefix}</span> {children}
+      <span className="text-purple-700">{prefix}</span> {children}
     </span>
   );
 }
 
-// 無限網格背景
+// 背景网格
 export function InfiniteGrid({ className = '' }: { className?: string }) {
   return (
     <div
       className={`absolute inset-0 ${className}`}
       style={{
-        backgroundImage: `
-          linear-gradient(0deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
-          linear-gradient(90deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent)
-        `,
-        backgroundSize: '60px 60px',
-        backgroundPosition: '0 0, 0 0',
-        animation: 'grid-animation 8s linear infinite',
+        backgroundImage: 'none',
+        backgroundColor: 'transparent',
       }}
     />
   );

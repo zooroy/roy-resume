@@ -22,20 +22,20 @@ export function EducationSection({ locale, data }: SectionProps) {
       <div className="space-y-4">
         {data.education.map((edu, idx) => (
           <ScanlineOverlay key={idx}>
-            <NeonCard glow="cyan" className="border-cyan-400">
+            <NeonCard glow="cyan" className="border-purple-300">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-cyan-400">
+                    <h3 className="text-xl font-bold text-purple-700">
                       {edu.school}
                     </h3>
-                    <p className="text-pink-400 font-mono">{edu.degree}</p>
+                    <p className="text-pink-600 font-mono">{edu.degree}</p>
                   </div>
-                  <span className="text-orange-400 font-mono text-sm whitespace-nowrap">
+                  <span className="text-purple-600 font-mono text-sm whitespace-nowrap">
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-700 text-sm">
                   {edu.description[locale]}
                 </p>
               </div>
@@ -56,20 +56,20 @@ export function WorkSection({ locale, data }: SectionProps) {
       <div className="space-y-4">
         {data.work.map((work, idx) => (
           <ScanlineOverlay key={idx}>
-            <NeonCard glow="pink" className="border-pink-500">
+            <NeonCard glow="pink" className="border-pink-300">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-pink-400">
+                    <h3 className="text-xl font-bold text-pink-600">
                       {work.company}
                     </h3>
-                    <p className="text-cyan-400 font-mono">{work.job}</p>
+                    <p className="text-purple-700 font-mono">{work.job}</p>
                   </div>
-                  <span className="text-orange-400 font-mono text-sm whitespace-nowrap">
+                  <span className="text-purple-600 font-mono text-sm whitespace-nowrap">
                     {work.period}
                   </span>
                 </div>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-700 text-sm">
                   {work.description[locale]}
                 </p>
               </div>
@@ -106,17 +106,17 @@ export function PortfolioSection({ locale, data }: SectionProps) {
         {data.portfolio.map((project, idx) => (
           <Card key={idx} glow="orange" className="h-full">
             <CardHeader>
-              <CardTitle className="text-orange-300">
+              <CardTitle className="text-orange-600">
                 <TerminalText>{project.title[locale]}</TerminalText>
               </CardTitle>
               {project.period && (
-                <CardDescription className="text-pink-400">
+                <CardDescription className="text-pink-600">
                   {project.period}
                 </CardDescription>
               )}
             </CardHeader>
             <CardContent>
-              <p className="text-gray-300 text-sm leading-relaxed mb-4">
+              <p className="text-gray-700 text-sm leading-relaxed mb-4">
                 {project.description[locale]}
               </p>
               {project.link && (
@@ -124,7 +124,7 @@ export function PortfolioSection({ locale, data }: SectionProps) {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-4 py-2 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-mono text-xs rounded-lg hover:shadow-[0_0_16px_rgba(0,255,255,0.6),0_0_16px_rgba(255,0,255,0.4)] transition-all duration-300 hover:scale-105"
+                  className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-mono text-xs rounded-lg hover:shadow-[0_2px_8px_rgba(115,79,156,0.4)] transition-all duration-300 hover:scale-105"
                 >
                   {locale === 'zh-TW' ? '查看專案' : 'View Project'}
                 </a>

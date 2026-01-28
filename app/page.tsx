@@ -29,24 +29,21 @@ export default function Resume() {
   const introText = resumeData.intro[locale];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-slate-950 via-purple-950 to-slate-950 overflow-hidden">
+    <div className="relative min-h-screen bg-[#9F9CCB] overflow-hidden">
       {/* 背景動畫網格 */}
       <InfiniteGrid className="opacity-10" />
 
-      {/* 背景漸層光線 */}
+      {/* 背景漸層光線 - 已移除 */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500 opacity-5 blur-3xl rounded-full animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500 opacity-5 blur-3xl rounded-full animate-pulse" />
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-orange-500 opacity-5 blur-3xl rounded-full animate-pulse" />
       </div>
 
       {/* 主容器 */}
       <div className="relative z-10">
         {/* 導航欄 */}
-        <nav className="sticky top-0 z-50 border-b border-cyan-400/20 backdrop-blur-md bg-slate-950/50">
+        <nav className="sticky top-0 z-50 border-b border-purple-400/20 backdrop-blur-md bg-white/30">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3 min-w-0">
-              <span className="text-cyan-400 font-mono text-lg flex-shrink-0">
+              <span className="text-purple-700 font-mono text-lg flex-shrink-0">
                 &gt;_
               </span>
               <h1 className="text-lg md:text-xl font-bold truncate">
@@ -66,8 +63,8 @@ export default function Resume() {
           <ScanlineOverlay>
             <section className="space-y-6 md:space-y-8 py-8 md:py-12">
               <div className="space-y-4 md:space-y-6">
-                <div className="inline-block px-3 md:px-4 py-2 rounded-lg border border-cyan-400 bg-cyan-400/10 mb-4 md:mb-6 text-sm md:text-base">
-                  <TerminalText className="text-cyan-400">
+                <div className="inline-block px-3 md:px-4 py-2 rounded-xl border border-purple-400 bg-purple-400/10 mb-4 md:mb-6 text-sm md:text-base">
+                  <TerminalText className="text-purple-700">
                     {locale === 'zh-TW'
                       ? '歡迎來到我的履歷'
                       : 'Welcome to my resume'}
@@ -78,7 +75,7 @@ export default function Resume() {
                   <NeonGradientText>{headerText}</NeonGradientText>
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-700 font-light max-w-2xl leading-relaxed">
                   <PulseGlow color="cyan">{introText}</PulseGlow>
                 </p>
               </div>
@@ -174,7 +171,7 @@ export default function Resume() {
 
           {/* 額外的召喚區塊 */}
           <ScanlineOverlay>
-            <div className="bg-gradient-to-r from-cyan-900/20 via-pink-900/20 to-orange-900/20 border border-gradient rounded-xl p-6 md:p-8">
+            <div className="bg-gradient-to-r from-purple-100 via-pink-100 to-purple-100 border border-purple-300 rounded-2xl p-6 md:p-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold">
                   <TerminalText>
@@ -183,7 +180,7 @@ export default function Resume() {
                       : 'Interested in collaboration?'}
                   </TerminalText>
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-700">
                   {locale === 'zh-TW'
                     ? '我很樂意聽取你的想法和專案機會。通過以下方式與我聯絡：'
                     : "I'd love to hear about your ideas and project opportunities. Get in touch with me:"}
@@ -199,17 +196,17 @@ export default function Resume() {
 
           {/* 頁腳 */}
           <ScanlineOverlay>
-            <footer className="border-t border-cyan-400/20 pt-8 md:pt-12 pb-6 md:pb-8 mt-12 md:mt-16">
+            <footer className="border-t border-purple-400/20 pt-8 md:pt-12 pb-6 md:pb-8 mt-12 md:mt-16">
               <div className="space-y-3 text-center">
-                <div className="flex items-center justify-center gap-3 text-gray-400 flex-wrap">
-                  <span className="text-cyan-400 font-mono">&gt;</span>
+                <div className="flex items-center justify-center gap-3 text-gray-600 flex-wrap">
+                  <span className="text-purple-700 font-mono">&gt;</span>
                   <span className="font-mono text-xs md:text-sm">
                     {locale === 'zh-TW'
                       ? '© 2024 Roy Hsiao. 保留所有權利。'
                       : '© 2024 Roy Hsiao. All rights reserved.'}
                   </span>
                 </div>
-                <div className="text-xs text-gray-500 font-mono space-y-1">
+                <div className="text-xs text-gray-600 font-mono space-y-1">
                   <div>
                     <PulseGlow color="pink">
                       {locale === 'zh-TW'
@@ -217,10 +214,10 @@ export default function Resume() {
                         : 'Powered by React & Next.js'}
                     </PulseGlow>
                   </div>
-                  <div className="text-cyan-400">
+                  <div className="text-purple-700">
                     {locale === 'zh-TW'
-                      ? '設計系統: Vaporwave/Outrun'
-                      : 'Design System: Vaporwave/Outrun'}
+                      ? '設計系統: 簡潔優雅'
+                      : 'Design System: Simple & Elegant'}
                   </div>
                 </div>
               </div>
