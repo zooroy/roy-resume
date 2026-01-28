@@ -34,8 +34,7 @@ export default function Resume() {
       <InfiniteGrid className="opacity-10" />
 
       {/* 背景漸層光線 - 已移除 */}
-      <div className="fixed inset-0 pointer-events-none">
-      </div>
+      <div className="fixed inset-0 pointer-events-none"></div>
 
       {/* 主容器 */}
       <div className="relative z-10">
@@ -186,9 +185,7 @@ export default function Resume() {
                     : "I'd love to hear about your ideas and project opportunities. Get in touch with me:"}
                 </p>
                 <div className="flex gap-2">
-                  <Badge variant="cyan">
-                    contact@example.com
-                  </Badge>
+                  <Badge variant="cyan">contact@example.com</Badge>
                 </div>
               </div>
             </div>

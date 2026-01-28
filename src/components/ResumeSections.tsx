@@ -8,7 +8,14 @@ import {
   VaporTitle,
   NeonGradientText,
 } from './VaporComponents';
-import { Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui';
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from './ui';
 
 interface SectionProps {
   locale: Locale;

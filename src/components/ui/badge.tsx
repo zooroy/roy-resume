@@ -19,13 +19,13 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         className={cn(
           'inline-block px-3 py-1 rounded-full text-xs font-mono font-medium',
           variants[variant],
-          className
+          className,
         )}
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 Badge.displayName = 'Badge';
 
