@@ -40,12 +40,13 @@ export const copy: Record<Lang, Content> = {
 從設計出發，走進前端工程，我習慣用「程式碼的點、線、面」來思考畫面與互動的結構，讓複雜需求變得乾淨、直覺且可維護。
 我在意使用者怎麼看、怎麼用，也在意流程是否順暢、畫面是否耐看，目標是做出兼顧美感、體驗與工程品質的前端作品。
 場下打籃球、場上寫程式，NBA 教會我的，是團隊配合與持續升級。`,
-    ageLabel: '年齡',
-    contactLabel: 'Contact',
-    eduLabel: '學歷',
+    ageLabel: 'Age',
+    contactLabel: 'Contact Details',
+    eduLabel: 'Education',
     age: '35',
-    contact: '0912323221',
-    education: '資訊工程學系',
+    contact: `0912-323-221
+    zooroy13@gmail.com`,
+    education: '國立成功大學 中國文學系',
     skillTitle: 'SKILL',
     libTitle: 'LIBRARIES',
     toolsTitle: 'TOOLS',

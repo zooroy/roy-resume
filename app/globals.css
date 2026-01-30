@@ -4,6 +4,7 @@
   --background: #f6f1e8;
   --foreground: #241c16;
   --ink: #2f1d12;
+  --text-light-fg: #6b5a4f;
   --paper: #fff6e9;
   --paper-deep: #f5e6d0;
   --blue: #030fef;
@@ -18,7 +19,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-hand: var(--font-hand);
+  --font-caveat: var(--font-caveat);
 }
 
 body {
@@ -80,18 +81,21 @@ body {
   border: 2px solid rgba(36, 28, 22, 0.08);
   border-radius: 999px;
 }
-
+/* Caveat 手寫體 - 英文 */
 .handwriting {
   font-family:
-    var(--font-hand), var(--font-hand-zh), var(--font-hand-alt), cursive;
+    var(--font-caveat), cursive, var(--font-wenkai-zh), 'LXGW WenKai TC', serif;
 }
-
+/* 思源宋體 - 中文英文 */
 .serif-zh {
   font-family: var(--font-serif-zh), 'Noto Serif TC', serif;
+  font-weight: 600;
 }
 
+/* 霞鶩文楷體 - 中文 */
 .wenkai-zh {
-  font-family: var(--font-wenkai-zh), 'LXGW WenKai TC', var(--font-hand), serif;
+  font-family:
+    var(--font-wenkai-zh), 'LXGW WenKai TC', serif, var(--font-caveat), cursive;
 }
 
 .tape {
@@ -150,7 +154,7 @@ body {
 
 .double-rule {
   position: relative;
-  height: 18px;
+  height: 8px;
   margin: 28px 0;
 }
 
@@ -160,16 +164,16 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  height: 2px;
-  background: rgba(36, 28, 22, 0.2);
+  height: 1px;
+  background: var(--blue);
 }
 
 .double-rule::before {
-  top: 2px;
+  top: 1px;
 }
 
 .double-rule::after {
-  bottom: 2px;
+  bottom: 1px;
 }
 
 .skill-pill {

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { copy, type Lang } from './content';
+import { langClass } from './lang';
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>('zh');
@@ -18,11 +19,9 @@ export default function Home() {
 
         <section className="relative px-6 py-8 sm:px-10">
           {/* language switcher */}
-          <div className="absolute top-0 right-0 z-1 rotate-[3deg]">
+          {/* <div className="absolute top-0 right-0 z-1 rotate-[3deg]">
             <div className="tape tape-right w-48 rounded-2xl bg-[var(--paper)] px-4 py-3 text-left shadow-[0_16px_30px_rgba(34,20,10,0.18)]">
-              <p className="handwriting text-lg text-[var(--ink)]">
-                {content.languageLabel}
-              </p>
+              <p className="text-lg text-[var(--ink)]">語系</p>
               <div className="mt-2 flex gap-2">
                 <button
                   type="button"
@@ -44,7 +43,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col md:flex-row gap-10">
             {/* photo */}
             <div className="shrink-0 w-[320px]">
@@ -55,7 +54,8 @@ export default function Home() {
                   </div>
                   <div className="mt-5 text-center -rotate-2">
                     <p className="handwriting text-3xl text-(--blue)">
-                      {content.hello}
+                      {/* {content.hello} */}
+                      Frontend Developer
                     </p>
                   </div>
                 </div>
@@ -65,24 +65,24 @@ export default function Home() {
             <div className="relative lg:col-span-3">
               <div className="mt-10 space-y-6 text-lg text-(--ink)">
                 <div className="relative flex flex-col flex-wrap gap-4 text-lg">
-                  <div className="handwriting absolute left-48 bottom-0 leading-[0.8] rotate-[-8deg] text-3xl text-(--blue)">
+                  {/* <div className="handwriting absolute left-48 bottom-0 leading-[0.8] rotate-[-8deg] text-3xl text-(--blue)">
                     Frontend
                     <br />
                     Developer
-                  </div>
+                  </div> */}
                   <div className="flex flex-col gap-2 serif-zh">
                     <div className="text-7xl font-semibold mb-1">
                       {content.name}
                     </div>
                     {/* <div className="text-4xl">{content.dob}</div> */}
-                    <div className="text-xl font-normal leading-none uppercase">
+                    <div className="text-xl leading-none uppercase">
                       Taichung City,
                       <br />
                       Taiwan
                     </div>
                   </div>
                 </div>
-                <p className="text-lg whitespace-pre-line leading-normal text-(--blue) wenkai-zh">
+                <p className="whitespace-pre-line leading-8 text-(--text-light-fg)">
                   {content.intro}
                 </p>
               </div>
@@ -90,32 +90,24 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="double-rule" />
-
         <section className="px-6 py-8 sm:px-10">
-          <div className="handwriting grid gap-4 text-3xl text-[var(--ink)] sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             <div>
-              <p className="text-base uppercase tracking-[0.2em] text-[rgba(36,28,22,0.5)]">
-                {content.ageLabel}
-              </p>
-              <p>{content.age}</p>
+              <p className="text-4xl handwriting">{content.ageLabel}</p>
+              <p className="text-(--text-light-fg)">{content.age}</p>
             </div>
             <div>
-              <p className="text-base uppercase tracking-[0.2em] text-[rgba(36,28,22,0.5)]">
-                {content.contactLabel}
+              <p className="text-4xl handwriting">{content.contactLabel}</p>
+              <p className="text-(--text-light-fg) whitespace-pre-line">
+                {content.contact}
               </p>
-              <p>{content.contact}</p>
             </div>
             <div>
-              <p className="text-base uppercase tracking-[0.2em] text-[rgba(36,28,22,0.5)]">
-                {content.eduLabel}
-              </p>
-              <p>{content.education}</p>
+              <p className="text-4xl handwriting">{content.eduLabel}</p>
+              <p className="text-(--text-light-fg)">{content.education}</p>
             </div>
           </div>
         </section>
-
-        <div className="double-rule" />
 
         <section className="px-6 py-8 sm:px-10">
           <div className="space-y-6">
@@ -181,10 +173,8 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="double-rule" />
-
         <section className="px-6 py-8 sm:px-10">
-          <h2 className="handwriting text-5xl text-[var(--ink)]">
+          <h2 className="handwriting text-4xl text-[var(--ink)]">
             {content.projectsTitle}
           </h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
