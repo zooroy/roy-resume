@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f1e8;
+  --foreground: #241c16;
+  --ink: #2f1d12;
+  --paper: #fff6e9;
+  --paper-deep: #f5e6d0;
+  --accent: #d95b43;
+  --accent-dark: #b33d2c;
+  --tape: #f2d09b;
+  --grid: rgba(47, 29, 18, 0.12);
+  --dot: rgba(47, 29, 18, 0.2);
+  --shadow: rgba(34, 20, 10, 0.2);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans);
+  --font-hand: var(--font-hand);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-sans),
+    var(--font-hand-zh),
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.dot-grid-bg {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.scrapbook-page {
+  background:
+    radial-gradient(var(--dot) 1px, transparent 1px),
+    radial-gradient(circle at 10% 10%, rgba(233, 196, 152, 0.25), transparent 55%),
+    radial-gradient(circle at 90% 20%, rgba(217, 91, 67, 0.18), transparent 50%),
+    radial-gradient(circle at 30% 80%, rgba(181, 212, 199, 0.3), transparent 45%),
+    var(--background);
+  background-size: 24px 24px, auto, auto, auto, auto;
+  background-position: 0 0, center, center, center, center;
+}
+
+.paper-card {
+  background: var(--paper);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px var(--shadow);
+  border: 2px solid rgba(36, 28, 22, 0.08);
+}
+
+.paper-strip {
+  background: var(--paper-deep);
+  border: 2px solid rgba(36, 28, 22, 0.08);
+  border-radius: 999px;
+}
+
+.handwriting {
+  font-family:
+    var(--font-hand),
+    var(--font-hand-zh),
+    var(--font-hand-alt),
+    cursive;
+}
+
+.tape {
+  position: relative;
+}
+
+.tape::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  width: 90px;
+  height: 28px;
+  background: var(--tape);
+  opacity: 0.8;
+  border-radius: 8px;
+  transform: rotate(-4deg);
+  box-shadow: 0 8px 18px rgba(36, 28, 22, 0.18);
+}
+
+.tape.tape-right::before {
+  left: auto;
+  right: 20px;
+  transform: rotate(5deg);
+}
+
+.tape.tape-center::before {
+  left: calc(50% - 45px);
+  transform: rotate(-2deg);
+}
+
+.polaroid {
+  background: #fff;
+  border-radius: 20px;
+  padding: 18px 18px 28px;
+  box-shadow: 0 18px 30px var(--shadow);
+  transform: rotate(-1.5deg);
+  border: 2px solid rgba(36, 28, 22, 0.08);
+}
+
+.polaroid-photo {
+  background: linear-gradient(135deg, #cdd6d5, #f2e8d5);
+  border-radius: 16px;
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.polaroid-photo::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 2px dashed rgba(36, 28, 22, 0.2);
+  border-radius: 12px;
+}
+
+.double-rule {
+  position: relative;
+  height: 18px;
+  margin: 28px 0;
+}
+
+.double-rule::before,
+.double-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(36, 28, 22, 0.2);
+}
+
+.double-rule::before {
+  top: 2px;
+}
+
+.double-rule::after {
+  bottom: 2px;
+}
+
+.skill-pill {
+  background: #fff;
+  border: 1.5px solid rgba(36, 28, 22, 0.12);
+  border-radius: 999px;
+  padding: 6px 12px;
+  box-shadow: 0 6px 12px rgba(36, 28, 22, 0.08);
 }
