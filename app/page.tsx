@@ -1,60 +1,61 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import { copy, type Lang } from "./content";
+import { useMemo, useState } from 'react';
+import { copy, type Lang } from './content';
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>("zh");
+  const [lang, setLang] = useState<Lang>('zh');
   const content = useMemo(() => copy[lang], [lang]);
 
   return (
     <div className="scrapbook-page min-h-screen px-6 py-10 sm:px-12 lg:px-20">
       <main className="relative mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <div className="tape tape-right absolute right-0 top-0 w-48 rounded-2xl bg-[var(--paper)] px-4 py-3 text-left shadow-[0_16px_30px_rgba(34,20,10,0.18)]">
-          <p className="handwriting text-lg text-[var(--ink)]">
-            {content.languageLabel}
-          </p>
-          <div className="mt-2 flex gap-2">
-            <button
-              type="button"
-              onClick={() => setLang("en")}
-              className={`paper-strip px-3 py-1 text-xs font-semibold text-[var(--ink)] ${
-                lang === "en" ? "bg-[var(--tape)]" : ""
-              }`}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              onClick={() => setLang("zh")}
-              className={`paper-strip px-3 py-1 text-xs font-semibold text-[var(--ink)] ${
-                lang === "zh" ? "bg-[var(--tape)]" : ""
-              }`}
-            >
-              中文
-            </button>
-          </div>
-        </div>
         <section className="px-6 py-8 sm:px-10 text-center">
           <h1 className="handwriting text-center text-6xl font-bold tracking-wide text-[var(--ink)]">
-            {content.heroTitle}
+            {content.heroTitle}2
           </h1>
         </section>
 
         <section className="relative px-6 py-8 sm:px-10">
-          <div className="grid gap-8 lg:grid-cols-5">
-            <div className="lg:col-span-2">
+          {/* language switcher */}
+          <div className="absolute top-0 right-0 z-1 rotate-[3deg]">
+            <div className="tape tape-right w-48 rounded-2xl bg-[var(--paper)] px-4 py-3 text-left shadow-[0_16px_30px_rgba(34,20,10,0.18)]">
+              <p className="handwriting text-lg text-[var(--ink)]">
+                {content.languageLabel}
+              </p>
+              <div className="mt-2 flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLang('en')}
+                  className={`paper-strip px-3 py-1 text-xs font-semibold cursor-pointer text-[var(--ink)] ${
+                    lang === 'en' ? 'bg-[var(--tape)]' : ''
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang('zh')}
+                  className={`paper-strip px-3 py-1 text-xs font-semibold cursor-pointer text-(--ink) ${
+                    lang === 'zh' ? 'bg-(--tape)' : ''
+                  }`}
+                >
+                  中文
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row gap-10">
+            {/* photo */}
+            <div className="shrink-0 w-[320px]">
               <div className="tape tape-center">
-                <div className="polaroid">
+                <div className="polaroid max-w-full">
                   <div className="polaroid-photo flex items-center justify-center text-sm uppercase tracking-[0.3em] text-[rgba(36,28,22,0.5)]">
                     Photo
                   </div>
-                  <div className="mt-5 text-center">
-                    <p className="handwriting text-3xl text-[var(--ink)]">
+                  <div className="mt-5 text-center -rotate-2">
+                    <p className="handwriting text-3xl text-(--blue)">
                       {content.hello}
-                    </p>
-                    <p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent-dark)]">
-                      {content.role}
                     </p>
                   </div>
                 </div>
@@ -62,16 +63,28 @@ export default function Home() {
             </div>
 
             <div className="relative lg:col-span-3">
-              <p className="handwriting absolute right-0 top-0 rotate-[-2deg] text-3xl text-[var(--accent)]">
-                {content.role}
-              </p>
-              <div className="mt-10 space-y-4 text-lg text-[var(--ink)]">
-                <div className="flex flex-wrap items-center gap-4 text-base uppercase tracking-[0.2em] text-[rgba(36,28,22,0.55)]">
-                  <span>{content.name}</span>
-                  <span>{content.dob}</span>
-                  <span>{content.city}</span>
+              <div className="mt-10 space-y-6 text-lg text-(--ink)">
+                <div className="relative flex flex-col flex-wrap gap-4 text-lg">
+                  <div className="handwriting absolute left-48 bottom-0 leading-[0.8] rotate-[-8deg] text-3xl text-(--blue)">
+                    Frontend
+                    <br />
+                    Developer
+                  </div>
+                  <div className="flex flex-col gap-2 serif-zh">
+                    <div className="text-7xl font-semibold mb-1">
+                      {content.name}
+                    </div>
+                    {/* <div className="text-4xl">{content.dob}</div> */}
+                    <div className="text-xl font-normal leading-none uppercase">
+                      Taichung City,
+                      <br />
+                      Taiwan
+                    </div>
+                  </div>
                 </div>
-                <p className="text-lg leading-relaxed">{content.intro}</p>
+                <p className="text-lg whitespace-pre-line leading-normal text-(--blue) wenkai-zh">
+                  {content.intro}
+                </p>
               </div>
             </div>
           </div>
@@ -112,14 +125,17 @@ export default function Home() {
               </h2>
               <div className="mt-4 flex flex-wrap gap-3">
                 {[
-                  "Next.js 8/10",
-                  "React.js 8/10",
-                  "Vue.js 5/10",
-                  "TypeScript 7/10",
-                  "JavaScript 8/10",
-                  "HTML/CSS 8/10",
+                  'Next.js 8/10',
+                  'React.js 8/10',
+                  'Vue.js 5/10',
+                  'TypeScript 7/10',
+                  'JavaScript 8/10',
+                  'HTML/CSS 8/10',
                 ].map((skill) => (
-                  <span key={skill} className="skill-pill text-sm font-semibold">
+                  <span
+                    key={skill}
+                    className="skill-pill text-sm font-semibold"
+                  >
                     {skill}
                   </span>
                 ))}
@@ -131,14 +147,17 @@ export default function Home() {
               </h2>
               <div className="mt-4 flex flex-wrap gap-3">
                 {[
-                  "MUI 8/10",
-                  "Axios 8/10",
-                  "Redux toolkit 8/10",
-                  "React Hook Form 7/10",
-                  "Formik 8/10",
-                  "Yup 8/10",
+                  'MUI 8/10',
+                  'Axios 8/10',
+                  'Redux toolkit 8/10',
+                  'React Hook Form 7/10',
+                  'Formik 8/10',
+                  'Yup 8/10',
                 ].map((skill) => (
-                  <span key={skill} className="skill-pill text-sm font-semibold">
+                  <span
+                    key={skill}
+                    className="skill-pill text-sm font-semibold"
+                  >
                     {skill}
                   </span>
                 ))}
@@ -149,8 +168,11 @@ export default function Home() {
                 {content.toolsTitle}
               </h2>
               <div className="mt-4 flex flex-wrap gap-3">
-                {["Npm/Pnp", "Git"].map((skill) => (
-                  <span key={skill} className="skill-pill text-sm font-semibold">
+                {['Npm/Pnp', 'Git'].map((skill) => (
+                  <span
+                    key={skill}
+                    className="skill-pill text-sm font-semibold"
+                  >
                     {skill}
                   </span>
                 ))}
