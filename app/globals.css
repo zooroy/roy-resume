@@ -31,21 +31,24 @@ body {
     sans-serif;
 }
 
-h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--foreground);
+/* Caveat 手寫體 - 英文 */
+.handwriting {
+  font-family: var(--font-caveat), cursive, 'Noto Serif TC', serif;
 }
 
-.dot-grid-bg {
-  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-  background-size: 18px 18px;
+.display-serif {
+  font-family:
+    var(--font-bree-serif), 'Bree Serif', var(--font-serif-zh), serif;
+}
+/* 思源宋體 - 中文英文 */
+.serif-zh {
+  font-family: var(--font-serif-zh), 'Noto Serif TC', serif;
+  font-weight: 600;
 }
 
-.scrapbook-page {
+.scrapbook-bg {
+  position: relative;
   background:
-    radial-gradient(var(--dot) 1px, transparent 1px),
     radial-gradient(
       circle at 10% 10%,
       rgba(233, 196, 152, 0.25),
@@ -62,110 +65,19 @@ h2 {
       transparent 45%
     ),
     var(--background);
-  background-size:
-    18px 18px,
-    auto,
-    auto,
-    auto,
-    auto;
-  background-position:
-    0 0,
-    center,
-    center,
-    center,
-    center;
+  background-size: auto, auto, auto, auto;
+  background-position: center, center, center, center;
 }
 
-.paper-card {
-  background: var(--paper);
-  border-radius: 12px;
-  box-shadow: 0 20px 40px var(--shadow);
-}
-.paper-strip {
-  background: var(--paper-deep);
-  border: 2px solid rgba(36, 28, 22, 0.08);
-  border-radius: 999px;
-}
-/* Caveat 手寫體 - 英文 */
-.handwriting {
-  font-family: var(--font-caveat), cursive, 'Noto Serif TC', serif;
-}
-
-.display-serif {
-  font-family:
-    var(--font-bree-serif), 'Bree Serif', var(--font-serif-zh), serif;
-}
-/* 思源宋體 - 中文英文 */
-.serif-zh {
-  font-family: var(--font-serif-zh), 'Noto Serif TC', serif;
-  font-weight: 600;
-}
-
-.tape {
-  position: relative;
-}
-
-.tape::before {
+.scrapbook-bg::before {
   content: '';
-  z-index: 1;
+  pointer-events: none;
   position: absolute;
-  top: -18px;
-  left: 24px;
-  height: 30px;
-  width: 90px;
-  background: var(--tape);
-  opacity: 0.8;
-  border-radius: 8px;
-  transform: rotate(-4deg);
-  box-shadow: 0 8px 18px rgba(36, 28, 22, 0.18);
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 18px 18px;
 }
 
-.tape.tape-right::before {
-  left: auto;
-  right: 20px;
-  transform: rotate(5deg);
-}
-
-.tape.tape-center::before {
-  left: calc(50% - 45px);
-  transform: rotate(-2deg);
-}
-
-.polaroid {
-  background: #fff;
-  border-radius: 20px;
-  padding: 18px 18px 28px;
-  box-shadow: 0 18px 30px var(--shadow);
-  transform: rotate(-1.5deg);
-}
-
-.polaroid-photo {
-  background: linear-gradient(135deg, #cdd6d5, #f2e8d5);
-  border-radius: 16px;
-  height: 260px;
-  position: relative;
-  overflow: hidden;
-}
-
-.polaroid-photo::after {
-  content: '';
-  position: absolute;
-  inset: 18px;
-  border: 2px dashed rgba(36, 28, 22, 0.2);
-  border-radius: 12px;
-}
-
-.skill-icons {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.skill-icon {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
-.test2 {
+.test {
 }
