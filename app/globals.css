@@ -3,7 +3,6 @@
 :root {
   --background: #f6f1e8;
   --foreground: #241c16;
-  --ink: #2f1d12;
   --text-light-fg: #6b5a4f;
   --paper: #fff6e9;
   --paper-deep: #f5e6d0;
@@ -30,6 +29,13 @@ body {
     system-ui,
     -apple-system,
     sans-serif;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--foreground);
 }
 
 .dot-grid-bg {
@@ -72,9 +78,8 @@ body {
 
 .paper-card {
   background: var(--paper);
-  border-radius: 24px;
+  border-radius: 12px;
   box-shadow: 0 20px 40px var(--shadow);
-  border: 2px solid rgba(36, 28, 22, 0.08);
 }
 .paper-strip {
   background: var(--paper-deep);
@@ -83,19 +88,17 @@ body {
 }
 /* Caveat 手寫體 - 英文 */
 .handwriting {
+  font-family: var(--font-caveat), cursive, 'Noto Serif TC', serif;
+}
+
+.display-serif {
   font-family:
-    var(--font-caveat), cursive, var(--font-wenkai-zh), 'LXGW WenKai TC', serif;
+    var(--font-bree-serif), 'Bree Serif', var(--font-serif-zh), serif;
 }
 /* 思源宋體 - 中文英文 */
 .serif-zh {
   font-family: var(--font-serif-zh), 'Noto Serif TC', serif;
   font-weight: 600;
-}
-
-/* 霞鶩文楷體 - 中文 */
-.wenkai-zh {
-  font-family:
-    var(--font-wenkai-zh), 'LXGW WenKai TC', serif, var(--font-caveat), cursive;
 }
 
 .tape {
@@ -152,34 +155,17 @@ body {
   border-radius: 12px;
 }
 
-.double-rule {
-  position: relative;
-  height: 8px;
-  margin: 28px 0;
+.skill-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.double-rule::before,
-.double-rule::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--blue);
+.skill-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
-.double-rule::before {
-  top: 1px;
-}
-
-.double-rule::after {
-  bottom: 1px;
-}
-
-.skill-pill {
-  background: #fff;
-  border: 1.5px solid rgba(36, 28, 22, 0.12);
-  border-radius: 999px;
-  padding: 6px 12px;
-  box-shadow: 0 6px 12px rgba(36, 28, 22, 0.08);
+.test2 {
 }
