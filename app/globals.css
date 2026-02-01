@@ -8,7 +8,7 @@
   --paper-deep: #f5e6d0;
   --blue: #030fef;
   --red: #fe3b14;
-  --tape: #f2d09b;
+  --tape: #f9deb2;
   --grid: rgba(47, 29, 18, 0.12);
   --dot: rgba(47, 29, 18, 0.2);
   --shadow: rgba(34, 20, 10, 0.2);
@@ -46,6 +46,24 @@ body {
   font-weight: 600;
 }
 
+.paper-card {
+  background: var(--paper);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px var(--shadow);
+}
+
+.tape-strip {
+  position: absolute;
+  z-index: 2;
+  height: 30px;
+  width: 96px;
+  border-radius: 6px;
+  background: var(--tape);
+  opacity: 0.8;
+  box-shadow: 0 1px 1px rgba(36, 28, 22, 0.18);
+  pointer-events: none;
+}
+
 .scrapbook-bg {
   position: relative;
   background:
@@ -79,5 +97,5 @@ body {
   background-size: 18px 18px;
 }
 
-.test {
+.test123 {
 }

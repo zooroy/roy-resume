@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { copy, type Lang } from './content';
 import { langClass } from './lang';
 
@@ -50,31 +51,40 @@ export default function Home() {
       {
         label: 'MUI',
         level: '8/10',
+        icons: [{ src: '/skills/mui-icon.png', alt: 'MUI' }],
       },
       {
         label: 'Tailwind',
         level: '6/10',
-      },
-      {
-        label: 'Axios',
-        level: '8/10',
+        icons: [{ src: '/skills/tailwind-icon.svg', alt: 'Tailwind' }],
       },
       {
         label: 'Redux toolkit',
         level: '8/10',
+        icons: [{ src: '/skills/redux-logo.svg', alt: 'Redux' }],
+      },
+      {
+        label: 'Axios',
+        level: '8/10',
+        icons: [{ src: '/skills/axios-icon.svg', alt: 'Axios' }],
       },
       {
         label: 'React Hook Form',
         level: '7/10',
+        icons: [
+          { src: '/skills/react-hook-form-icon.png', alt: 'React Hook Form' },
+        ],
       },
       {
         label: 'Formik',
         level: '8/10',
+        icons: [{ src: '/skills/formik-icon.png', alt: 'Formik' }],
       },
-      {
-        label: 'Yup',
-        level: '8/10',
-      },
+      // {
+      //   label: 'Yup',
+      //   level: '8/10',
+      //   icons: [],
+      // },
     ],
     [],
   );
@@ -98,10 +108,10 @@ export default function Home() {
   );
   const projectImages = useMemo(
     () => [
-      '/projects/tsmc.jpg',
-      '/projects/kgi.jpg',
       '/projects/swim.jpg',
       '/projects/game.jpg',
+      '/projects/kgi.jpg',
+      '/projects/tsmc.jpg',
       '/projects/moutain.jpg',
     ],
     [],
@@ -132,16 +142,16 @@ export default function Home() {
 
         <section className="relative px-6 py-8 sm:px-10">
           {/* language switcher */}
-          {/* <div className="absolute top-0 right-0 z-1 rotate-[3deg]">
-            <div className="relative w-48 rounded-2xl bg-[var(--paper)] px-4 py-3 text-left shadow-[0_16px_30px_rgba(34,20,10,0.18)]">
-              <div className="absolute right-5 top-[-18px] z-[1] h-[30px] w-[90px] rotate-[5deg] rounded-[8px] bg-[var(--tape)] opacity-80 shadow-[0_8px_18px_rgba(36,28,22,0.18)]" />
-              <p className="text-lg text-[var(--ink)]">語系</p>
+          {/* <div className="absolute top-0 right-0 z-1 rotate-3">
+            <div className="relative w-48 paper-card px-4 py-3 text-left">
+              <span className="tape-strip right-5 -top-4.5 rotate-[5deg]" />
+              <p className="handwriting text-2xl">language</p>
               <div className="mt-2 flex gap-2">
                 <button
                   type="button"
                   onClick={() => setLang('en')}
-                  className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-[var(--paper-deep)] px-3 py-1 text-xs font-semibold cursor-pointer text-[var(--ink)] ${
-                    lang === 'en' ? 'bg-[var(--tape)]' : ''
+                  className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-(--paper-deep) px-3 py-1 text-xs font-semibold cursor-pointer text-(--ink) ${
+                    lang === 'en' ? 'bg-(--tape)' : ''
                   }`}
                 >
                   EN
@@ -149,8 +159,8 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setLang('zh')}
-                  className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-[var(--paper-deep)] px-3 py-1 text-xs font-semibold cursor-pointer text-[var(--ink)] ${
-                    lang === 'zh' ? 'bg-[var(--tape)]' : ''
+                  className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-(--paper-deep) px-3 py-1 text-xs font-semibold cursor-pointer text-(--ink) ${
+                    lang === 'zh' ? 'bg-(--tape)' : ''
                   }`}
                 >
                   中文
@@ -158,39 +168,76 @@ export default function Home() {
               </div>
             </div>
           </div> */}
+
           <div className="flex flex-col md:flex-row gap-10">
             {/* photo */}
             <div className="shrink-0 w-[320px]">
               <div className="relative">
-                <div className="absolute left-1/2 top-[-18px] z-[1] h-[30px] w-[90px] -translate-x-1/2 rotate-[-2deg] rounded-[8px] bg-[var(--tape)] opacity-80 shadow-[0_8px_18px_rgba(36,28,22,0.18)]" />
-                <div className="max-w-full rounded-[20px] bg-white p-[18px] pb-[28px] shadow-[0_18px_30px_var(--shadow)] rotate-[-1.5deg]">
-                  <div className="relative flex h-[260px] items-center justify-center overflow-hidden rounded-[16px] bg-[linear-gradient(135deg,#cdd6d5,#f2e8d5)] text-sm uppercase tracking-[0.3em] text-[rgba(36,28,22,0.5)]">
-                    <div className="pointer-events-none absolute inset-[18px] rounded-[12px] border-2 border-dashed border-[rgba(36,28,22,0.2)]" />
-                    Photo
+                <span className="tape-strip -top-4 left-25" />
+                <div className="paper-card max-w-full px-5 py-6 -rotate-4">
+                  <div className="relative h-65">
+                    <Image
+                      src="/profile/person.jpeg"
+                      alt="Profile photo"
+                      fill
+                      sizes="(max-width: 768px) 90vw, 320px"
+                      className="object-cover"
+                      priority
+                    />
                   </div>
-                  <div className="mt-5 text-center -rotate-2">
-                    <p className="handwriting text-3xl text-(--blue)">
-                      {/* {content.hello} */}
-                      Frontend Developer
-                    </p>
+                  <div className="flex flex-col">
+                    <div className="mt-3 mb-2 text-center rotate-2">
+                      <p className="handwriting text-3xl">
+                        {content.hello}
+                        {/* Frontend Developer */}
+                      </p>
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-2">
+                        <h2 className="display-serif">Age: </h2>
+                        <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
+                          35
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <h2 className="display-serif">Phone: </h2>
+                        <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
+                          0912-323-221
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <h2 className="display-serif">Mail: &nbsp;</h2>
+                        <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
+                          zooroy13@gmail.com
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <h2 className="display-serif">Education: </h2>
+                        <p className="text-base leading-1 text-(--text-light-fg)">
+                          國立成功大學 中國文學系
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="relative lg:col-span-3">
-              <div className="mt-10 space-y-6 text-lg text-(--ink)">
+              <div className="space-y-6 text-lg text-(--ink)">
                 <div className="relative flex flex-col flex-wrap gap-4 text-lg">
-                  {/* <div className="handwriting absolute left-48 bottom-0 leading-[0.8] rotate-[-8deg] text-3xl text-(--blue)">
+                  <div className="handwriting absolute left-48 bottom-0 leading-[0.8] rotate-[-8deg] text-3xl text-(--blue)">
                     Frontend
                     <br />
                     Developer
-                  </div> */}
+                  </div>
                   <div className="flex flex-col gap-2 serif-zh">
                     <div className="text-7xl font-semibold mb-1">
                       {content.name}
                     </div>
-                    {/* <div className="text-4xl">{content.dob}</div> */}
                     <div className="text-xl leading-none uppercase">
                       Taichung City,
                       <br />
@@ -225,106 +272,150 @@ export default function Home() {
           </div>
         </section> */}
 
-        {/* SKILL */}
         <section className="px-6 py-8 sm:px-10">
-          <div className="space-y-6">
-            <div>
+          <div className="flex flex-col gap-15 lg:flex-row">
+            <div className="lg:w-1/3">
+              {/* SKILLS */}
               <h2 className="display-serif text-4xl ">{content.skillTitle}</h2>
-              <div className="mt-4 flex flex-wrap gap-10">
-                {skillItems.map((skill) => (
-                  <div
-                    key={`${skill.label}-${skill.level}`}
-                    className="flex flex-col items-center"
-                  >
-                    <span className="inline-flex items-center gap-2">
-                      {skill.icons.map((icon) => (
-                        <img
-                          key={icon.src}
-                          src={icon.src}
-                          alt={icon.alt}
-                          className={`object-contain ${
-                            skill.icons.length > 1 ? 'w-10 h-10' : 'w-14 h-14'
-                          }`}
-                          loading="lazy"
-                        />
+              <div className="paper-card rotate-1 mt-8 relative px-4 py-5">
+                <span className="tape-strip -top-4 left-20 -rotate-[5deg]" />
+                <div className="space-y-6">
+                  <div>
+                    <div className="mt-4 flex flex-wrap gap-6">
+                      {skillItems.map((skill) => (
+                        <div
+                          key={`${skill.label}-${skill.level}`}
+                          className="flex flex-col items-center"
+                        >
+                          <span className="inline-flex items-center gap-2">
+                            {skill.icons.map((icon) => (
+                              <div
+                                className="flex flex-col items-center"
+                                key={icon.src}
+                              >
+                                <Image
+                                  src={icon.src}
+                                  alt={icon.alt}
+                                  width={48}
+                                  height={48}
+                                  className="object-contain"
+                                />
+                                <div className="text-sm">{icon.alt}</div>
+                              </div>
+                            ))}
+                          </span>
+                          {/* <div>{skill.label}</div> */}
+                          <div className="handwriting text-3xl">
+                            {skill.level}
+                          </div>
+                        </div>
                       ))}
-                    </span>
-                    {/* <div>{skill.label}</div> */}
-                    <div className="handwriting text-3xl">{skill.level}</div>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
-            {/* LIBRARIES */}
-            <div>
-              <h2 className="display-serif">{content.libTitle}</h2>
-              <div className="mt-4 flex flex-wrap gap-10">
-                {libraryItems.map((skill) => (
-                  <div
-                    key={`${skill.label}-${skill.level}`}
-                    className="flex flex-col items-center"
-                  >
-                    <div className="text-xl font-semibold">{skill.label}</div>
-                    <div className="handwriting text-3xl">{skill.level}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            {/* TOOLS */}
-            <div>
-              <h2 className="display-serif text-4xl">{content.toolsTitle}</h2>
-              <div className="mt-4 flex flex-wrap gap-10">
-                {toolItems.map((tool) => (
-                  <span
-                    key={tool.label}
-                    className="flex flex-col items-center text-sm"
-                  >
-                    <span className="inline-flex items-center gap-2">
-                      {tool.icons.map((icon) => (
-                        <img
-                          key={icon.src}
-                          src={icon.src}
-                          alt={icon.alt}
-                          className={`object-contain ${
-                            tool.icons.length > 1 ? 'w-10 h-10' : 'w-14 h-14'
-                          }`}
-                          loading="lazy"
-                        />
-                      ))}
-                    </span>
-                    <div className="handwriting text-3xl">{tool.level}</div>
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 py-8 sm:px-10">
-          <h2 className="display-serif text-4xl ">{content.projectsTitle}</h2>
-          <div className="mt-6 flex flex-wrap justify-center gap-12">
-            {content.projects.map((project, index) => (
-              <article
-                key={project.title}
-                className={`w-full max-w-90 rounded-3xl bg-(--paper) px-4 py-5 shadow-[0_20px_40px_var(--shadow)] md:max-w-none md:basis-[calc(50%-1.5rem)] lg:basis-[calc(33.333%-2rem)] ${cardTilts[index % cardTilts.length]} relative`}
-              >
-                <span
-                  className={`pointer-events-none absolute z-2 h-7.5 w-24 rounded-lg bg-(--tape) opacity-80 shadow-[0_8px_18px_rgba(36,28,22,0.18)] ${tapePlacements[index % tapePlacements.length]}`}
-                />
-                <div className="mb-4 overflow-hidden">
-                  <img
-                    src={projectImages[index]}
-                    alt={project.title}
-                    className="h-44 w-full object-cover"
-                    loading="lazy"
-                  />
                 </div>
-                <h3 className="serif-zh text-2xl font-bold">{project.title}</h3>
-                <p className="mt-3 leading-relaxed text-(--text-light-fg)">
-                  {project.desc}
-                </p>
-              </article>
-            ))}
+              </div>
+
+              {/* LIBRARIES */}
+              <div className="mt-10">
+                <h2 className="display-serif text-4xl">{content.libTitle}</h2>
+                <div className="paper-card rotate-1.3 mt-8 relative px-4 py-5">
+                  <span className="tape-strip -top-4 left-28 rotate-[5deg]" />
+                  <div className="mt-4 flex flex-wrap gap-6">
+                    {libraryItems.map((skill) => (
+                      <div
+                        key={`${skill.label}-${skill.level}`}
+                        className="flex flex-col items-center"
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          {skill.icons.map((icon) => (
+                            <Image
+                              key={icon.src}
+                              src={icon.src}
+                              alt={icon.alt}
+                              width={48}
+                              height={48}
+                              className="object-contain aspect-square"
+                            />
+                          ))}
+                        </span>
+                        <div className="text-sm">{skill.label}</div>
+                        <div className="handwriting text-3xl">
+                          {skill.level}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* TOOLS */}
+              <div className="mt-10">
+                <h2 className="display-serif text-4xl">{content.toolsTitle}</h2>
+                <div className="paper-card -rotate-2 mt-8 relative px-4 py-5">
+                  <span className="tape-strip -top-4 left-28 rotate-[5deg]" />
+                  <div className="mt-4 flex flex-wrap gap-6">
+                    {toolItems.map((tool) => (
+                      <span
+                        key={tool.label}
+                        className="flex flex-col items-center text-sm"
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          {tool.icons.map((icon) => (
+                            <div
+                              className="flex flex-col items-center"
+                              key={icon.src}
+                            >
+                              <Image
+                                src={icon.src}
+                                alt={icon.alt}
+                                width={48}
+                                height={48}
+                                className="object-contain"
+                              />
+                              <div className="text-sm">{icon.alt}</div>
+                            </div>
+                          ))}
+                        </span>
+                        <div className="handwriting text-3xl">{tool.level}</div>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:w-2/3">
+              <h2 className="display-serif text-4xl">
+                {content.projectsTitle}
+              </h2>
+              <div className="mt-8 flex flex-wrap justify-center gap-12">
+                {content.projects.map((project, index) => (
+                  <article
+                    key={project.title}
+                    className={`paper-card relative w-full max-w-[360px] px-4 py-5 md:max-w-none md:basis-[calc(50%-1.5rem)] ${cardTilts[index % cardTilts.length]}`}
+                  >
+                    <span
+                      className={`tape-strip ${tapePlacements[index % tapePlacements.length]}`}
+                    />
+                    <div className="relative mb-4 h-44 w-full overflow-hidden">
+                      <Image
+                        src={projectImages[index]}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 360px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="serif-zh text-2xl font-bold">
+                      {project.title}
+                    </h3>
+                    <p className="mt-3 leading-relaxed text-(--text-light-fg)">
+                      {project.desc}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>

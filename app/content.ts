@@ -18,7 +18,9 @@ type Content = {
   contactLabel: string;
   eduLabel: string;
   age: string;
-  contact: string;
+  phone?: string;
+  contact?: string;
+  email?: string;
   education: string;
   skillTitle: string;
   libTitle: string;
@@ -44,8 +46,8 @@ export const copy: Record<Lang, Content> = {
     contactLabel: 'Contact Details',
     eduLabel: 'Education',
     age: '35',
-    contact: `0912-323-221
-    zooroy13@gmail.com`,
+    phone: '0912-323-221',
+    email: 'zooroy13@gmail.com',
     education: '國立成功大學 中國文學系',
     skillTitle: 'SKILL',
     libTitle: 'LIBRARIES',
@@ -53,20 +55,20 @@ export const copy: Record<Lang, Content> = {
     projectsTitle: 'PROJECTS',
     projects: [
       {
-        title: 'TSMC 後台資料管理系統 (內部後台)',
-        desc: '多人協作，負責完成 API 串接與資料處理、元件製作、資料篩選、lazyload',
-      },
-      {
-        title: '凱基金控後台資料管理系統 (內部後台)',
-        desc: '獨立作業，實作登入系統、RESTful API 串接與資料處理、會員權限功能製作、元件模組化、表格資料篩選、下載',
-      },
-      {
         title: 'Swimple 游泳池租借平台',
         desc: '多人協作，負責實作前台使用者註冊/登入流程，第三方登入，處理表單驗證、錯誤提示，頁面權限控制',
       },
       {
         title: '家樂福-家有奇雞小遊戲',
         desc: '兩人協作，負責整體架構規劃、資料流串接、驗證使用者帳號、動畫製作',
+      },
+      {
+        title: '凱基金控後台資料管理系統 (內部後台)',
+        desc: '獨立作業，實作登入系統、RESTful API 串接與資料處理、會員權限功能製作、元件模組化、表格資料篩選、下載',
+      },
+      {
+        title: 'TSMC 後台資料管理系統 (內部後台)',
+        desc: '多人協作，負責完成 API 串接與資料處理、元件製作、資料篩選、lazyload',
       },
       {
         title: '參山國家風景區管理處-官網',
@@ -88,7 +90,8 @@ export const copy: Record<Lang, Content> = {
     contactLabel: 'Contact',
     eduLabel: 'Education',
     age: '35',
-    contact: '0912-323-221',
+    phone: '0912-323-221',
+    email: 'zooroy13@gmail.com',
     education: 'B.S. in Computer Science',
     skillTitle: 'SKILL',
     libTitle: 'LIBRARIES',
