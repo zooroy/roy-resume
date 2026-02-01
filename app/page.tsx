@@ -1,71 +1,16 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion, useMotionValue } from 'framer-motion';
 import { copy, type Lang } from './content';
 import { langClass } from './lang';
+import DraggableCard from './components/DraggableCard';
 
 export default function Home() {
   const dragBoundsRef = useRef<HTMLDivElement>(null);
   const zIndexCounter = useRef(10);
   const [lang, setLang] = useState<Lang>('zh');
   const content = useMemo(() => copy[lang], [lang]);
-  const DraggableCard = ({
-    as = 'div',
-    className,
-    children,
-  }: {
-    as?: 'div' | 'article';
-    className?: string;
-    children: ReactNode;
-  }) => {
-    const [zIndex, setZIndex] = useState(1);
-    const [dragEnabled, setDragEnabled] = useState(true);
-    const MotionTag = as === 'article' ? motion.article : motion.div;
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    useEffect(() => {
-      const mediaQuery = window.matchMedia('(max-width: 768px)');
-      const updateDragEnabled = () => setDragEnabled(!mediaQuery.matches);
-      updateDragEnabled();
-      mediaQuery.addEventListener('change', updateDragEnabled);
-      return () => mediaQuery.removeEventListener('change', updateDragEnabled);
-    }, []);
-
-    useEffect(() => {
-      const resetPosition = () => {
-        x.set(0);
-        y.set(0);
-      };
-      window.addEventListener('resize', resetPosition);
-      return () => window.removeEventListener('resize', resetPosition);
-    }, [x, y]);
-
-    return (
-      <MotionTag
-        drag={dragEnabled}
-        dragListener={dragEnabled}
-        dragConstraints={dragBoundsRef}
-        dragMomentum={false}
-        dragElastic={0.28}
-        whileTap={{
-          scale: 1.02,
-          boxShadow: '0 22px 45px rgba(34, 20, 10, 0.26)',
-        }}
-        whileDrag={{
-          scale: 1.04,
-          boxShadow: '0 28px 55px rgba(34, 20, 10, 0.32)',
-        }}
-        onPointerDown={() => setZIndex(++zIndexCounter.current)}
-        style={{ zIndex, position: 'relative', x, y }}
-        className={className}
-      >
-        {children}
-      </MotionTag>
-    );
-  };
   const skillItems = useMemo(
     () => [
       {
@@ -193,7 +138,11 @@ export default function Home() {
     <div ref={dragBoundsRef}>
       <div className="scrapbook-bg min-h-screen px-6 py-10 sm:px-12 lg:px-20 relative">
         <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <DraggableCard className="paper-card relative ml-auto w-fit px-4 py-2 text-sm text-(--text-light-fg) rotate-1 cursor-grab active:cursor-grabbing">
+        <DraggableCard
+          dragBoundsRef={dragBoundsRef}
+          zIndexCounterRef={zIndexCounter}
+          className="paper-card relative ml-auto w-fit px-4 py-2 text-sm text-(--text-light-fg) rotate-1 cursor-grab active:cursor-grabbing"
+        >
           <span className="tape-strip -top-3 right-4 rotate-[6deg]" />
           提示：卡片可自由拖曳
         </DraggableCard>
@@ -241,7 +190,11 @@ export default function Home() {
               {/* photo */}
               <div className="shrink-0 w-[320px]">
                 <div className="relative">
-                  <DraggableCard className="paper-card max-w-full px-5 py-6 -rotate-4 cursor-grab active:cursor-grabbing">
+                  <DraggableCard
+                    dragBoundsRef={dragBoundsRef}
+                    zIndexCounterRef={zIndexCounter}
+                    className="paper-card max-w-full px-5 py-6 -rotate-4 cursor-grab active:cursor-grabbing"
+                  >
                     <span className="tape-strip -top-4 left-25" />
                     <div className="relative h-65">
                       <Image
@@ -348,7 +301,11 @@ export default function Home() {
                 <h2 className="display-serif text-4xl ">
                   {content.skillTitle}
                 </h2>
-                <DraggableCard className="paper-card rotate-1 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing">
+                <DraggableCard
+                  dragBoundsRef={dragBoundsRef}
+                  zIndexCounterRef={zIndexCounter}
+                  className="paper-card rotate-1 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing"
+                >
                   <span className="tape-strip -top-4 left-20 -rotate-[5deg]" />
                   <div className="space-y-6">
                     <div>
@@ -390,7 +347,11 @@ export default function Home() {
                 {/* LIBRARIES */}
                 <div className="mt-10">
                   <h2 className="display-serif text-4xl">{content.libTitle}</h2>
-                  <DraggableCard className="paper-card rotate-1.3 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing">
+                  <DraggableCard
+                    dragBoundsRef={dragBoundsRef}
+                    zIndexCounterRef={zIndexCounter}
+                    className="paper-card rotate-1.3 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing"
+                  >
                     <span className="tape-strip -top-4 left-28 rotate-[5deg]" />
                     <div className="mt-4 flex flex-wrap gap-6">
                       {libraryItems.map((skill) => (
@@ -426,7 +387,11 @@ export default function Home() {
                   <h2 className="display-serif text-4xl">
                     {content.toolsTitle}
                   </h2>
-                  <DraggableCard className="paper-card -rotate-2 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing">
+                  <DraggableCard
+                    dragBoundsRef={dragBoundsRef}
+                    zIndexCounterRef={zIndexCounter}
+                    className="paper-card -rotate-2 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing"
+                  >
                     <span className="tape-strip -top-4 left-28 rotate-[5deg]" />
                     <div className="mt-4 flex flex-wrap gap-6">
                       {toolItems.map((tool) => (
@@ -471,6 +436,8 @@ export default function Home() {
                     <DraggableCard
                       as="article"
                       key={project.title}
+                      dragBoundsRef={dragBoundsRef}
+                      zIndexCounterRef={zIndexCounter}
                       className={`paper-card relative w-full max-w-[360px] px-4 py-5 md:max-w-none md:basis-[calc(50%-1.5rem)] ${cardTilts[index % cardTilts.length]} cursor-grab active:cursor-grabbing`}
                     >
                       <span
