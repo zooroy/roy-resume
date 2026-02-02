@@ -2,7 +2,11 @@ export type Lang = 'zh' | 'en';
 
 type Project = {
   title: string;
-  desc: string;
+  summary?: string;
+  role?: string;
+  highlights?: string[];
+  tech?: string[];
+  link?: string;
 };
 
 type Content = {
@@ -55,24 +59,87 @@ export const copy: Record<Lang, Content> = {
     projectsTitle: 'PROJECTS',
     projects: [
       {
-        title: 'Swimple 游泳池租借平台',
-        desc: '多人協作，負責實作前台使用者註冊/登入流程，第三方登入，處理表單驗證、錯誤提示，頁面權限控制',
+        title: 'Swimple｜游泳池租借平台',
+        summary:
+          '游泳池即時租借與管理平台，提供使用者快速查詢、預約與驗證流程。',
+        role: '多人協作',
+        highlights: [
+          '負責前台使用者註冊與登入流程設計',
+          '整合第三方登入機制，處理帳號驗證流程',
+          '實作表單驗證、錯誤提示與頁面權限控管',
+        ],
+        tech: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Material UI',
+          'Formik',
+          'Yup',
+        ],
+        link: 'https://www.swimple.co.uk/homepage',
       },
+
       {
-        title: '家樂福-家有奇雞小遊戲',
-        desc: '兩人協作，負責整體架構規劃、資料流串接、驗證使用者帳號、動畫製作',
+        title: '家樂福｜家有奇雞互動小遊戲',
+        summary: '品牌活動互動小遊戲，提升使用者參與度與活動完成率。',
+        role: '兩人協作',
+        highlights: [
+          '負責整體架構規劃與資料流程設計',
+          '實作使用者帳號驗證與活動資格判斷',
+          '製作互動動畫與遊戲流程',
+        ],
+        tech: ['React', 'Next.js', 'TypeScript', 'React-Spring', 'axios'],
       },
+
       {
-        title: '凱基金控後台資料管理系統 (內部後台)',
-        desc: '獨立作業，實作登入系統、RESTful API 串接與資料處理、會員權限功能製作、元件模組化、表格資料篩選、下載',
+        title: '凱基金控｜後台資料管理系統（內部後台）',
+        summary: '企業內部使用的資料管理後台，支援會員權限與資料處理。',
+        role: '獨立作業',
+        highlights: [
+          '獨立負責整體前端系統開發與維護',
+          '串接 RESTful API，完成資料新增、查詢與編輯功能',
+          '實作會員權限功能與資料篩選模組',
+        ],
+        tech: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Material UI',
+          'Redux Toolkit',
+          'Formik',
+        ],
       },
+
       {
-        title: 'TSMC 後台資料管理系統 (內部後台)',
-        desc: '多人協作，負責完成 API 串接與資料處理、元件製作、資料篩選、lazyload',
+        title: 'TSMC｜後台資料管理系統（內部後台）',
+        summary: '大型企業內部後台系統，處理大量資料與元件化管理。',
+        role: '多人協作',
+        highlights: [
+          '負責 API 串接與資料處理邏輯',
+          '開發元件模組化架構，提升系統可維護性',
+          '實作 Lazy Loading，優化大量資料載入效能',
+        ],
+        tech: [
+          'React',
+          'TypeScript',
+          'GraphQL',
+          'Apollo Client',
+          'React Hook Form',
+          'Yup',
+        ],
       },
+
       {
-        title: '參山國家風景區管理處-官網',
-        desc: '兩人協作，負責使用 rechart js 資料視覺化開發、切換語系功能、動態呈現靠近使用之景點',
+        title: '參山國家風景區管理處｜官網',
+        summary: '官方網站資料視覺化與多語系呈現。',
+        role: '獨立作業',
+        highlights: [
+          '使用 Recharts 進行資料視覺化呈現',
+          '實作多語系切換功能',
+          '以動態圖表呈現使用者行為重點',
+        ],
+        tech: ['Next.js', 'React', 'Recharts', 'axios'],
+        link: 'https://www.trimt-nsa.gov.tw/zh-tw/',
       },
     ],
   },
@@ -100,23 +167,18 @@ export const copy: Record<Lang, Content> = {
     projects: [
       {
         title: 'TSMC Admin Data System (Internal)',
-        desc: 'Team project; built API integrations, data processing, components, data filtering, and lazy loading.',
       },
       {
         title: 'KGI Financial Admin System (Internal)',
-        desc: 'Solo project; implemented auth, RESTful API integration, permission features, component modularization, table filtering, and data export.',
       },
       {
         title: 'Swimple Pool Rental Platform',
-        desc: 'Team project; built user signup/login flow, third-party login, form validation, error messaging, and page access control.',
       },
       {
         title: 'Carrefour Mini Game - Home Chicken Adventure',
-        desc: 'Pair project; planned architecture, connected data flow, verified user accounts, and built animations.',
       },
       {
         title: 'Tri-Mountain National Scenic Area - Official Site',
-        desc: 'Pair project; built Recharts data visualizations, language toggle, and dynamic nearby attractions display.',
       },
     ],
   },

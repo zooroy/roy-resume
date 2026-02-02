@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image, { type StaticImageData } from 'next/image';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { copy, type Lang } from './content';
 import DraggableCard from './components/DraggableCard';
 import heroR from '../public/hero/r.png';
@@ -15,13 +15,37 @@ import heroE2 from '../public/hero/e-2.png';
 export default function Home() {
   const dragBoundsRef = useRef<HTMLDivElement>(null);
   const zIndexCounter = useRef(10);
+  const projectPointerStartRef = useRef<{ x: number; y: number } | null>(null);
+  const projectMovedRef = useRef(false);
   const [lang, setLang] = useState<Lang>('zh');
   const [introDone, setIntroDone] = useState(false);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState<
+    number | null
+  >(null);
   const content = useMemo(() => copy[lang], [lang]);
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroDone(true), 1600);
     return () => window.clearTimeout(timer);
   }, []);
+  useEffect(() => {
+    if (selectedProjectIndex === null) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedProjectIndex(null);
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleEsc);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [selectedProjectIndex]);
   const skillItems = useMemo(
     () => [
       {
@@ -196,6 +220,12 @@ export default function Home() {
     { x: 280, y: 340, scale: 0.62, delay: 0.42 },
   ];
   const heroTrimScaleX = 1.12;
+  const activeProject =
+    selectedProjectIndex === null
+      ? null
+      : content.projects[selectedProjectIndex];
+  const activeProjectImage =
+    selectedProjectIndex === null ? null : projectImages[selectedProjectIndex];
 
   return (
     <div ref={dragBoundsRef}>
@@ -591,6 +621,7 @@ export default function Home() {
                   {content.projectsTitle}
                 </h2>
                 <div className="mt-8 flex flex-wrap justify-center gap-12">
+                  {/* Projects */}
                   {content.projects.map((project, index) => (
                     <DraggableCard
                       as="article"
@@ -599,31 +630,157 @@ export default function Home() {
                       zIndexCounterRef={zIndexCounter}
                       className={`paper-card relative w-full max-w-[360px] px-4 py-5 md:max-w-none md:basis-[calc(50%-1.5rem)] ${cardTilts[index % cardTilts.length]} cursor-grab active:cursor-grabbing`}
                     >
-                      <span
-                        className={`tape-strip ${tapePlacements[index % tapePlacements.length]}`}
-                      />
-                      <div className="relative mb-4 h-44 w-full overflow-hidden">
-                        <Image
-                          src={projectImages[index]}
-                          alt={project.title}
-                          fill
-                          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 360px"
-                          className="object-cover pointer-events-none"
-                          draggable={false}
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        className="cursor-pointer"
+                        onPointerDown={(event) => {
+                          projectPointerStartRef.current = {
+                            x: event.clientX,
+                            y: event.clientY,
+                          };
+                          projectMovedRef.current = false;
+                        }}
+                        onPointerMove={(event) => {
+                          if (!projectPointerStartRef.current) return;
+                          const deltaX =
+                            event.clientX - projectPointerStartRef.current.x;
+                          const deltaY =
+                            event.clientY - projectPointerStartRef.current.y;
+                          if (Math.hypot(deltaX, deltaY) > 8) {
+                            projectMovedRef.current = true;
+                          }
+                        }}
+                        onPointerUp={() => {
+                          if (!projectMovedRef.current) {
+                            setSelectedProjectIndex(index);
+                          }
+                          projectPointerStartRef.current = null;
+                          projectMovedRef.current = false;
+                        }}
+                        onPointerCancel={() => {
+                          projectPointerStartRef.current = null;
+                          projectMovedRef.current = false;
+                        }}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            setSelectedProjectIndex(index);
+                          }
+                        }}
+                      >
+                        <span
+                          className={`tape-strip ${tapePlacements[index % tapePlacements.length]}`}
                         />
+                        <div className="relative mb-4 h-44 w-full overflow-hidden">
+                          <Image
+                            src={projectImages[index]}
+                            alt={project.title}
+                            fill
+                            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 360px"
+                            className="object-cover pointer-events-none"
+                            draggable={false}
+                          />
+                        </div>
+                        <h3 className="serif-zh text-2xl font-bold">
+                          {project.title}
+                        </h3>
+                        <p className="mt-3 leading-relaxed text-(--text-light-fg)">
+                          {project.summary}
+                        </p>
                       </div>
-                      <h3 className="serif-zh text-2xl font-bold">
-                        {project.title}
-                      </h3>
-                      <p className="mt-3 leading-relaxed text-(--text-light-fg)">
-                        {project.desc}
-                      </p>
                     </DraggableCard>
                   ))}
                 </div>
               </div>
             </div>
           </section>
+
+          <AnimatePresence>
+            {activeProject && activeProjectImage && (
+              <motion.div
+                key="project-modal"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="fixed inset-0 z-[120] flex items-center justify-center bg-black/50 p-4"
+                onClick={() => setSelectedProjectIndex(null)}
+              >
+                <motion.article
+                  initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 16 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  onClick={(event) => event.stopPropagation()}
+                  className="paper-card relative max-h-[90vh] w-full max-w-2xl p-8"
+                >
+                  <span className="tape-strip -top-4 left-50 -rotate-6" />
+                  {/* <button
+                    type="button"
+                    onClick={() => setSelectedProjectIndex(null)}
+                    aria-label={lang === 'zh' ? '關閉視窗' : 'Close modal'}
+                    className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-black/20 bg-[var(--paper)] text-xl leading-none hover:bg-black/5 cursor-pointer sm:right-6 sm:top-6"
+                  >
+                    ×
+                  </button> */}
+                  <div className="relative mb-6 h-60 w-full overflow-hidden rounded-md sm:h-72">
+                    <Image
+                      src={activeProjectImage}
+                      alt={activeProject.title}
+                      fill
+                      sizes="(max-width: 768px) 92vw, 700px"
+                      className="object-cover pointer-events-none"
+                      draggable={false}
+                    />
+                  </div>
+                  <h3 className="serif-zh text-3xl font-bold">
+                    {activeProject.title}
+                  </h3>
+                  {activeProject.summary && (
+                    <p className="mt-4 text-lg leading-relaxed text-(--text-light-fg)">
+                      {activeProject.summary}
+                    </p>
+                  )}
+                  {activeProject.role && (
+                    <p className="mt-4 inline-flex rounded-full border border-black/20 px-3 py-1 text-sm">
+                      {activeProject.role}
+                    </p>
+                  )}
+                  {activeProject.highlights &&
+                    activeProject.highlights.length > 0 && (
+                      <ul className="mt-5 list-disc space-y-2 pl-6 text-base leading-relaxed text-(--text-light-fg)">
+                        {activeProject.highlights.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  {activeProject.tech && activeProject.tech.length > 0 && (
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {activeProject.tech.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full bg-black/10 px-3 py-1 text-sm"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {activeProject.link && (
+                    <a
+                      href={activeProject.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex rounded-full border border-black/20 px-4 py-2 text-sm hover:bg-black/5"
+                    >
+                      {lang === 'zh' ? '查看專案連結' : 'View Project Link'}
+                    </a>
+                  )}
+                </motion.article>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.main>
       </div>
     </div>
