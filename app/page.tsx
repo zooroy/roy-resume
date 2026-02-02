@@ -203,15 +203,18 @@ export default function Home() {
                   className="relative"
                   style={{
                     width: 80,
-                    height: 90,
+                    height: 100,
                   }}
                 >
                   <Image
                     src={tile.src}
                     alt={tile.alt}
+                    fill
+                    sizes="80px"
                     className="object-contain pointer-events-none origin-center"
                     style={{
                       transform: `scale(${tile.trimScale}) scaleX(${heroTrimScaleX})`,
+                      filter: 'drop-shadow(0 1px 2px rgba(34, 20, 10, 0.24))',
                     }}
                     draggable={false}
                     priority
