@@ -19,7 +19,7 @@ export default function Home() {
   const [introDone, setIntroDone] = useState(false);
   const content = useMemo(() => copy[lang], [lang]);
   useEffect(() => {
-    const timer = window.setTimeout(() => setIntroDone(true), 1400);
+    const timer = window.setTimeout(() => setIntroDone(true), 1600);
     return () => window.clearTimeout(timer);
   }, []);
   const skillItems = useMemo(
@@ -187,6 +187,14 @@ export default function Home() {
       trimScale: 2.2,
     },
   ];
+  const introFlyIn = [
+    { x: -520, y: -260, scale: 0.6, delay: 0.02 },
+    { x: 460, y: -220, scale: 0.7, delay: 0.1 },
+    { x: -420, y: 260, scale: 0.65, delay: 0.18 },
+    { x: 520, y: 240, scale: 0.72, delay: 0.26 },
+    { x: -260, y: -340, scale: 0.68, delay: 0.34 },
+    { x: 280, y: 340, scale: 0.62, delay: 0.42 },
+  ];
   const heroTrimScaleX = 1.12;
 
   return (
@@ -197,34 +205,29 @@ export default function Home() {
             className="fixed inset-0 z-[100] grid place-items-center scrapbook-bg"
             initial={{ opacity: 1 }}
             animate={{ opacity: [1, 1, 0] }}
-            transition={{ duration: 1.4, ease: 'easeInOut' }}
+            transition={{ duration: 1.6, ease: 'easeInOut' }}
           >
-            <motion.div
-              className="fixed top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-row items-center justify-center gap-1"
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: {},
-                show: {
-                  transition: {
-                    staggerChildren: 0.12,
-                  },
-                },
-              }}
-            >
+            <motion.div className="fixed top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-row items-center justify-center gap-1">
               <p className="handwriting absolute -top-20 text-5xl text-(--blue)">
                 Roy&apos;s
               </p>
-              {heroTiles.map((tile) => (
+              {heroTiles.map((tile, index) => (
                 <motion.div
                   key={`intro-${tile.alt}`}
                   className={tile.rotate}
-                  variants={{
-                    hidden: { y: 0 },
-                    show: {
-                      y: [0, -22, 0],
-                      transition: { duration: 0.42, ease: 'easeOut' },
-                    },
+                  initial={{
+                    opacity: 0,
+                    x: introFlyIn[index]?.x ?? 0,
+                    y: introFlyIn[index]?.y ?? 0,
+                    scale: introFlyIn[index]?.scale ?? 0.7,
+                  }}
+                  animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 210,
+                    damping: 17,
+                    mass: 0.7,
+                    delay: introFlyIn[index]?.delay ?? 0,
                   }}
                 >
                   <div className="relative h-[100px] w-[80px]">
@@ -255,6 +258,9 @@ export default function Home() {
         >
           {/* RESUME title */}
           <section className="flex flex-row flex-wrap items-center justify-center mt-12">
+            <p className="handwriting absolute -top-4 text-5xl text-(--blue)">
+              Roy&apos;s
+            </p>
             {heroTiles.map((tile) => (
               <DraggableCard
                 key={tile.alt}
