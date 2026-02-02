@@ -688,6 +688,9 @@ export default function Home() {
                         <p className="mt-3 leading-relaxed text-(--text-light-fg)">
                           {project.summary}
                         </p>
+                        <p className="mt-4 inline-flex rounded-full border border-black/20 px-3 py-1 text-xs text-(--text-light-fg)">
+                          {lang === 'zh' ? '點擊查看更多' : 'Click to view more'}
+                        </p>
                       </div>
                     </DraggableCard>
                   ))}
