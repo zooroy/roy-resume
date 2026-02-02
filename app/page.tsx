@@ -1,9 +1,9 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Image, { type StaticImageData } from 'next/image';
+import { motion } from 'framer-motion';
 import { copy, type Lang } from './content';
-import { langClass } from './lang';
 import DraggableCard from './components/DraggableCard';
 import heroR from '../public/hero/r.png';
 import heroE from '../public/hero/e.png';
@@ -16,7 +16,12 @@ export default function Home() {
   const dragBoundsRef = useRef<HTMLDivElement>(null);
   const zIndexCounter = useRef(10);
   const [lang, setLang] = useState<Lang>('zh');
+  const [introDone, setIntroDone] = useState(false);
   const content = useMemo(() => copy[lang], [lang]);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIntroDone(true), 1400);
+    return () => window.clearTimeout(timer);
+  }, []);
   const skillItems = useMemo(
     () => [
       {
@@ -182,13 +187,72 @@ export default function Home() {
       trimScale: 2.2,
     },
   ];
-  const heroTargetWidth = 260;
   const heroTrimScaleX = 1.12;
 
   return (
     <div ref={dragBoundsRef}>
       <div className="scrapbook-bg min-h-screen px-6 py-10 sm:px-12 lg:px-20 relative">
-        <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10">
+        {!introDone && (
+          <motion.section
+            className="fixed inset-0 z-[100] grid place-items-center scrapbook-bg"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: [1, 1, 0] }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+          >
+            <motion.div
+              className="fixed top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-row items-center justify-center gap-1"
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.12,
+                  },
+                },
+              }}
+            >
+              <p className="handwriting absolute -top-20 text-5xl text-(--blue)">
+                Roy&apos;s
+              </p>
+              {heroTiles.map((tile) => (
+                <motion.div
+                  key={`intro-${tile.alt}`}
+                  className={tile.rotate}
+                  variants={{
+                    hidden: { y: 0 },
+                    show: {
+                      y: [0, -22, 0],
+                      transition: { duration: 0.42, ease: 'easeOut' },
+                    },
+                  }}
+                >
+                  <div className="relative h-[100px] w-[80px]">
+                    <Image
+                      src={tile.src}
+                      alt={tile.alt}
+                      fill
+                      sizes="80px"
+                      className="object-contain pointer-events-none origin-center"
+                      style={{
+                        transform: `scale(${tile.trimScale}) scaleX(${heroTrimScaleX})`,
+                        filter: 'drop-shadow(0 1px 2px rgba(34, 20, 10, 0.24))',
+                      }}
+                      draggable={false}
+                      priority
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.section>
+        )}
+        <motion.main
+          initial={false}
+          animate={{ opacity: introDone ? 1 : 0, y: introDone ? 0 : 8 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10"
+        >
           {/* RESUME title */}
           <section className="flex flex-row flex-wrap items-center justify-center mt-12">
             {heroTiles.map((tile) => (
@@ -223,14 +287,7 @@ export default function Home() {
               </DraggableCard>
             ))}
           </section>
-          {/* <DraggableCard
-            dragBoundsRef={dragBoundsRef}
-            zIndexCounterRef={zIndexCounter}
-            className="paper-card relative ml-auto w-fit px-4 py-2 text-sm text-(--text-light-fg) rotate-1 cursor-grab active:cursor-grabbing"
-          >
-            <span className="tape-strip -top-3 right-4 rotate-[6deg]" />
-            提示：卡片可自由拖曳
-          </DraggableCard> */}
+
           {/* <section className="px-6 py-8 sm:px-10 text-center">
           <h1 className="handwriting text-center text-6xl font-bold tracking-wide ">
             {content.heroTitle}2
@@ -238,6 +295,17 @@ export default function Home() {
         </section> */}
 
           <section className="relative px-6 py-8 sm:px-10">
+            <div className="absolute top-0 right-0 z-1 rotate-3">
+              <DraggableCard
+                dragBoundsRef={dragBoundsRef}
+                zIndexCounterRef={zIndexCounter}
+                // position="absolute"
+                className="paper-card top-6 right-3 w-fit px-4 py-3 text-sm text-(--text-light-fg) rotate-3 cursor-grab active:cursor-grabbing"
+              >
+                <span className="tape-strip -top-5.5 right-5 rotate-2" />
+                Tip: 卡片可自由拖曳
+              </DraggableCard>
+            </div>
             {/* language switcher */}
             {/* <div className="absolute top-0 right-0 z-1 rotate-3">
             <motion.div
@@ -550,7 +618,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-        </main>
+        </motion.main>
       </div>
     </div>
   );
