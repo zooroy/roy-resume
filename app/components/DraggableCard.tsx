@@ -7,6 +7,7 @@ type DraggableCardProps = {
   as?: 'div' | 'article';
   className?: string;
   children: ReactNode;
+  effects?: 'default' | 'none' | 'scale';
   dragBoundsRef: React.RefObject<HTMLElement | null>;
   zIndexCounterRef: React.MutableRefObject<number>;
 };
@@ -15,6 +16,7 @@ export default function DraggableCard({
   as = 'div',
   className,
   children,
+  effects = 'default',
   dragBoundsRef,
   zIndexCounterRef,
 }: DraggableCardProps) {
@@ -41,6 +43,25 @@ export default function DraggableCard({
     return () => window.removeEventListener('resize', resetPosition);
   }, [x, y]);
 
+  const whileTap =
+    effects === 'none'
+      ? undefined
+      : effects === 'scale'
+        ? { scale: 1.02 }
+        : {
+            scale: 1.02,
+            boxShadow: '0 22px 45px rgba(34, 20, 10, 0.26)',
+          };
+  const whileDrag =
+    effects === 'none'
+      ? undefined
+      : effects === 'scale'
+        ? { scale: 1.04 }
+        : {
+            scale: 1.04,
+            boxShadow: '0 28px 55px rgba(34, 20, 10, 0.32)',
+          };
+
   return (
     <MotionTag
       drag={dragEnabled}
@@ -48,14 +69,8 @@ export default function DraggableCard({
       dragConstraints={dragBoundsRef}
       dragMomentum={false}
       dragElastic={0.28}
-      whileTap={{
-        scale: 1.02,
-        boxShadow: '0 22px 45px rgba(34, 20, 10, 0.26)',
-      }}
-      whileDrag={{
-        scale: 1.04,
-        boxShadow: '0 28px 55px rgba(34, 20, 10, 0.32)',
-      }}
+      whileTap={whileTap}
+      whileDrag={whileDrag}
       onPointerDown={() => setZIndex(++zIndexCounterRef.current)}
       style={{ zIndex, position: 'relative', x, y }}
       className={className}

@@ -1,10 +1,16 @@
 'use client';
 
 import { useMemo, useRef, useState } from 'react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { copy, type Lang } from './content';
 import { langClass } from './lang';
 import DraggableCard from './components/DraggableCard';
+import heroR from '../public/hero/r.png';
+import heroE from '../public/hero/e.png';
+import heroS from '../public/hero/s.png';
+import heroU from '../public/hero/u.png';
+import heroM from '../public/hero/m.png';
+import heroE2 from '../public/hero/e-2.png';
 
 export default function Home() {
   const dragBoundsRef = useRef<HTMLDivElement>(null);
@@ -133,19 +139,95 @@ export default function Home() {
     'rotate-[1.5deg]',
     '-rotate-[1deg]',
   ];
+  const heroTiles: {
+    src: StaticImageData;
+    alt: string;
+    rotate: string;
+    trimScale: number;
+  }[] = [
+    {
+      src: heroR,
+      alt: 'R',
+      rotate: '-rotate-[7deg]',
+      trimScale: 3,
+    },
+    {
+      src: heroE,
+      alt: 'E',
+      rotate: 'rotate-[5deg]',
+      trimScale: 2.5,
+    },
+    {
+      src: heroS,
+      alt: 'S',
+      rotate: '-rotate-[4deg]',
+      trimScale: 3,
+    },
+    {
+      src: heroU,
+      alt: 'U',
+      rotate: 'rotate-[6deg]',
+      trimScale: 2.8,
+    },
+    {
+      src: heroM,
+      alt: 'M',
+      rotate: '-rotate-[5deg]',
+      trimScale: 2.5,
+    },
+    {
+      src: heroE2,
+      alt: 'E2',
+      rotate: 'rotate-[4deg]',
+      trimScale: 2.2,
+    },
+  ];
+  const heroTargetWidth = 260;
+  const heroTrimScaleX = 1.12;
 
   return (
     <div ref={dragBoundsRef}>
       <div className="scrapbook-bg min-h-screen px-6 py-10 sm:px-12 lg:px-20 relative">
         <main className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <DraggableCard
-          dragBoundsRef={dragBoundsRef}
-          zIndexCounterRef={zIndexCounter}
-          className="paper-card relative ml-auto w-fit px-4 py-2 text-sm text-(--text-light-fg) rotate-1 cursor-grab active:cursor-grabbing"
-        >
-          <span className="tape-strip -top-3 right-4 rotate-[6deg]" />
-          提示：卡片可自由拖曳
-        </DraggableCard>
+          {/* RESUME title */}
+          <section className="flex flex-row flex-wrap items-center justify-center mt-12">
+            {heroTiles.map((tile) => (
+              <DraggableCard
+                key={tile.alt}
+                effects="scale"
+                dragBoundsRef={dragBoundsRef}
+                zIndexCounterRef={zIndexCounter}
+                className={`${tile.rotate} cursor-grab active:cursor-grabbing`}
+              >
+                <div
+                  className="relative"
+                  style={{
+                    width: 80,
+                    height: 90,
+                  }}
+                >
+                  <Image
+                    src={tile.src}
+                    alt={tile.alt}
+                    className="object-contain pointer-events-none origin-center"
+                    style={{
+                      transform: `scale(${tile.trimScale}) scaleX(${heroTrimScaleX})`,
+                    }}
+                    draggable={false}
+                    priority
+                  />
+                </div>
+              </DraggableCard>
+            ))}
+          </section>
+          {/* <DraggableCard
+            dragBoundsRef={dragBoundsRef}
+            zIndexCounterRef={zIndexCounter}
+            className="paper-card relative ml-auto w-fit px-4 py-2 text-sm text-(--text-light-fg) rotate-1 cursor-grab active:cursor-grabbing"
+          >
+            <span className="tape-strip -top-3 right-4 rotate-[6deg]" />
+            提示：卡片可自由拖曳
+          </DraggableCard> */}
           {/* <section className="px-6 py-8 sm:px-10 text-center">
           <h1 className="handwriting text-center text-6xl font-bold tracking-wide ">
             {content.heroTitle}2
