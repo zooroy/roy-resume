@@ -2,7 +2,13 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image, { type StaticImageData } from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useMotionValue,
+  useTransform,
+} from 'framer-motion';
 import { copy, type Lang } from './content';
 import DraggableCard from './components/DraggableCard';
 import heroR from '../public/hero/r.png';
@@ -17,16 +23,40 @@ export default function Home() {
   const zIndexCounter = useRef(10);
   const projectPointerStartRef = useRef<{ x: number; y: number } | null>(null);
   const projectMovedRef = useRef(false);
+  const profilePointerStartRef = useRef<{ x: number; y: number } | null>(null);
+  const profileMovedRef = useRef(false);
   const [lang, setLang] = useState<Lang>('zh');
   const [introDone, setIntroDone] = useState(false);
+  const [isProfileFlipped, setIsProfileFlipped] = useState(false);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState<
     number | null
   >(null);
+  const profileRotateY = useMotionValue(0);
+  const profileShadow = useTransform(profileRotateY, (value) => {
+    const rad = (value * Math.PI) / 180;
+    const absDepth = Math.abs(Math.cos(rad));
+    const side = Math.sin(rad);
+    const offsetX = side * 16;
+    const offsetY = 16 + (1 - absDepth) * 7;
+    const blur = 36 - (1 - absDepth) * 10;
+    const spread = -8 + (1 - absDepth) * 3;
+    const alpha = 0.24 + (1 - absDepth) * 0.12;
+    return `${offsetX.toFixed(1)}px ${offsetY.toFixed(1)}px ${blur.toFixed(1)}px ${spread.toFixed(1)}px rgba(34, 20, 10, ${alpha.toFixed(2)})`;
+  });
   const content = useMemo(() => copy[lang], [lang]);
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroDone(true), 1600);
     return () => window.clearTimeout(timer);
   }, []);
+  useEffect(() => {
+    const controls = animate(profileRotateY, isProfileFlipped ? 180 : 0, {
+      type: 'spring',
+      stiffness: 180,
+      damping: 22,
+      mass: 0.8,
+    });
+    return () => controls.stop();
+  }, [isProfileFlipped, profileRotateY]);
   useEffect(() => {
     if (selectedProjectIndex === null) {
       document.body.style.overflow = '';
@@ -381,59 +411,140 @@ export default function Home() {
               <div className="shrink-0 w-[320px]">
                 <div className="relative">
                   <DraggableCard
+                    effects="none"
                     dragBoundsRef={dragBoundsRef}
                     zIndexCounterRef={zIndexCounter}
-                    className="paper-card max-w-full px-5 py-6 -rotate-4 cursor-grab active:cursor-grabbing"
+                    className="max-w-full -rotate-4 cursor-grab active:cursor-grabbing [perspective:1400px]"
                   >
-                    <span className="tape-strip -top-4 left-25" />
-                    <div className="relative h-65">
-                      <Image
-                        src="/profile/person.jpeg"
-                        alt="Profile photo"
-                        fill
-                        sizes="(max-width: 768px) 90vw, 320px"
-                        className="object-cover pointer-events-none"
-                        draggable={false}
-                        priority
-                      />
-                    </div>
-                    <div className="flex flex-col">
-                      <div className="mt-3 mb-2 text-center rotate-2">
-                        <p className="handwriting text-3xl">
-                          {content.hello}
-                          {/* Frontend Developer */}
-                        </p>
+                    <motion.div
+                      role="button"
+                      tabIndex={0}
+                      aria-label="Flip profile photo card"
+                      onPointerDown={(event) => {
+                        profilePointerStartRef.current = {
+                          x: event.clientX,
+                          y: event.clientY,
+                        };
+                        profileMovedRef.current = false;
+                      }}
+                      onPointerMove={(event) => {
+                        if (!profilePointerStartRef.current) return;
+                        const deltaX =
+                          event.clientX - profilePointerStartRef.current.x;
+                        const deltaY =
+                          event.clientY - profilePointerStartRef.current.y;
+                        if (Math.hypot(deltaX, deltaY) > 8) {
+                          profileMovedRef.current = true;
+                        }
+                      }}
+                      onPointerUp={() => {
+                        if (!profileMovedRef.current) {
+                          setIsProfileFlipped((prev) => !prev);
+                        }
+                        profilePointerStartRef.current = null;
+                        profileMovedRef.current = false;
+                      }}
+                      onPointerCancel={() => {
+                        profilePointerStartRef.current = null;
+                        profileMovedRef.current = false;
+                      }}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setIsProfileFlipped((prev) => !prev);
+                        }
+                      }}
+                      style={{
+                        rotateY: profileRotateY,
+                        boxShadow: profileShadow,
+                        transformStyle: 'preserve-3d',
+                      }}
+                      className="paper-card relative px-5 py-6 outline-none will-change-transform"
+                    >
+                      <div
+                        className=""
+                        style={{ backfaceVisibility: 'hidden' }}
+                      >
+                        <span className="tape-strip -top-4 left-25" />
+                        <div className="relative h-65">
+                          <Image
+                            src="/profile/person.jpeg"
+                            alt="Profile photo"
+                            fill
+                            sizes="(max-width: 768px) 90vw, 320px"
+                            className="object-cover pointer-events-none"
+                            draggable={false}
+                            priority
+                          />
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="mt-3 mb-2 text-center rotate-2">
+                            <p className="handwriting text-3xl">
+                              {content.hello}
+                            </p>
+                          </div>
+                          <div className="flex flex-col">
+                            <div className="flex items-center gap-2">
+                              <h2 className="display-serif">Age: </h2>
+                              <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
+                                35
+                              </p>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <h2 className="display-serif">Phone: </h2>
+                              <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
+                                0912-323-221
+                              </p>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <h2 className="display-serif">Mail: &nbsp;</h2>
+                              <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
+                                zooroy13@gmail.com
+                              </p>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <h2 className="display-serif">Education: </h2>
+                              <p className="text-base leading-1 text-(--text-light-fg)">
+                                國立成功大學 中國文學系
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex flex-col">
-                        <div className="flex items-center gap-2">
-                          <h2 className="display-serif">Age: </h2>
-                          <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
-                            35
-                          </p>
-                        </div>
 
-                        <div className="flex items-center gap-2">
-                          <h2 className="display-serif">Phone: </h2>
-                          <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
-                            0912-323-221
-                          </p>
+                      <div
+                        className="paper-card px-5 py-6 absolute inset-0"
+                        style={{
+                          transform: 'rotateY(180deg)',
+                          backfaceVisibility: 'hidden',
+                        }}
+                      >
+                        <span className="tape-strip -top-4 right-25" />
+                        <div className="relative h-55">
+                          <Image
+                            src="/profile/family.jpeg"
+                            alt="Family photo"
+                            fill
+                            sizes="(max-width: 768px) 90vw, 320px"
+                            className="object-cover pointer-events-none"
+                            draggable={false}
+                          />
                         </div>
-
-                        <div className="flex items-center gap-2">
-                          <h2 className="display-serif">Mail: &nbsp;</h2>
-                          <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
-                            zooroy13@gmail.com
-                          </p>
-                        </div>
-
-                        <div className="flex items-center gap-2">
-                          <h2 className="display-serif">Education: </h2>
-                          <p className="text-base leading-1 text-(--text-light-fg)">
-                            國立成功大學 中國文學系
+                        <div className="mt-6 mb-2 text-center">
+                          <p className="handwriting text-2xl text-(--blue)">
+                            My life is better because of you,
+                            <br /> my Ellen.
+                            <br />
+                            Yes, she’s my wife now
+                            <br />
+                            😌😌😌
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   </DraggableCard>
                 </div>
               </div>
