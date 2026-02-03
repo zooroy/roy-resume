@@ -362,7 +362,7 @@ export default function Home() {
         </section> */}
 
           <section className="relative px-6 py-8 sm:px-10">
-            <div className="absolute top-0 right-0 z-1 rotate-3">
+            <div className="absolute top-0 right-0 z-1 rotate-3 hidden md:block">
               <DraggableCard
                 dragBoundsRef={dragBoundsRef}
                 zIndexCounterRef={zIndexCounter}
@@ -830,7 +830,7 @@ export default function Home() {
                   exit={{ opacity: 0, scale: 0.95, y: 16 }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                   onClick={(event) => event.stopPropagation()}
-                  className="paper-card relative max-h-[90vh] w-full max-w-2xl p-8"
+                  className="paper-card relative max-h-[90vh] w-full max-w-2xl p-8 overflow-y-scroll"
                 >
                   <span className="tape-strip -top-4 left-50 -rotate-6" />
                   {/* <button
