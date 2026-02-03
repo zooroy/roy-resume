@@ -310,13 +310,14 @@ export default function Home() {
                     src={tile.src}
                     alt={tile.alt}
                     fill
-                    sizes="80px"
+                    sizes="180px"
                     className="object-contain pointer-events-none origin-center"
                     style={{
                       transform: `scale(${tile.trimScale}) scaleX(${heroTrimScaleX})`,
                       filter: 'drop-shadow(0 1px 2px rgba(34, 20, 10, 0.24))',
                     }}
                     draggable={false}
+                    // unoptimized
                     priority
                   />
                 </div>
@@ -689,7 +690,9 @@ export default function Home() {
                           {project.summary}
                         </p>
                         <p className="mt-4 inline-flex rounded-full border border-black/20 px-3 py-1 text-xs text-(--text-light-fg)">
-                          {lang === 'zh' ? '點擊查看更多' : 'Click to view more'}
+                          {lang === 'zh'
+                            ? '點擊查看更多'
+                            : 'Click to view more'}
                         </p>
                       </div>
                     </DraggableCard>
