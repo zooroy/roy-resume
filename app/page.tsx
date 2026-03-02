@@ -25,7 +25,7 @@ export default function Home() {
   const projectMovedRef = useRef(false);
   const profilePointerStartRef = useRef<{ x: number; y: number } | null>(null);
   const profileMovedRef = useRef(false);
-  const [lang, setLang] = useState<Lang>('zh');
+  const [lang, setLang] = useState<Lang>('en');
   const [introDone, setIntroDone] = useState(false);
   const [isProfileFlipped, setIsProfileFlipped] = useState(false);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState<
@@ -362,7 +362,7 @@ export default function Home() {
         </section> */}
 
           <section className="relative px-6 py-8 sm:px-10">
-            <div className="absolute top-0 right-0 z-1 rotate-3 hidden md:block">
+            {/* <div className="absolute top-0 right-0 z-1 rotate-3 hidden md:block">
               <DraggableCard
                 dragBoundsRef={dragBoundsRef}
                 zIndexCounterRef={zIndexCounter}
@@ -372,9 +372,9 @@ export default function Home() {
                 <span className="tape-strip -top-5.5 right-5 rotate-2" />
                 Tip: 卡片可自由拖曳
               </DraggableCard>
-            </div>
+            </div> */}
             {/* language switcher */}
-            {/* <div className="absolute top-0 right-0 z-1 rotate-3">
+            <div className="absolute top-0 right-0 z-1 rotate-3">
             <motion.div
               drag
               dragMomentum={false}
@@ -404,7 +404,7 @@ export default function Home() {
                 </button>
               </div>
             </motion.div>
-          </div> */}
+          </div>
 
             <div className="flex flex-col md:flex-row gap-10">
               {/* photo */}
@@ -506,9 +506,9 @@ export default function Home() {
                             </div>
 
                             <div className="flex items-center gap-2">
-                              <h2 className="display-serif">Education: </h2>
+                              <h2 className="display-serif">{content.eduLabel}: </h2>
                               <p className="text-base leading-1 text-(--text-light-fg)">
-                                國立成功大學 中國文學系
+                                {content.education}
                               </p>
                             </div>
                           </div>

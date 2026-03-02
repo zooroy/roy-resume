@@ -151,34 +151,104 @@ export const copy: Record<Lang, Content> = {
     name: 'Yi-Ting Hsiao',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro:
-      'User-experience focused frontend developer who translates product needs into scalable UI architecture, enjoys cross-team collaboration, and builds warm, detail-oriented digital products.',
+    intro: `I enjoy tackling the unknown, exploring new technologies, and turning what I learn into products that people actually use.
+Starting from design and moving into frontend engineering, I think about layouts and interactions through the "dots, lines, and planes of code," making complex requirements clean, intuitive, and maintainable.
+I care about how users see and interact with a product, whether the flow is smooth, and whether the visuals hold up over time — my goal is to deliver frontend work that balances aesthetics, experience, and engineering quality.
+Off the court I play basketball, on the court I write code — what the NBA taught me is teamwork and continuous improvement.`,
     ageLabel: 'Age',
-    contactLabel: 'Contact',
+    contactLabel: 'Contact Details',
     eduLabel: 'Education',
     age: '35',
     phone: '0912-323-221',
     email: 'zooroy13@gmail.com',
-    education: 'B.S. in Computer Science',
+    education: 'NCKU, Chinese Literature',
     skillTitle: 'SKILLS',
     libTitle: 'LIBRARIES',
     toolsTitle: 'TOOLS',
     projectsTitle: 'PROJECTS',
     projects: [
       {
-        title: 'TSMC Admin Data System (Internal)',
+        title: 'Swimple | Swimming Pool Rental Platform',
+        summary:
+          'A real-time swimming pool rental and management platform providing users with quick search, booking, and verification workflows.',
+        role: 'Team Collaboration',
+        highlights: [
+          'Designed the frontend user registration and login flow',
+          'Integrated third-party login mechanisms and handled account verification',
+          'Implemented form validation, error prompts, and page-level access control',
+        ],
+        tech: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Material UI',
+          'Formik',
+          'Yup',
+        ],
+        link: 'https://www.swimple.co.uk/homepage',
       },
+
       {
-        title: 'KGI Financial Admin System (Internal)',
+        title: 'Carrefour | Home Chicken Adventure Interactive Mini-Game',
+        summary: 'A branded interactive mini-game designed to boost user engagement and campaign completion rates.',
+        role: 'Two-Person Collaboration',
+        highlights: [
+          'Responsible for overall architecture planning and data flow design',
+          'Implemented user account verification and campaign eligibility checks',
+          'Created interactive animations and game flow',
+        ],
+        tech: ['React', 'Next.js', 'TypeScript', 'React-Spring', 'axios'],
       },
+
       {
-        title: 'Swimple Pool Rental Platform',
+        title: 'KGI Financial Holdings | Admin Data Management System (Internal)',
+        summary: 'An internal data management dashboard supporting member permissions and data processing.',
+        role: 'Solo Development',
+        highlights: [
+          'Independently responsible for the entire frontend system development and maintenance',
+          'Integrated RESTful APIs to implement data creation, querying, and editing features',
+          'Implemented member permission controls and data filtering modules',
+        ],
+        tech: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Material UI',
+          'Redux Toolkit',
+          'Formik',
+        ],
       },
+
       {
-        title: 'Carrefour Mini Game - Home Chicken Adventure',
+        title: 'TSMC | Admin Data Management System (Internal)',
+        summary: 'A large-scale enterprise internal dashboard handling massive data volumes and componentized management.',
+        role: 'Team Collaboration',
+        highlights: [
+          'Responsible for API integration and data processing logic',
+          'Developed a modular component architecture to improve system maintainability',
+          'Implemented Lazy Loading to optimize performance for large data sets',
+        ],
+        tech: [
+          'React',
+          'TypeScript',
+          'GraphQL',
+          'Apollo Client',
+          'React Hook Form',
+          'Yup',
+        ],
       },
+
       {
-        title: 'Tri-Mountain National Scenic Area - Official Site',
+        title: 'Tri-Mountain National Scenic Area Administration | Official Website',
+        summary: 'Data visualization and multi-language presentation for the official website.',
+        role: 'Solo Development',
+        highlights: [
+          'Used Recharts for data visualization',
+          'Implemented multi-language switching functionality',
+          'Presented user behavior highlights through dynamic charts',
+        ],
+        tech: ['Next.js', 'React', 'Recharts', 'axios'],
+        link: 'https://www.trimt-nsa.gov.tw/zh-tw/',
       },
     ],
   },
