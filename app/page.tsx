@@ -295,7 +295,7 @@ export default function Home() {
                       src={tile.src}
                       alt={tile.alt}
                       fill
-                      sizes="80px"
+                      sizes="180px"
                       className="object-contain pointer-events-none origin-center"
                       style={{
                         transform: `scale(${tile.trimScale}) scaleX(${heroTrimScaleX})`,
