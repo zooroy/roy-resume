@@ -3,6 +3,7 @@ export type Lang = 'zh' | 'en';
 type Project = {
   title: string;
   image?: string;
+  images?: string[];
   summary?: string;
   role?: string;
   highlights?: string[];
@@ -136,56 +137,68 @@ export const copy: Record<Lang, Content> = {
         ],
       },
     ],
-    aiProjectsTitle: 'AI PROJECTS',
+    aiProjectsTitle: 'AI 規格驅動開發 Side Projects',
     aiProjects: [
       {
-        title: 'AI 互動履歷｜Scrapbook Resume',
-        image: '/projects/moutain.jpg',
-        summary:
-          '以 Claude Code 輔助開發的互動式剪貼簿風格履歷，卡片可拖曳、翻轉，並支援中英文切換。',
-        role: '個人作品',
-        highlights: [
-          '全程使用 Claude Code 進行 AI Pair Programming 開發',
-          '實作 Framer Motion 拖曳、3D 翻轉、入場動畫等互動效果',
-          '元件化架構，Skills / Libraries / Tools / Projects 獨立拆分',
+        title: '單人預約系統｜網頁 × LINE LIFF',
+        image: '/aiprojects/appt_photo_1.webp',
+        images: [
+          '/aiprojects/appt_photo_1.webp',
+          '/aiprojects/appt_photo_2.webp',
+          '/aiprojects/appt_photo_3.webp',
+          '/aiprojects/appt_photo_4.webp',
+          '/aiprojects/appt_photo_5.webp',
         ],
-        tech: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS', 'Claude Code'],
+        summary:
+          '整合 LINE LIFF 的線上預約系統，結合 LINE 推播通知與完整後台管理。',
+        role: 'AI Spec-driven Development',
+        highlights: [
+          '多步驟預約流程（服務 → 日期 → 時段 → 填資料），公休日與已過時段自動停用',
+          '整合 LINE LIFF，自動帶入用戶顯示名稱；預約成功與取消均即時發送 LINE Push 通知',
+          '後台支援預約管理、服務項目、公休日、營業時間設定，以 HTTP Basic Auth 保護',
+        ],
+        tech: [
+          'Next.js',
+          'TypeScript',
+          'Prisma',
+          'PostgreSQL',
+          'shadcn/ui',
+          'Tailwind CSS',
+          'LINE Bot SDK',
+          'LINE LIFF',
+        ],
+        link: 'https://github.com/zooroy/appt-system',
       },
       {
-        title: 'AI 對話介面｜Claude Chat UI',
-        summary:
-          '串接 Anthropic Claude API 打造的對話介面，支援串流輸出、Markdown 渲染與對話記憶。',
-        role: '個人作品',
-        highlights: [
-          '串接 Claude Messages API，實作 SSE 串流回應',
-          '支援 Markdown / Code Block 語法高亮渲染',
-          '本地 sessionStorage 保存對話上下文',
+        title: 'Japan Receipt Tracking｜AI 收據辨識記帳 App',
+        image: '/aiprojects/jrt_photo_4.webp',
+        images: [
+          '/aiprojects/jrt_photo_1.webp',
+          '/aiprojects/jrt_photo_2.webp',
+          '/aiprojects/jrt_photo_3.webp',
+          '/aiprojects/jrt_photo_4.webp',
+          '/aiprojects/jrt_photo_5.webp',
         ],
-        tech: ['Next.js', 'TypeScript', 'Anthropic SDK', 'Tailwind CSS'],
-      },
-      {
-        title: 'AI 圖片說明產生器',
         summary:
-          '上傳圖片後自動呼叫 Vision API 產生描述文字，可一鍵複製或下載結果。',
-        role: '個人作品',
+          '日本旅遊收據管理 PWA，拍照上傳後由Gemini AI 自動辨識收據內容，並即時換算日幣台幣。',
+        role: 'AI Spec-driven Development',
         highlights: [
-          '使用 Claude Vision 多模態 API 解析圖片內容',
-          '拖放上傳 + 即時預覽，支援批次處理',
-          '輸出結果可選語言（中文 / 英文）',
+          '整合 Gemini 2.5 Flash Lite 自動擷取收據店名、金額、品項、消費分類及稅別',
+          '即時 JPY → TWD 匯率換算，匯率結果快取於資料庫避免重複呼叫 API',
+          '支援批次上傳、圖片 hash 重複偵測與 PWA，可加入主畫面如原生 App 使用',
         ],
-        tech: ['Next.js', 'TypeScript', 'Claude Vision API', 'Tailwind CSS'],
-      },
-      {
-        title: 'AI Prompt 管理工具',
-        summary:
-          '提供前端工程師管理、測試、版本控管 Prompt 的輕量工具，支援變數替換與歷史紀錄。',
-        role: '個人作品',
-        highlights: [
-          '可新增 / 編輯 / 刪除 Prompt 模板並儲存至 localStorage',
-          '支援 {{variable}} 語法動態填入測試值',
-          '直接在介面呼叫 Claude API 進行即時測試',
+        tech: [
+          'Next.js',
+          'TypeScript',
+          'Prisma',
+          'PostgreSQL',
+          'Gemini API',
+          'TanStack Query',
+          'Recharts',
+          'shadcn/ui',
+          'Tailwind CSS',
         ],
-        tech: ['Next.js', 'TypeScript', 'Anthropic SDK', 'Zustand', 'Tailwind CSS'],
+        link: 'https://github.com/zooroy/japan-receipt-tracking',
       },
     ],
   },
@@ -288,56 +301,68 @@ Off the court I play basketball, on the court I write code — what the NBA taug
         ],
       },
     ],
-    aiProjectsTitle: 'AI PROJECTS',
+    aiProjectsTitle: 'Side Projects with AI SDD',
     aiProjects: [
       {
-        title: 'AI Interactive Resume | Scrapbook Style',
-        image: '/projects/moutain.jpg',
-        summary:
-          'An interactive scrapbook-style resume built with Claude Code AI pair programming — draggable cards, 3D flip animations, and bilingual support.',
-        role: 'Personal Project',
-        highlights: [
-          'Developed end-to-end using Claude Code for AI-assisted pair programming',
-          'Built draggable cards, 3D flip, and entrance animations with Framer Motion',
-          'Componentized architecture: Skills / Libraries / Tools / Projects split into dedicated components',
+        title: 'Appointment System | LINE LIFF Booking',
+        image: '/aiprojects/appt_photo_1.webp',
+        images: [
+          '/aiprojects/appt_photo_1.webp',
+          '/aiprojects/appt_photo_2.webp',
+          '/aiprojects/appt_photo_3.webp',
+          '/aiprojects/appt_photo_4.webp',
+          '/aiprojects/appt_photo_5.webp',
         ],
-        tech: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS', 'Claude Code'],
+        summary:
+          'An online booking system with LINE LIFF integration, LINE push notifications, and a full admin dashboard.',
+        role: 'AI Spec-driven Development',
+        highlights: [
+          'Multi-step booking flow (service → date → time slot → details) with auto-disabled holidays and past slots',
+          'Integrated LINE LIFF to auto-fill user display name; LINE push sent on booking confirmation and cancellation',
+          'Admin panel covers bookings, services, holidays, and business hours, protected by HTTP Basic Auth',
+        ],
+        tech: [
+          'Next.js',
+          'TypeScript',
+          'Prisma',
+          'PostgreSQL',
+          'shadcn/ui',
+          'Tailwind CSS',
+          'LINE Bot SDK',
+          'LINE LIFF',
+        ],
+        link: 'https://github.com/zooroy/appt-system',
       },
       {
-        title: 'Claude Chat UI | AI Conversation Interface',
-        summary:
-          'A chat interface powered by the Anthropic Claude API with streaming output, Markdown rendering, and conversation memory.',
-        role: 'Personal Project',
-        highlights: [
-          'Integrated Claude Messages API with SSE streaming responses',
-          'Supports Markdown and syntax-highlighted code block rendering',
-          'Persists conversation context via sessionStorage',
+        title: 'Japan Receipt Tracking | AI Receipt Scanner',
+        image: '/aiprojects/jrt_photo_4.webp',
+        images: [
+          '/aiprojects/jrt_photo_1.webp',
+          '/aiprojects/jrt_photo_2.webp',
+          '/aiprojects/jrt_photo_3.webp',
+          '/aiprojects/jrt_photo_4.webp',
+          '/aiprojects/jrt_photo_5.webp',
         ],
-        tech: ['Next.js', 'TypeScript', 'Anthropic SDK', 'Tailwind CSS'],
-      },
-      {
-        title: 'AI Image Caption Generator',
         summary:
-          'Upload an image and instantly receive an AI-generated description via Vision API — one-click copy or download.',
-        role: 'Personal Project',
+          'A PWA for managing Japan travel receipts — Gemini AI auto-reads receipt content with real-time JPY to TWD conversion.',
+        role: 'AI Spec-driven Development',
         highlights: [
-          'Used Claude Vision multimodal API to analyze image content',
-          'Drag-and-drop upload with live preview and batch processing support',
-          'Output language selectable: Chinese or English',
+          'Integrated Gemini 2.5 Flash Lite to extract store name, amount, items, category, and tax type',
+          'Real-time JPY → TWD exchange rate with DB caching to avoid redundant API calls',
+          'Batch upload, image hash deduplication, and PWA support for a native-app-like experience',
         ],
-        tech: ['Next.js', 'TypeScript', 'Claude Vision API', 'Tailwind CSS'],
-      },
-      {
-        title: 'AI Prompt Manager',
-        summary:
-          'A lightweight tool for frontend engineers to manage, test, and version-control prompts with variable substitution and history.',
-        role: 'Personal Project',
-        highlights: [
-          'Create, edit, and delete prompt templates stored in localStorage',
-          'Supports {{variable}} syntax for dynamic test value injection',
-          'Live Claude API testing directly within the interface',
+        tech: [
+          'Next.js',
+          'TypeScript',
+          'Prisma',
+          'PostgreSQL',
+          'Gemini API',
+          'TanStack Query',
+          'Recharts',
+          'shadcn/ui',
+          'Tailwind CSS',
         ],
-        tech: ['Next.js', 'TypeScript', 'Anthropic SDK', 'Zustand', 'Tailwind CSS'],
+        link: 'https://github.com/zooroy/japan-receipt-tracking',
       },
     ],
   },
