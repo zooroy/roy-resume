@@ -212,9 +212,10 @@ export default function ProjectsSection({
               exit={{ opacity: 0, scale: 0.95, y: 16 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               onClick={(event) => event.stopPropagation()}
-              className="paper-card relative max-h-[90vh] w-full max-w-2xl p-8 overflow-y-scroll"
+              className="paper-card relative w-full max-w-2xl pt-2"
             >
               <span className="tape-strip -top-4 left-50 -rotate-6" />
+              <div className="max-h-[90vh] overflow-y-auto p-8">
 
               {carouselImages.length > 1 ? (
                 <ProjectCarousel
@@ -284,6 +285,7 @@ export default function ProjectsSection({
                   )}
                 </a>
               )}
+              </div>
             </motion.article>
           </motion.div>
         )}
