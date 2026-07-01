@@ -46,10 +46,8 @@ export const copy: Record<Lang, Content> = {
     name: '蕭亦廷',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro: `我喜歡挑戰未知、探索新技術，並把學到的東西轉化成能被實際使用的產品。
-從設計出發，走進前端工程，我習慣用「程式碼的點、線、面」來思考畫面與互動的結構，讓複雜需求變得乾淨、直覺且可維護。
-我在意使用者怎麼看、怎麼用，也在意流程是否順暢、畫面是否耐看，目標是做出兼顧美感、體驗與工程品質的前端作品。
-場下打籃球、場上寫程式，NBA 教會我的，是團隊配合與持續升級。`,
+    intro: `從設計背景走進前端工程，開發時，思考元件共用、程式結構與後續維護性，減少重複程式碼與過度客製化，讓專案保持清楚、穩定的架構。
+在開發過程中，我持續運用 AI 輔助開發，並嘗試導入 SDD（Spec-driven Development）流程，讓需求規格、畫面設計與程式實作能更有效地串接。`,
     ageLabel: 'Age',
     contactLabel: 'Contact Details',
     eduLabel: 'Education',
@@ -210,10 +208,8 @@ export const copy: Record<Lang, Content> = {
     name: 'Yi-Ting Hsiao',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro: `I enjoy tackling the unknown, exploring new technologies, and turning what I learn into products that people actually use.
-Starting from design and moving into frontend engineering, I think about layouts and interactions through the "dots, lines, and planes of code," making complex requirements clean, intuitive, and maintainable.
-I care about how users see and interact with a product, whether the flow is smooth, and whether the visuals hold up over time — my goal is to deliver frontend work that balances aesthetics, experience, and engineering quality.
-Off the court I play basketball, on the court I write code — what the NBA taught me is teamwork and continuous improvement.`,
+    intro: `Coming from a design background into frontend engineering, I think about component reuse, code structure, and long-term maintainability while developing. I aim to reduce duplicated code and excessive customization, keeping projects clear, stable, and well-structured.
+Throughout development, I continue to use AI-assisted workflows and explore SDD (Spec-driven Development), helping requirements, interface design, and implementation connect more effectively.`,
     ageLabel: 'Age',
     contactLabel: 'Contact Details',
     eduLabel: 'Education',

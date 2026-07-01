@@ -13,6 +13,16 @@ const libraryItems = [
     icons: [{ src: '/skills/tailwind-icon.svg', alt: 'Tailwind' }],
   },
   {
+    label: 'shadcn/ui',
+    level: '8/10',
+    icons: [{ src: '/skills/shadcn:ui.png', alt: 'shadcn/ui' }],
+  },
+  {
+  label: 'Zustand',
+  level: '8/10',
+  icons: [{ src: '/skills/zustand.webp', alt: 'Zustand' }],
+  },
+  {
     label: 'Redux toolkit',
     level: '8/10',
     icons: [{ src: '/skills/redux-logo.svg', alt: 'Redux' }],
@@ -24,14 +34,14 @@ const libraryItems = [
   },
   {
     label: 'React Hook Form',
-    level: '7/10',
+    level: '8/10',
     icons: [{ src: '/skills/react-hook-form-icon.png', alt: 'React Hook Form' }],
   },
-  {
-    label: 'Formik',
-    level: '8/10',
-    icons: [{ src: '/skills/formik-icon.png', alt: 'Formik' }],
-  },
+  // {
+  //   label: 'Formik',
+  //   level: '8/10',
+  //   icons: [{ src: '/skills/formik-icon.png', alt: 'Formik' }],
+  // },
 ];
 
 interface Props {

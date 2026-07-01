@@ -21,6 +21,22 @@ import heroU from '../public/hero/u.png';
 import heroM from '../public/hero/m.png';
 import heroE2 from '../public/hero/e-2.png';
 
+const calculateAge = (dob: string) => {
+  const [year, month, day] = dob.split(/[./-]/).map(Number);
+
+  if (!year || !month || !day) return '';
+
+  const today = new Date();
+  let age = today.getFullYear() - year;
+  const hasHadBirthday =
+    today.getMonth() + 1 > month ||
+    (today.getMonth() + 1 === month && today.getDate() >= day);
+
+  if (!hasHadBirthday) age -= 1;
+
+  return String(age);
+};
+
 export default function Home() {
   const dragBoundsRef = useRef<HTMLDivElement>(null);
   const zIndexCounter = useRef(10);
@@ -42,6 +58,7 @@ export default function Home() {
     return `${offsetX.toFixed(1)}px ${offsetY.toFixed(1)}px ${blur.toFixed(1)}px ${spread.toFixed(1)}px rgba(34, 20, 10, ${alpha.toFixed(2)})`;
   });
   const content = useMemo(() => copy[lang], [lang]);
+  const age = useMemo(() => calculateAge(content.dob), [content.dob]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIntroDone(true), 1600);
@@ -267,7 +284,7 @@ export default function Home() {
                         <span className="tape-strip -top-4 left-25" />
                         <div className="relative h-65">
                           <Image
-                            src="/profile/person.jpeg"
+                            src="/profile/person.png"
                             alt="Profile photo"
                             fill
                             sizes="(max-width: 768px) 90vw, 320px"
@@ -282,9 +299,9 @@ export default function Home() {
                           </div>
                           <div className="flex flex-col">
                             <div className="flex items-center gap-2">
-                              <h2 className="display-serif">Age: </h2>
+                              <h2 className="display-serif">{content.ageLabel}: </h2>
                               <p className="handwriting leading-1 text-2xl text-(--text-light-fg)">
-                                35
+                                {age}
                               </p>
                             </div>
                             <div className="flex items-center gap-2">
