@@ -187,9 +187,9 @@ export default function Home() {
             ))}
           </section>
 
-          <section className="relative px-6 py-8 sm:px-10">
+          <section className="relative px-6 sm:py-4 sm:px-10">
             {/* language switcher */}
-            <div className="relative z-1 mb-8 flex justify-end rotate-3 sm:absolute sm:top-0 sm:right-0 sm:mb-0 sm:block">
+            <div className="relative z-1 mb-8 flex justify-end rotate-3 xl:absolute xl:top-0 xl:right-0 xl:mb-0 xl:block">
               <motion.div
                 className="relative w-48 paper-card px-4 py-3 text-left"
               >
