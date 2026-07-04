@@ -107,7 +107,7 @@ export default function Home() {
             animate={{ opacity: [1, 1, 0] }}
             transition={{ duration: 1.6, ease: 'easeInOut' }}
           >
-            <motion.div className="fixed top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-row items-center justify-center gap-1">
+            <motion.div className="fixed top-1/2 left-1/2 flex w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 flex-row flex-wrap items-center justify-center gap-1 sm:w-auto sm:flex-nowrap">
               <p className="handwriting absolute -top-20 text-5xl text-(--blue)">
                 Roy&apos;s
               </p>
@@ -189,7 +189,7 @@ export default function Home() {
 
           <section className="relative px-6 py-8 sm:px-10">
             {/* language switcher */}
-            <div className="absolute top-0 right-0 z-1 rotate-3">
+            <div className="relative z-1 mb-8 flex justify-end rotate-3 sm:absolute sm:top-0 sm:right-0 sm:mb-0 sm:block">
               <motion.div
                 className="relative w-48 paper-card px-4 py-3 text-left"
               >
@@ -220,7 +220,7 @@ export default function Home() {
 
             <div className="flex flex-col md:flex-row gap-10">
               {/* photo */}
-              <div className="shrink-0 w-[320px]">
+              <div className="w-full max-w-[320px] shrink-0 self-center md:w-[320px]">
                 <div className="relative">
                   <DraggableCard
                     effects="none"
