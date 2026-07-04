@@ -1,14 +1,13 @@
 'use client';
 
-import { useEffect, useState, type ReactNode } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import { useState, type ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 type DraggableCardProps = {
   as?: 'div' | 'article';
   className?: string;
   children: ReactNode;
   effects?: 'default' | 'none' | 'scale';
-  dragBoundsRef: React.RefObject<HTMLElement | null>;
   zIndexCounterRef: React.MutableRefObject<number>;
 };
 
@@ -17,31 +16,10 @@ export default function DraggableCard({
   className,
   children,
   effects = 'default',
-  dragBoundsRef,
   zIndexCounterRef,
 }: DraggableCardProps) {
   const [zIndex, setZIndex] = useState(1);
-  const [dragEnabled, setDragEnabled] = useState(true);
   const MotionTag = as === 'article' ? motion.article : motion.div;
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    const updateDragEnabled = () => setDragEnabled(!mediaQuery.matches);
-    updateDragEnabled();
-    mediaQuery.addEventListener('change', updateDragEnabled);
-    return () => mediaQuery.removeEventListener('change', updateDragEnabled);
-  }, []);
-
-  useEffect(() => {
-    const resetPosition = () => {
-      x.set(0);
-      y.set(0);
-    };
-    window.addEventListener('resize', resetPosition);
-    return () => window.removeEventListener('resize', resetPosition);
-  }, [x, y]);
 
   const whileTap =
     effects === 'none'
@@ -52,27 +30,12 @@ export default function DraggableCard({
             scale: 1.02,
             boxShadow: '0 22px 45px rgba(34, 20, 10, 0.26)',
           };
-  const whileDrag =
-    effects === 'none'
-      ? undefined
-      : effects === 'scale'
-        ? { scale: 1.04 }
-        : {
-            scale: 1.04,
-            boxShadow: '0 28px 55px rgba(34, 20, 10, 0.32)',
-          };
 
   return (
     <MotionTag
-      drag={dragEnabled}
-      dragListener={dragEnabled}
-      dragConstraints={dragBoundsRef}
-      dragMomentum={false}
-      dragElastic={0.28}
       whileTap={whileTap}
-      whileDrag={whileDrag}
       onPointerDown={() => setZIndex(++zIndexCounterRef.current)}
-      style={{ zIndex, position: 'relative', x, y }}
+      style={{ zIndex, position: 'relative' }}
       className={className}
     >
       {children}

@@ -38,19 +38,17 @@ const skillItems = [
 ];
 
 interface Props {
-  dragBoundsRef: React.RefObject<HTMLDivElement | null>;
   zIndexCounterRef: React.RefObject<number>;
   title: string;
 }
 
-export default function SkillsSection({ dragBoundsRef, zIndexCounterRef, title }: Props) {
+export default function SkillsSection({ zIndexCounterRef, title }: Props) {
   return (
     <div>
       <h2 className="display-serif text-4xl">{title}</h2>
       <DraggableCard
-        dragBoundsRef={dragBoundsRef}
         zIndexCounterRef={zIndexCounterRef}
-        className="paper-card rotate-1 mt-8 relative px-4 py-5 cursor-grab active:cursor-grabbing"
+        className="paper-card rotate-1 mt-8 relative px-4 py-5"
       >
         <span className="tape-strip -top-4 left-20 -rotate-[5deg]" />
         <div className="space-y-6">

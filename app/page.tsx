@@ -38,10 +38,7 @@ const calculateAge = (dob: string) => {
 };
 
 export default function Home() {
-  const dragBoundsRef = useRef<HTMLDivElement>(null);
   const zIndexCounter = useRef(10);
-  const profilePointerStartRef = useRef<{ x: number; y: number } | null>(null);
-  const profileMovedRef = useRef(false);
   const [lang, setLang] = useState<Lang>('en');
   const [introDone, setIntroDone] = useState(false);
   const [isProfileFlipped, setIsProfileFlipped] = useState(false);
@@ -101,7 +98,7 @@ export default function Home() {
   const heroTrimScaleX = 1.12;
 
   return (
-    <div ref={dragBoundsRef}>
+    <div>
       <div className="scrapbook-bg min-h-screen px-6 py-10 sm:px-12 lg:px-20 relative">
         {!introDone && (
           <motion.section
@@ -168,9 +165,8 @@ export default function Home() {
               <DraggableCard
                 key={tile.alt}
                 effects="scale"
-                dragBoundsRef={dragBoundsRef}
                 zIndexCounterRef={zIndexCounter}
-                className={`${tile.rotate} cursor-grab active:cursor-grabbing`}
+                className={tile.rotate}
               >
                 <div className="relative" style={{ width: 80, height: 100 }}>
                   <Image
@@ -195,10 +191,7 @@ export default function Home() {
             {/* language switcher */}
             <div className="absolute top-0 right-0 z-1 rotate-3">
               <motion.div
-                drag
-                dragMomentum={false}
-                dragElastic={0.12}
-                className="relative w-48 paper-card px-4 py-3 text-left cursor-grab active:cursor-grabbing"
+                className="relative w-48 paper-card px-4 py-3 text-left"
               >
                 <span className="tape-strip right-5 -top-4.5 rotate-[5deg]" />
                 <p className="handwriting text-2xl">language</p>
@@ -231,42 +224,14 @@ export default function Home() {
                 <div className="relative">
                   <DraggableCard
                     effects="none"
-                    dragBoundsRef={dragBoundsRef}
                     zIndexCounterRef={zIndexCounter}
-                    className="max-w-full -rotate-4 cursor-grab active:cursor-grabbing [perspective:1400px]"
+                    className="max-w-full -rotate-4 [perspective:1400px]"
                   >
                     <motion.div
                       role="button"
                       tabIndex={0}
                       aria-label="Flip profile photo card"
-                      onPointerDown={(event) => {
-                        profilePointerStartRef.current = {
-                          x: event.clientX,
-                          y: event.clientY,
-                        };
-                        profileMovedRef.current = false;
-                      }}
-                      onPointerMove={(event) => {
-                        if (!profilePointerStartRef.current) return;
-                        const deltaX =
-                          event.clientX - profilePointerStartRef.current.x;
-                        const deltaY =
-                          event.clientY - profilePointerStartRef.current.y;
-                        if (Math.hypot(deltaX, deltaY) > 8) {
-                          profileMovedRef.current = true;
-                        }
-                      }}
-                      onPointerUp={() => {
-                        if (!profileMovedRef.current) {
-                          setIsProfileFlipped((prev) => !prev);
-                        }
-                        profilePointerStartRef.current = null;
-                        profileMovedRef.current = false;
-                      }}
-                      onPointerCancel={() => {
-                        profilePointerStartRef.current = null;
-                        profileMovedRef.current = false;
-                      }}
+                      onClick={() => setIsProfileFlipped((prev) => !prev)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
                           event.preventDefault();
@@ -389,17 +354,14 @@ export default function Home() {
             <div className="flex flex-col gap-15 lg:flex-row">
               <div className="lg:w-1/3">
                 <SkillsSection
-                  dragBoundsRef={dragBoundsRef}
                   zIndexCounterRef={zIndexCounter}
                   title={content.skillTitle}
                 />
                 <LibrariesSection
-                  dragBoundsRef={dragBoundsRef}
                   zIndexCounterRef={zIndexCounter}
                   title={content.libTitle}
                 />
                 <ToolsSection
-                  dragBoundsRef={dragBoundsRef}
                   zIndexCounterRef={zIndexCounter}
                   title={content.toolsTitle}
                 />
@@ -407,14 +369,12 @@ export default function Home() {
 
               <div className="lg:w-2/3 flex flex-col gap-15">
                 <ProjectsSection
-                  dragBoundsRef={dragBoundsRef}
                   zIndexCounterRef={zIndexCounter}
                   projects={content.projects}
                   title={content.projectsTitle}
                   lang={lang}
                 />
                 <ProjectsSection
-                  dragBoundsRef={dragBoundsRef}
                   zIndexCounterRef={zIndexCounter}
                   projects={content.aiProjects}
                   title={content.aiProjectsTitle}

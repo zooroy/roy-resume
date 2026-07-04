@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -107,7 +107,6 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
 }
 
 interface Props {
-  dragBoundsRef: React.RefObject<HTMLDivElement | null>;
   zIndexCounterRef: React.RefObject<number>;
   projects: Project[];
   title: string;
@@ -115,15 +114,12 @@ interface Props {
 }
 
 export default function ProjectsSection({
-  dragBoundsRef,
   zIndexCounterRef,
   projects,
   title,
   lang,
 }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
-  const movedRef = useRef(false);
 
   const activeProject = selectedIndex === null ? null : projects[selectedIndex];
   const carouselImages = activeProject?.images ?? (activeProject?.image ? [activeProject.image] : []);
@@ -136,33 +132,14 @@ export default function ProjectsSection({
           <DraggableCard
             as="article"
             key={project.title}
-            dragBoundsRef={dragBoundsRef}
             zIndexCounterRef={zIndexCounterRef}
-            className={`paper-card relative w-full max-w-[360px] px-4 py-5 md:max-w-none md:basis-[calc(50%-1.5rem)] ${cardTilts[index % cardTilts.length]} cursor-grab active:cursor-grabbing`}
+            className={`paper-card relative w-full max-w-[360px] px-4 py-5 md:max-w-none md:basis-[calc(50%-1.5rem)] ${cardTilts[index % cardTilts.length]}`}
           >
             <div
               role="button"
               tabIndex={0}
               className="cursor-pointer"
-              onPointerDown={(event) => {
-                pointerStartRef.current = { x: event.clientX, y: event.clientY };
-                movedRef.current = false;
-              }}
-              onPointerMove={(event) => {
-                if (!pointerStartRef.current) return;
-                const dx = event.clientX - pointerStartRef.current.x;
-                const dy = event.clientY - pointerStartRef.current.y;
-                if (Math.hypot(dx, dy) > 8) movedRef.current = true;
-              }}
-              onPointerUp={() => {
-                if (!movedRef.current) setSelectedIndex(index);
-                pointerStartRef.current = null;
-                movedRef.current = false;
-              }}
-              onPointerCancel={() => {
-                pointerStartRef.current = null;
-                movedRef.current = false;
-              }}
+              onClick={() => setSelectedIndex(index)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                   event.preventDefault();
