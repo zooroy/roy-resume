@@ -8,6 +8,7 @@ import {
   useMotionValue,
   useTransform,
 } from 'framer-motion';
+import { usePathname, useRouter } from 'next/navigation';
 import { copy, type Lang } from './content';
 import DraggableCard from './components/DraggableCard';
 import SkillsSection from './components/SkillsSection';
@@ -38,8 +39,10 @@ const calculateAge = (dob: string) => {
 };
 
 export default function Home() {
+  const pathname = usePathname();
+  const router = useRouter();
   const zIndexCounter = useRef(10);
-  const [lang, setLang] = useState<Lang>('en');
+  const lang: Lang = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'zh';
   const [introDone, setIntroDone] = useState(false);
   const [isProfileFlipped, setIsProfileFlipped] = useState(false);
   const profileRotateY = useMotionValue(0);
@@ -198,21 +201,21 @@ export default function Home() {
                 <div className="mt-2 flex gap-2">
                   <button
                     type="button"
-                    onClick={() => setLang('en')}
-                    className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-(--paper-deep) px-3 py-1 text-xs font-semibold cursor-pointer text-(--ink) ${
-                      lang === 'en' ? 'bg-(--tape)' : ''
-                    }`}
-                  >
-                    EN
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLang('zh')}
+                    onClick={() => router.push('/')}
                     className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-(--paper-deep) px-3 py-1 text-xs font-semibold cursor-pointer text-(--ink) ${
                       lang === 'zh' ? 'bg-(--tape)' : ''
                     }`}
                   >
                     中文
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => router.push('/en')}
+                    className={`rounded-full border-2 border-[rgba(36,28,22,0.08)] bg-(--paper-deep) px-3 py-1 text-xs font-semibold cursor-pointer text-(--ink) ${
+                      lang === 'en' ? 'bg-(--tape)' : ''
+                    }`}
+                  >
+                    EN
                   </button>
                 </div>
               </motion.div>
@@ -379,6 +382,7 @@ export default function Home() {
                   projects={content.aiProjects}
                   title={content.aiProjectsTitle}
                   lang={lang}
+                  showModalSummary
                 />
               </div>
             </div>

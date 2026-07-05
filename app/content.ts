@@ -5,6 +5,7 @@ type Project = {
   image?: string;
   images?: string[];
   summary?: string;
+  detail?: string;
   role?: string;
   highlights?: string[];
   tech?: string[];
@@ -65,6 +66,8 @@ export const copy: Record<Lang, Content> = {
         image: '/projects/swim.jpg',
         summary:
           '游泳池即時租借與管理平台，提供使用者快速查詢、預約與驗證流程。',
+        detail:
+          '英國泳池租借平台，多人協作。負責處理登入註冊流程與 reCAPTCHA 驗證。執行此專案期間，協作的工程師提到設計稿樣式不一致，導致模組化component太多客製化與難以維護，主動整理專案設計不一致的地方，與設計師討論統一成共用規格。減少過多客製化造成維護成本。透過觀察、溝通，讓專案後續維護與開發更有效率。',
         role: '多人協作',
         highlights: [
           '負責前台使用者註冊與登入流程設計',
@@ -86,6 +89,8 @@ export const copy: Record<Lang, Content> = {
         title: '家樂福｜家有奇雞互動小遊戲',
         image: '/projects/game.jpg',
         summary: '品牌活動互動小遊戲，提升使用者參與度與活動完成率。',
+        detail:
+          '兩人協作，負責整體架構、元件模組化，規劃app跟web雙向溝通。執行此專案時，動畫會明顯卡頓，使用DevTools的Performance錄製後，發現會頻繁觸發layout和paint，優化方向改用transform: translate()跑動畫，畫面明顯流暢，理解到動畫效能優化的基本原則。',
         role: '兩人協作',
         highlights: [
           '負責整體架構規劃與資料流程設計',
@@ -99,6 +104,8 @@ export const copy: Record<Lang, Content> = {
         title: '凱基金控｜後台資料管理系統（內部後台）',
         image: '/projects/kgi.jpg',
         summary: '企業內部使用的資料管理後台，支援會員權限與資料處理。',
+        detail:
+          '獨立作業，建立角色權限管理、優化查詢與篩選。由於後台有角色權限管理功能，導航欄需要依照角色權限顯示，因此前端不能寫死角色對應的導航欄，主動找SA和後端釐清問題，決定後端多回傳permission欄位，讓權限邏輯與後台設定一致。',
         role: '獨立作業',
         highlights: [
           '獨立負責整體前端系統開發與維護',
@@ -116,24 +123,43 @@ export const copy: Record<Lang, Content> = {
       },
 
       {
-        title: 'TSMC｜後台資料管理系統（內部後台）',
-        image: '/projects/tsmc.jpg',
-        summary: '大型企業內部後台系統，處理大量資料與元件化管理。',
+        title: '參山國家風景區管理處｜官網',
+        image: '/projects/mountain.jpg',
+        summary:
+          '政府觀光官方網站，支援高度客製化的選單與內容模組，提升頁面維護與擴充效率。',
+        detail:
+          '使用 Next.js／React 建置專案架構與共用元件。執行期間，發現選單、頁面內容具有高度客製化需求，若由前端逐頁寫死，將增加重複開發與維護成本。因此主動與後端制定統一資料格式，依據回傳設定動態產生選單與頁面模組，完成客製化需求，並提升後續頁面的擴充與維護效率。',
         role: '多人協作',
         highlights: [
-          '負責 API 串接與資料處理邏輯',
-          '開發元件模組化架構，提升系統可維護性',
-          '實作 Lazy Loading，優化大量資料載入效能',
+          '使用 Next.js／React 建立前端架構與共用元件',
+          '與後端協作制定統一資料格式，支援動態選單與頁面模組',
+          '降低逐頁客製化開發成本，提升後續頁面擴充與維護效率',
         ],
-        tech: [
-          'React',
-          'TypeScript',
-          'GraphQL',
-          'Apollo Client',
-          'React Hook Form',
-          'Yup',
-        ],
+        tech: ['React', 'Next.js', 'RESTful API', 'Sass'],
+        link: 'https://www.trimt-nsa.gov.tw/zh-tw/',
       },
+
+      // {
+      //   title: 'TSMC｜後台資料管理系統（內部後台）',
+      //   image: '/projects/tsmc.jpg',
+      //   summary: '大型企業內部後台系統，處理大量資料與元件化管理。',
+      //   detail:
+      //     '此專案面向大型企業內部使用情境，重點在大量資料載入、API 資料處理與前端元件模組化。我負責串接 GraphQL API、整理資料流與開發可重用元件，並透過 Lazy Loading 改善資料載入體驗。',
+      //   role: '多人協作',
+      //   highlights: [
+      //     '負責 API 串接與資料處理邏輯',
+      //     '開發元件模組化架構，提升系統可維護性',
+      //     '實作 Lazy Loading，優化大量資料載入效能',
+      //   ],
+      //   tech: [
+      //     'React',
+      //     'TypeScript',
+      //     'GraphQL',
+      //     'Apollo Client',
+      //     'React Hook Form',
+      //     'Yup',
+      //   ],
+      // },
     ],
     aiProjectsTitle: 'AI 規格驅動開發 Side Projects',
     aiProjects: [
@@ -227,6 +253,8 @@ Throughout development, I continue to use AI-assisted workflows and explore SDD 
         image: '/projects/swim.jpg',
         summary:
           'A real-time swimming pool rental and management platform providing users with quick search, booking, and verification workflows.',
+        detail:
+          'A UK swimming pool rental platform built through team collaboration. I was responsible for the login and registration flow and reCAPTCHA verification. During the project, another engineer pointed out that inconsistent design styles were causing too many customized modular components and making maintenance difficult. I proactively organized the inconsistent parts of the design, discussed them with the designer, and aligned them into shared specifications. This reduced maintenance costs caused by excessive customization and made future development and maintenance more efficient through observation and communication.',
         role: 'Team Collaboration',
         highlights: [
           'Designed the frontend user registration and login flow',
@@ -248,6 +276,8 @@ Throughout development, I continue to use AI-assisted workflows and explore SDD 
         title: 'Carrefour | Home Chicken Adventure Interactive Mini-Game',
         image: '/projects/game.jpg',
         summary: 'A branded interactive mini-game designed to boost user engagement and campaign completion rates.',
+        detail:
+          'A two-person collaboration where I was responsible for the overall architecture, component modularization, and planning two-way communication between the app and web views. During the project, the animation had noticeable stuttering. After recording with DevTools Performance, I found that layout and paint were triggered frequently, so I changed the animation approach to use transform: translate(). The experience became noticeably smoother, and I gained a clearer understanding of the basic principles of animation performance optimization.',
         role: 'Two-Person Collaboration',
         highlights: [
           'Responsible for overall architecture planning and data flow design',
@@ -261,6 +291,8 @@ Throughout development, I continue to use AI-assisted workflows and explore SDD 
         title: 'KGI Financial Holdings | Admin Data Management System (Internal)',
         image: '/projects/kgi.jpg',
         summary: 'An internal data management dashboard supporting member permissions and data processing.',
+        detail:
+          'A solo project where I built role permission management and optimized query and filtering workflows. Because the admin system included role permission management, the navigation needed to display items based on each role. The frontend could not hard-code navigation by role, so I proactively clarified the issue with the SA and backend engineer. We decided that the backend would return an additional permission field, keeping the permission logic aligned with the admin settings.',
         role: 'Solo Development',
         highlights: [
           'Independently responsible for the entire frontend system development and maintenance',
@@ -278,24 +310,43 @@ Throughout development, I continue to use AI-assisted workflows and explore SDD 
       },
 
       {
-        title: 'TSMC | Admin Data Management System (Internal)',
-        image: '/projects/tsmc.jpg',
-        summary: 'A large-scale enterprise internal dashboard handling massive data volumes and componentized management.',
+        title: 'Tri-Mountain National Scenic Area Administration | Official Website',
+        image: '/projects/mountain.jpg',
+        summary:
+          'A government tourism website with highly customizable navigation and content modules, built to improve maintainability and page expansion.',
+        detail:
+          'Built the project architecture and shared components with Next.js and React. During development, I found that the menu and page content required a high level of customization. Hard-coding each page on the frontend would have increased duplicated development and maintenance costs, so I proactively worked with backend engineers to define a unified data format. Based on returned configuration data, the frontend dynamically generated menus and page modules, meeting customization needs while improving future scalability and maintainability.',
         role: 'Team Collaboration',
         highlights: [
-          'Responsible for API integration and data processing logic',
-          'Developed a modular component architecture to improve system maintainability',
-          'Implemented Lazy Loading to optimize performance for large data sets',
+          'Built the frontend architecture and shared components with Next.js and React',
+          'Collaborated with backend engineers to define a unified data format for dynamic menus and page modules',
+          'Reduced page-by-page customization costs and improved future scalability and maintainability',
         ],
-        tech: [
-          'React',
-          'TypeScript',
-          'GraphQL',
-          'Apollo Client',
-          'React Hook Form',
-          'Yup',
-        ],
+        tech: ['React', 'Next.js', 'RESTful API', 'Sass'],
+        link: 'https://www.trimt-nsa.gov.tw/zh-tw/',
       },
+
+      // {
+      //   title: 'TSMC | Admin Data Management System (Internal)',
+      //   image: '/projects/tsmc.jpg',
+      //   summary: 'A large-scale enterprise internal dashboard handling massive data volumes and componentized management.',
+      //   detail:
+      //     'This project served a large enterprise internal workflow, with emphasis on large data loading, API data processing, and modular frontend components. I handled GraphQL API integration, data flow organization, reusable component development, and Lazy Loading optimization.',
+      //   role: 'Team Collaboration',
+      //   highlights: [
+      //     'Responsible for API integration and data processing logic',
+      //     'Developed a modular component architecture to improve system maintainability',
+      //     'Implemented Lazy Loading to optimize performance for large data sets',
+      //   ],
+      //   tech: [
+      //     'React',
+      //     'TypeScript',
+      //     'GraphQL',
+      //     'Apollo Client',
+      //     'React Hook Form',
+      //     'Yup',
+      //   ],
+      // },
     ],
     aiProjectsTitle: 'Side Projects with AI SDD',
     aiProjects: [

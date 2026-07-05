@@ -12,6 +12,7 @@ type Project = {
   image?: string;
   images?: string[];
   summary?: string;
+  detail?: string;
   role?: string;
   highlights?: string[];
   tech?: string[];
@@ -111,6 +112,7 @@ interface Props {
   projects: Project[];
   title: string;
   lang: Lang;
+  showModalSummary?: boolean;
 }
 
 export default function ProjectsSection({
@@ -118,6 +120,7 @@ export default function ProjectsSection({
   projects,
   title,
   lang,
+  showModalSummary = false,
 }: Props) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
@@ -235,9 +238,14 @@ export default function ProjectsSection({
               ) : null}
 
               <h3 className="serif-zh text-3xl font-bold">{activeProject.title}</h3>
-              {activeProject.summary && (
+              {showModalSummary && activeProject.summary && (
                 <p className="mt-4 text-lg leading-relaxed text-(--text-light-fg)">
                   {activeProject.summary}
+                </p>
+              )}
+              {activeProject.detail && (
+                <p className={`${showModalSummary ? 'mt-3' : 'mt-4'} leading-relaxed text-(--text-light-fg)`}>
+                  {activeProject.detail}
                 </p>
               )}
               {activeProject.role && (
