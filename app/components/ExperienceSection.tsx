@@ -47,7 +47,7 @@ export default function ExperienceSection({ title, experiences, lang }: Props) {
     <section className="px-6 py-8 sm:px-10">
       <h2 className="display-serif text-4xl">{title}</h2>
       <div className="paper-card relative mt-8 px-5 py-6 sm:px-8">
-        <span className="tape-strip -top-4 left-12 -rotate-[5deg]" />
+        <span className="tape-strip -top-4 left-[48%] -rotate-[3deg]" />
         <div className="space-y-8">
           {experiences.map((experience) => (
             <article

@@ -19,7 +19,7 @@ type Project = {
 };
 
 const tapePlacements = [
-  '-top-4 left-6 -rotate-6',
+  '-top-4 left-10 -rotate-6',
   '-top-5 right-6 rotate-6',
   '-top-3 left-16 -rotate-2',
   '-top-4 right-14 rotate-4',
@@ -33,6 +33,15 @@ const cardTilts = [
   'rotate-[1.5deg]',
   '-rotate-[1deg]',
 ];
+
+const getTapePlacement = (title: string, index: number) => {
+  const hash = Array.from(title).reduce(
+    (total, char) => total + char.charCodeAt(0),
+    index
+  );
+
+  return tapePlacements[hash % tapePlacements.length];
+};
 
 function ProjectCarousel({ images, title }: { images: string[]; title: string }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, slidesToScroll: 1, align: 'start' });
@@ -127,7 +136,7 @@ export default function ProjectsSection({
   return (
     <div>
       <h2 className="display-serif text-4xl">{title}</h2>
-      <div className="mt-8 flex flex-wrap justify-center gap-12">
+      <div className="mt-8 flex flex-wrap items-start justify-center gap-12">
         {projects.map((project, index) => (
           <article
             key={project.title}
@@ -145,7 +154,7 @@ export default function ProjectsSection({
                 }
               }}
             >
-              <span className={`tape-strip ${tapePlacements[index % tapePlacements.length]}`} />
+              <span className={`tape-strip ${getTapePlacement(project.title, index)}`} />
               <div className="relative mb-4 h-44 w-full overflow-hidden">
                 {(project.image ?? project.images?.[0]) ? (
                   <Image
