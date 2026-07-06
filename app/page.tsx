@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image, { type StaticImageData } from 'next/image';
 import {
   animate,
@@ -10,7 +10,6 @@ import {
 } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
 import { copy, type Lang } from './content';
-import DraggableCard from './components/DraggableCard';
 import SkillsSection from './components/SkillsSection';
 import LibrariesSection from './components/LibrariesSection';
 import ToolsSection from './components/ToolsSection';
@@ -41,7 +40,6 @@ const calculateAge = (dob: string) => {
 export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
-  const zIndexCounter = useRef(10);
   const lang: Lang = pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'zh';
   const [introDone, setIntroDone] = useState(false);
   const [isProfileFlipped, setIsProfileFlipped] = useState(false);
@@ -165,10 +163,9 @@ export default function Home() {
               Roy&apos;s
             </p>
             {heroTiles.map((tile) => (
-              <DraggableCard
+              <motion.div
                 key={tile.alt}
-                effects="scale"
-                zIndexCounterRef={zIndexCounter}
+                whileTap={{ scale: 1.02 }}
                 className={tile.rotate}
               >
                 <div className="relative" style={{ width: 80, height: 100 }}>
@@ -186,7 +183,7 @@ export default function Home() {
                     priority
                   />
                 </div>
-              </DraggableCard>
+              </motion.div>
             ))}
           </section>
 
@@ -225,11 +222,7 @@ export default function Home() {
               {/* photo */}
               <div className="w-full max-w-[320px] shrink-0 self-center md:w-[320px]">
                 <div className="relative">
-                  <DraggableCard
-                    effects="none"
-                    zIndexCounterRef={zIndexCounter}
-                    className="max-w-full -rotate-4 [perspective:1400px]"
-                  >
+                  <div className="max-w-full -rotate-4 [perspective:1400px]">
                     <motion.div
                       role="button"
                       tabIndex={0}
@@ -324,7 +317,7 @@ export default function Home() {
                         </div>
                       </div>
                     </motion.div>
-                  </DraggableCard>
+                  </div>
                 </div>
               </div>
 
@@ -356,29 +349,18 @@ export default function Home() {
           <section className="px-6 py-8 sm:px-10">
             <div className="flex flex-col gap-15 lg:flex-row">
               <div className="lg:w-1/3">
-                <SkillsSection
-                  zIndexCounterRef={zIndexCounter}
-                  title={content.skillTitle}
-                />
-                <LibrariesSection
-                  zIndexCounterRef={zIndexCounter}
-                  title={content.libTitle}
-                />
-                <ToolsSection
-                  zIndexCounterRef={zIndexCounter}
-                  title={content.toolsTitle}
-                />
+                <SkillsSection title={content.skillTitle} />
+                <LibrariesSection title={content.libTitle} />
+                <ToolsSection title={content.toolsTitle} />
               </div>
 
               <div className="lg:w-2/3 flex flex-col gap-15">
                 <ProjectsSection
-                  zIndexCounterRef={zIndexCounter}
                   projects={content.projects}
                   title={content.projectsTitle}
                   lang={lang}
                 />
                 <ProjectsSection
-                  zIndexCounterRef={zIndexCounter}
                   projects={content.aiProjects}
                   title={content.aiProjectsTitle}
                   lang={lang}

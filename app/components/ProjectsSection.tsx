@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
-import DraggableCard from './DraggableCard';
 import type { Lang } from '../content';
 
 type Project = {
@@ -108,7 +107,6 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
 }
 
 interface Props {
-  zIndexCounterRef: React.RefObject<number>;
   projects: Project[];
   title: string;
   lang: Lang;
@@ -116,7 +114,6 @@ interface Props {
 }
 
 export default function ProjectsSection({
-  zIndexCounterRef,
   projects,
   title,
   lang,
@@ -132,10 +129,8 @@ export default function ProjectsSection({
       <h2 className="display-serif text-4xl">{title}</h2>
       <div className="mt-8 flex flex-wrap justify-center gap-12">
         {projects.map((project, index) => (
-          <DraggableCard
-            as="article"
+          <article
             key={project.title}
-            zIndexCounterRef={zIndexCounterRef}
             className={`paper-card relative w-full max-w-[360px] px-4 py-5 md:max-w-none md:basis-[calc(50%-1.5rem)] ${cardTilts[index % cardTilts.length]}`}
           >
             <div
@@ -171,7 +166,7 @@ export default function ProjectsSection({
                 {lang === 'zh' ? '點擊查看更多' : 'Click to view more'}
               </p>
             </div>
-          </DraggableCard>
+          </article>
         ))}
       </div>
 

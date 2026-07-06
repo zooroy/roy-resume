@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import DraggableCard from './DraggableCard';
 
 const libraryItems = [
   {
@@ -45,18 +44,14 @@ const libraryItems = [
 ];
 
 interface Props {
-  zIndexCounterRef: React.RefObject<number>;
   title: string;
 }
 
-export default function LibrariesSection({ zIndexCounterRef, title }: Props) {
+export default function LibrariesSection({ title }: Props) {
   return (
     <div className="mt-10">
       <h2 className="display-serif text-4xl">{title}</h2>
-      <DraggableCard
-        zIndexCounterRef={zIndexCounterRef}
-        className="paper-card rotate-1.3 mt-8 relative px-4 py-5"
-      >
+      <div className="paper-card rotate-1.3 mt-8 relative px-4 py-5">
         <span className="tape-strip -top-4 left-28 rotate-[5deg]" />
         <div className="mt-4 flex flex-wrap gap-6">
           {libraryItems.map((skill) => (
@@ -82,7 +77,7 @@ export default function LibrariesSection({ zIndexCounterRef, title }: Props) {
             </div>
           ))}
         </div>
-      </DraggableCard>
+      </div>
     </div>
   );
 }
