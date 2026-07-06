@@ -48,7 +48,7 @@ html {
 /* 思源宋體 - 中文英文 */
 .serif-zh {
   font-family: var(--font-serif-zh), 'Noto Serif TC', serif;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .paper-card {

@@ -12,6 +12,13 @@ type Project = {
   link?: string;
 };
 
+export type WorkExperience = {
+  period: string;
+  title: string;
+  company: string;
+  description: string;
+};
+
 type Content = {
   heroTitle: string;
   languageLabel: string;
@@ -29,6 +36,8 @@ type Content = {
   contact?: string;
   email?: string;
   education: string;
+  experienceTitle: string;
+  experiences: WorkExperience[];
   skillTitle: string;
   libTitle: string;
   toolsTitle: string;
@@ -56,6 +65,30 @@ export const copy: Record<Lang, Content> = {
     phone: '0912-323-221',
     email: 'zooroy13@gmail.com',
     education: '國立成功大學 中國文學系',
+    experienceTitle: 'WORK EXPERIENCE',
+    experiences: [
+      {
+        period: '2021/10 ~ 2025/1',
+        title: '前端工程師',
+        company: '雲端互動股份有限公司',
+        description:
+          '在專案中主動參與前端架構規劃、元件模組化與 Design System 建置，並依需求與設計、產品等跨部門夥伴協作，協助釐清需求與統一實作方向，降低溝通成本並提升專案執行效率。',
+      },
+      {
+        period: '2019/10 ~ 2021/9',
+        title: '前端工程師',
+        company: '瑄品股份有限公司',
+        description:
+          '依據客戶規格與專案需求規劃前端開發，並主動與主管及團隊成員溝通協作，完成前端功能開發、後端 API 串接與整合測試，確保專案目標一致並如期交付。',
+      },
+      {
+        period: '2017/4 ~ 2019/3',
+        title: '網頁設計前端人員',
+        company: '匯通商行有限公司',
+        description:
+          '負責 WordPress 電商網站與官方網站建置，並使用 HTML、CSS、JavaScript 開發客製化頁面與互動動畫效果；同時參與品牌形象、平面設計與周邊商品設計，整合視覺設計與前端實作需求。',
+      },
+    ],
     skillTitle: 'SKILLS',
     libTitle: 'LIBRARIES',
     toolsTitle: 'TOOLS',
@@ -243,6 +276,30 @@ Throughout development, I continue to use AI-assisted workflows and explore SDD 
     phone: '0912-323-221',
     email: 'zooroy13@gmail.com',
     education: 'NCKU, Chinese Literature',
+    experienceTitle: 'WORK EXPERIENCE',
+    experiences: [
+      {
+        period: '2021/10 ~ 2025/1',
+        title: 'Frontend Engineer',
+        company: 'Cloud Interactive Inc.',
+        description:
+          'Proactively participated in frontend architecture planning, component modularization, and Design System development. Collaborated with design, product, and cross-functional partners to clarify requirements and align implementation direction, reducing communication costs and improving project execution efficiency.',
+      },
+      {
+        period: '2019/10 ~ 2021/9',
+        title: 'Frontend Engineer',
+        company: 'Champtron Creative Labs, Inc.',
+        description:
+          'Planned frontend development based on client specifications and project requirements. Proactively communicated and collaborated with supervisors and team members to complete frontend features, backend API integration, and integration testing, ensuring project goals stayed aligned and were delivered on schedule.',
+      },
+      {
+        period: '2017/10 ~ 2019/4',
+        title: 'Web Designer / Frontend Developer',
+        company: 'Huitong Products Ltd.',
+        description:
+          'Built WordPress ecommerce and official websites, using HTML, CSS, and JavaScript to develop customized pages and interactive animations. Also participated in brand identity, graphic design, and merchandise design, bridging visual design and frontend implementation needs.',
+      },
+    ],
     skillTitle: 'SKILLS',
     libTitle: 'LIBRARIES',
     toolsTitle: 'TOOLS',
