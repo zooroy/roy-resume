@@ -14,7 +14,7 @@ const libraryItems = [
   {
     label: 'shadcn/ui',
     level: '8/10',
-    icons: [{ src: '/skills/shadcn:ui.png', alt: 'shadcn/ui' }],
+    icons: [{ src: '/skills/shadcn-ui.png', alt: 'shadcn/ui' }],
   },
   {
   label: 'Zustand',
