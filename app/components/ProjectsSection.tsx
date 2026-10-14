@@ -46,6 +46,8 @@ const getTapePlacement = (title: string, index: number) => {
 function ProjectCarousel({ images, title }: { images: string[]; title: string }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, slidesToScroll: 1, align: 'start' });
   const [selectedSnap, setSelectedSnap] = useState(0);
+  // 橫式圖片一次顯示一張，直式圖片一次顯示兩張
+  const [isLandscape, setIsLandscape] = useState(false);
   const snapCount = images.length;
 
   const onSelect = useCallback(() => {
@@ -59,20 +61,35 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
     return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi, onSelect]);
 
+  useEffect(() => {
+    emblaApi?.reInit();
+  }, [emblaApi, isLandscape]);
+
   return (
     <div className="relative mb-6 overflow-hidden rounded-md">
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex -ml-2">
           {images.map((src, i) => (
-            <div key={src} className="flex-[0_0_50%] min-w-0 pl-2">
+            <div
+              key={src}
+              className={`${isLandscape ? 'flex-[0_0_100%]' : 'flex-[0_0_50%]'} min-w-0 pl-2`}
+            >
               <Image
                 src={src}
                 alt={`${title} ${i + 1}`}
                 width={0}
                 height={0}
-                sizes="(max-width: 768px) 46vw, 340px"
+                sizes={isLandscape ? '(max-width: 768px) 92vw, 700px' : '(max-width: 768px) 46vw, 340px'}
                 className="w-full h-auto pointer-events-none"
                 draggable={false}
+                onLoad={
+                  i === 0
+                    ? (event) => {
+                        const { naturalWidth, naturalHeight } = event.currentTarget;
+                        setIsLandscape(naturalWidth > naturalHeight);
+                      }
+                    : undefined
+                }
               />
             </div>
           ))}
