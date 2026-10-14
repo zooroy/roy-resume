@@ -56,8 +56,9 @@ export const copy: Record<Lang, Content> = {
     name: '蕭亦廷',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro: `從設計背景走進前端工程，開發時，思考元件共用、程式結構與後續維護性，減少重複程式碼與過度客製化，讓專案保持清楚、穩定的架構。
-在開發過程中，我持續運用 AI 輔助開發，並嘗試導入 SDD（Spec-driven Development）流程，讓需求規格、畫面設計與程式實作能更有效地串接。`,
+    intro: `具 5 年以上 Web 前端開發經驗，熟悉 React、Next.js、TypeScript，具備多人協作、API 串接、權限控制與前後端資料格式設計經驗。
+目前積極朝 Full-stack Engineer 發展，持續學習並透過個人專案實作 NestJS、Python、SQL 與 PostgreSQL / MySQL，逐步累積 Backend API、資料庫設計及前後端整合能力。
+重視模組化架構、程式維護性與團隊協作，並運用 AI-assisted Development 與 SDD 輔助需求分析、技術規劃與開發。`,
     ageLabel: 'Age',
     contactLabel: 'Contact Details',
     eduLabel: 'Education',
@@ -296,8 +297,9 @@ export const copy: Record<Lang, Content> = {
     name: 'Yi-Ting Hsiao',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro: `Coming from a design background into frontend engineering, I think about component reuse, code structure, and long-term maintainability while developing. I aim to reduce duplicated code and excessive customization, keeping projects clear, stable, and well-structured.
-Throughout development, I continue to use AI-assisted workflows and explore SDD (Spec-driven Development), helping requirements, interface design, and implementation connect more effectively.`,
+    intro: `Frontend developer with 5+ years of web development experience, proficient in React, Next.js, and TypeScript, with hands-on experience in team collaboration, API integration, access control, and designing data formats between frontend and backend.
+Actively growing toward a Full-stack Engineer role, continuously learning and building personal projects with NestJS, Python, SQL, and PostgreSQL / MySQL to strengthen skills in backend APIs, database design, and frontend-backend integration.
+Values modular architecture, maintainable code, and teamwork, and uses AI-assisted Development and SDD to support requirements analysis, technical planning, and development.`,
     ageLabel: 'Age',
     contactLabel: 'Contact Details',
     eduLabel: 'Education',
