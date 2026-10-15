@@ -10,6 +10,7 @@ type Project = {
   highlights?: string[];
   tech?: string[];
   link?: string;
+  website?: string;
 };
 
 export type WorkExperience = {
@@ -286,6 +287,7 @@ export const copy: Record<Lang, Content> = {
           'Playwright',
         ],
         link: 'https://github.com/zooroy/ai_fruit_ninja',
+        website: 'https://zooroy.github.io/ai_fruit_ninja/',
       },
       {
         title: 'AI Aquarium｜手勢互動 Low Poly 網頁水族館',
@@ -316,6 +318,7 @@ export const copy: Record<Lang, Content> = {
           'GitHub Actions',
         ],
         link: 'https://github.com/zooroy/ai-aquarium',
+        website: 'https://zooroy.github.io/ai-aquarium/',
       },
     ],
   },
@@ -557,6 +560,7 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           'Playwright',
         ],
         link: 'https://github.com/zooroy/ai_fruit_ninja',
+        website: 'https://zooroy.github.io/ai_fruit_ninja/',
       },
       {
         title: 'AI Aquarium | Gesture-Controlled Low Poly Aquarium',
@@ -587,6 +591,7 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           'GitHub Actions',
         ],
         link: 'https://github.com/zooroy/ai-aquarium',
+        website: 'https://zooroy.github.io/ai-aquarium/',
       },
     ],
   },
