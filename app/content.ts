@@ -321,13 +321,13 @@ export const copy: Record<Lang, Content> = {
         website: 'https://zooroy.github.io/ai-aquarium/',
       },
       {
-        title: '誰付錢｜AI 收據辨識旅遊分帳 PWA',
-        image: '/aiprojects/whopays_photo_1.webp',
+        title: '誰付錢｜AI 收據辨識旅遊分帳 App',
+        image: '/aiprojects/whopays_photo_4.webp',
         images: [
+          '/aiprojects/whopays_photo_4.webp',
           '/aiprojects/whopays_photo_1.webp',
           '/aiprojects/whopays_photo_2.webp',
           '/aiprojects/whopays_photo_3.webp',
-          '/aiprojects/whopays_photo_4.webp',
         ],
         summary:
           '和朋友出國旅行用的多人分帳 App，打開分享連結選個動物角色就能加入；拍下收據由 AI 自動辨識品項並翻成中文，以原幣別記帳，最後一鍵算出誰該付給誰。',
@@ -342,7 +342,6 @@ export const copy: Record<Lang, Content> = {
           'React',
           'Vite',
           'TanStack Query',
-          'PWA',
           'Supabase',
           'PostgreSQL',
           'Gemini API',
@@ -351,7 +350,6 @@ export const copy: Record<Lang, Content> = {
           'pgTAP',
         ],
         link: 'https://github.com/zooroy/who-pays',
-        website: 'https://who-pays.who-pays.workers.dev',
       },
     ],
   },
@@ -628,15 +626,15 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
       },
       {
         title: 'Who Pays | AI Receipt-Scanning Trip Expense Splitter',
-        image: '/aiprojects/whopays_photo_1.webp',
+        image: '/aiprojects/whopays_photo_4.webp',
         images: [
+          '/aiprojects/whopays_photo_4.webp',
           '/aiprojects/whopays_photo_1.webp',
           '/aiprojects/whopays_photo_2.webp',
           '/aiprojects/whopays_photo_3.webp',
-          '/aiprojects/whopays_photo_4.webp',
         ],
         summary:
-          'A group expense-splitting PWA for trips abroad — open a share link and pick an animal avatar to join; snap a receipt and AI extracts and translates the line items, expenses are kept in their original currency, and one tap shows who owes whom.',
+          'A group expense-splitting app for trips abroad — open a share link and pick an animal avatar to join; snap a receipt and AI extracts and translates the line items, expenses are kept in their original currency, and one tap shows who owes whom.',
         role: 'AI Spec-driven Development',
         highlights: [
           'Receipt photos go through a Supabase Edge Function that calls Gemini to extract merchant, date, line items and amounts with Chinese translations, keeping the API key off the client; falls back to manual entry when quota runs out',
@@ -648,7 +646,6 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           'React',
           'Vite',
           'TanStack Query',
-          'PWA',
           'Supabase',
           'PostgreSQL',
           'Gemini API',
@@ -657,7 +654,6 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           'pgTAP',
         ],
         link: 'https://github.com/zooroy/who-pays',
-        website: 'https://who-pays.who-pays.workers.dev',
       },
     ],
   },
