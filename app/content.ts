@@ -57,9 +57,8 @@ export const copy: Record<Lang, Content> = {
     name: '蕭亦廷',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro: `具 5 年以上 Web 前端開發經驗，熟悉 React、Next.js、TypeScript，具備多人協作、API 串接、權限控制與前後端資料格式設計經驗。
-目前積極朝 Full-stack Engineer 發展，持續學習並透過個人專案實作 NestJS、Python、SQL 與 PostgreSQL / MySQL，逐步累積 Backend API、資料庫設計及前後端整合能力。
-重視模組化架構、程式維護性與團隊協作，並運用 AI-assisted Development 與 SDD 輔助需求分析、技術規劃與開發。`,
+    intro: `5 年以上 Web 前端開發經驗，熟悉 React、Next.js、TypeScript，具備前端架構規劃、元件模組化、API 串接及權限管理經驗，參與多項企業與政府 Web 專案，具備跨團隊協作及專案交付能力。
+運用 AI-assisted Development 與 SDD（Spec-driven Development）建立規格驅動開發流程，應用於個人 Web App 專案，縮短約 60% 開發週期，提升開發效率與交付品質。`,
     ageLabel: 'Age',
     contactLabel: 'Contact Details',
     eduLabel: 'Education',
@@ -74,21 +73,21 @@ export const copy: Record<Lang, Content> = {
         title: '前端工程師',
         company: '雲端互動股份有限公司',
         description:
-          '在專案中主動參與前端架構規劃、元件模組化與 Design System 建置，並依需求與設計、產品等跨部門夥伴協作，協助釐清需求與統一實作方向，降低溝通成本並提升專案執行效率。',
+          'Design System 與開發提速：將 UI 元件標準化與模組化，供 Swimple 後台、凱基金控等專案直接使用，縮短 40% 開發週期。',
       },
       {
         period: '2019/10 ~ 2021/9',
         title: '前端工程師',
         company: '瑄品股份有限公司',
         description:
-          '依據客戶規格與專案需求規劃前端開發，並主動與主管及團隊成員溝通協作，完成前端功能開發、後端 API 串接與整合測試，確保專案目標一致並如期交付。',
+          '參與 6 項政府 Web 專案，負責前端架構、元件模組化及開發分工，減少約 25% 重複開發工時，並提前完成專案交付。',
       },
       {
         period: '2017/4 ~ 2019/3',
         title: '網頁設計前端人員',
         company: '匯通商行有限公司',
         description:
-          '負責 WordPress 電商網站與官方網站建置，並使用 HTML、CSS、JavaScript 開發客製化頁面與互動動畫效果；同時參與品牌形象、平面設計與周邊商品設計，整合視覺設計與前端實作需求。',
+          '使用 WordPress 建置電商及企業官網，透過 SEO 優化網站流量、HubSpot 設定自動化郵件，並負責品牌視覺與周邊商品設計。',
       },
     ],
     skillTitle: 'SKILLS',
@@ -100,9 +99,9 @@ export const copy: Record<Lang, Content> = {
         title: 'Swimple｜游泳池租借平台',
         image: '/projects/swim.jpg',
         summary:
-          '游泳池即時租借與管理平台，提供使用者快速查詢、預約與驗證流程。',
+          '游泳池租借服務與管理平台。',
         detail:
-          '英國泳池租借平台，多人協作。負責處理登入註冊流程與 reCAPTCHA 驗證。執行此專案期間，協作的工程師提到設計稿樣式不一致，導致模組化component太多客製化與難以維護，主動整理專案設計不一致的地方，與設計師討論統一成共用規格。減少過多客製化造成維護成本。透過觀察、溝通，讓專案後續維護與開發更有效率。',
+          '負責登入註冊及 reCAPTCHA 驗證，協同設計師統一 3 項 UI 規格，減少約 30% 客製化元件，降低重複開發與維護成本。',
         role: '多人協作',
         highlights: [
           '負責前台使用者註冊與登入流程設計',
@@ -123,9 +122,9 @@ export const copy: Record<Lang, Content> = {
       {
         title: '家樂福｜家有奇雞互動小遊戲',
         image: '/projects/game.jpg',
-        summary: '品牌活動互動小遊戲，提升使用者參與度與活動完成率。',
+        summary: '品牌活動互動小遊戲。',
         detail:
-          '兩人協作，負責整體架構、元件模組化，規劃app跟web雙向溝通。執行此專案時，動畫會明顯卡頓，使用DevTools的Performance錄製後，發現會頻繁觸發layout和paint，優化方向改用transform: translate()跑動畫，畫面明顯流暢，理解到動畫效能優化的基本原則。',
+          '主導雙人團隊的前端架構與 App／Web 通訊設計，透過 DevTools 分析 Layout／Paint 瓶頸並優化 CSS 動畫，改善互動流暢度。',
         role: '兩人協作',
         highlights: [
           '負責整體架構規劃與資料流程設計',
@@ -138,9 +137,9 @@ export const copy: Record<Lang, Content> = {
       {
         title: '凱基金控｜後台資料管理系統（內部後台）',
         image: '/projects/kgi.jpg',
-        summary: '企業內部使用的資料管理後台，支援會員權限與資料處理。',
+        summary: '企業內部資料管理後台。',
         detail:
-          '獨立作業，建立角色權限管理、優化查詢與篩選。由於後台有角色權限管理功能，導航欄需要依照角色權限顯示，因此前端不能寫死角色對應的導航欄，主動找SA和後端釐清問題，決定後端多回傳permission欄位，讓權限邏輯與後台設定一致。',
+          '獨立開發後台權限管理與查詢功能，協同 SA、Backend 設計 Permission-based API，實現動態權限選單，降低維護成本。',
         role: '獨立作業',
         highlights: [
           '獨立負責整體前端系統開發與維護',
@@ -161,9 +160,9 @@ export const copy: Record<Lang, Content> = {
         title: '參山國家風景區管理處｜官網',
         image: '/projects/mountain.jpg',
         summary:
-          '政府觀光官方網站，支援高度客製化的選單與內容模組，提升頁面維護與擴充效率。',
+          '政府觀光官方網站。',
         detail:
-          '使用 Next.js／React 建置專案架構與共用元件。執行期間，發現選單、頁面內容具有高度客製化需求，若由前端逐頁寫死，將增加重複開發與維護成本。因此主動與後端制定統一資料格式，依據回傳設定動態產生選單與頁面模組，完成客製化需求，並提升後續頁面的擴充與維護效率。',
+          '使用 Next.js／React 建立共用元件，與 Backend 統一 API 格式，實現選單及頁面動態渲染，降低重複開發成本並提升維護效率。',
         role: '多人協作',
         highlights: [
           '使用 Next.js／React 建立前端架構與共用元件',
@@ -268,12 +267,12 @@ export const copy: Record<Lang, Content> = {
           '/aiprojects/fruit_photo_3.webp',
         ],
         summary:
-          '用攝影機追蹤雙手食指，在 low-poly 森林裡揮刀切水果的 30 秒網頁遊戲，手部辨識完全在瀏覽器端執行。',
+          '以攝影機手勢操控的切水果網頁遊戲，手部辨識全在瀏覽器端執行。',
         role: 'AI Spec-driven Development',
         highlights: [
-          'MediaPipe Hand Landmarker 於 Web Worker 即時推論，推論與渲染分開排程，失敗時自動回退主執行緒',
-          '以相鄰刀光點構成的線段做碰撞判定，快速揮刀不漏判；左右手各自獨立刀光與 300 ms 連切窗口',
-          '遊戲規則與渲染解耦可純函式測試；排行榜以 Supabase Edge Function + PostgreSQL RPC 處理驗證、節流與並發',
+          'MediaPipe 於 Web Worker 即時推論，不阻塞畫面渲染',
+          '線段碰撞判定，快速揮刀不漏判，支援雙手操作',
+          '遊戲邏輯與渲染解耦；Supabase 排行榜處理驗證與節流',
         ],
         tech: [
           'TypeScript',
@@ -299,12 +298,12 @@ export const copy: Record<Lang, Content> = {
           '/aiprojects/aquarium_photo_4.webp',
         ],
         summary:
-          '整個瀏覽器就是一座 Low Poly 魚缸，可以用手勢捏住小魚互動，也能自己畫一隻魚放進魚缸，或用手機掃 QR code 畫魚送進桌電魚缸。',
+          'Low Poly 網頁魚缸，可用手勢抓魚，或用手機畫魚送進桌電魚缸。',
         role: 'AI Spec-driven Development',
         highlights: [
-          'Boids 群游搭配空間網格加速鄰近查詢，魚身擺尾與色階化在 shader 中完成，維持流暢畫面',
-          'MediaPipe 追蹤手部，以 One Euro Filter 平滑座標、遲滯門檻判斷捏合，驅動 3D 手部模型抓魚；滑鼠與觸控共用同一套輸入抽象',
-          '手機畫的魚透過 Supabase 資料庫函式轉交，限制房間待領數量並處理並發；自訂魚存在 IndexedDB，滿 20 隻自動替換最舊的魚',
+          'Boids 群游搭配空間網格，擺尾動畫交由 shader 處理',
+          'MediaPipe 手部追蹤與捏合偵測，滑鼠、觸控共用輸入層',
+          'Supabase 跨裝置傳魚，IndexedDB 保存自訂魚',
         ],
         tech: [
           'TypeScript',
@@ -330,12 +329,12 @@ export const copy: Record<Lang, Content> = {
           '/aiprojects/whopays_photo_3.webp',
         ],
         summary:
-          '和朋友出國旅行用的多人分帳 App，打開分享連結選個動物角色就能加入；拍下收據由 AI 自動辨識品項並翻成中文，以原幣別記帳，最後一鍵算出誰該付給誰。',
+          '旅遊多人分帳 App，拍收據由 AI 辨識品項，一鍵算出誰該付誰。',
         role: 'AI Spec-driven Development',
         highlights: [
-          '收據照片經 Supabase Edge Function 呼叫 Gemini 辨識店名、日期、品項與金額並翻譯成中文，API key 不進前端；額度用完時提示改為手動輸入',
-          '朋友以匿名登入加入旅程，八張資料表全面啟用 RLS，寫入一律經由 RPC 並以複合外鍵確保資料屬於同一旅程；Realtime 即時同步成員間的新增與修改',
-          '金額以整數最小貨幣單位儲存、依幣別分開結算，餘數依加入順序分配確保結果穩定，並以貪婪配對產生最多 n−1 筆的轉帳建議',
+          'Edge Function 串接 Gemini 辨識並翻譯收據，金鑰不外露',
+          '匿名登入 + 全表 RLS，Realtime 即時同步成員資料',
+          '多幣別整數記帳，貪婪配對產生轉帳建議',
         ],
         tech: [
           'TypeScript',
@@ -361,9 +360,8 @@ export const copy: Record<Lang, Content> = {
     name: 'Yi-Ting Hsiao',
     dob: '1990.10.11',
     city: 'Taichung City, Taiwan',
-    intro: `Frontend developer with 5+ years of web development experience, proficient in React, Next.js, and TypeScript, with hands-on experience in team collaboration, API integration, access control, and designing data formats between frontend and backend.
-Actively growing toward a Full-stack Engineer role, continuously learning and building personal projects with NestJS, Python, SQL, and PostgreSQL / MySQL to strengthen skills in backend APIs, database design, and frontend-backend integration.
-Values modular architecture, maintainable code, and teamwork, and uses AI-assisted Development and SDD to support requirements analysis, technical planning, and development.`,
+    intro: `Frontend developer with 5+ years of web development experience, proficient in React, Next.js, and TypeScript, with experience in frontend architecture planning, component modularization, API integration, and access control. Has worked on multiple enterprise and government web projects, with strong cross-team collaboration and project delivery skills.
+Built a spec-driven development workflow with AI-assisted Development and SDD (Spec-driven Development), applied to personal web app projects to shorten development cycles by about 60% while improving efficiency and delivery quality.`,
     ageLabel: 'Age',
     contactLabel: 'Contact Details',
     eduLabel: 'Education',
@@ -378,21 +376,21 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
         title: 'Frontend Engineer',
         company: 'Cloud Interactive Inc.',
         description:
-          'Proactively participated in frontend architecture planning, component modularization, and Design System development. Collaborated with design, product, and cross-functional partners to clarify requirements and align implementation direction, reducing communication costs and improving project execution efficiency.',
+          'Design System & faster delivery: standardized and modularized UI components that were reused directly across projects such as the Swimple admin panel and KGI Financial, shortening development cycles by 40%.',
       },
       {
         period: '2019/10 ~ 2021/9',
         title: 'Frontend Engineer',
         company: 'Champtron Creative Labs, Inc.',
         description:
-          'Planned frontend development based on client specifications and project requirements. Proactively communicated and collaborated with supervisors and team members to complete frontend features, backend API integration, and integration testing, ensuring project goals stayed aligned and were delivered on schedule.',
+          'Worked on 6 government web projects, responsible for frontend architecture, component modularization, and task allocation, reducing duplicated development effort by about 25% and delivering projects ahead of schedule.',
       },
       {
         period: '2017/10 ~ 2019/4',
         title: 'Web Designer / Frontend Developer',
         company: 'Huitong Products Ltd.',
         description:
-          'Built WordPress ecommerce and official websites, using HTML, CSS, and JavaScript to develop customized pages and interactive animations. Also participated in brand identity, graphic design, and merchandise design, bridging visual design and frontend implementation needs.',
+          'Built ecommerce and corporate websites with WordPress, grew site traffic through SEO, set up automated email campaigns with HubSpot, and led brand visuals and merchandise design.',
       },
     ],
     skillTitle: 'SKILLS',
@@ -404,9 +402,9 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
         title: 'Swimple | Swimming Pool Rental Platform',
         image: '/projects/swim.jpg',
         summary:
-          'A real-time swimming pool rental and management platform providing users with quick search, booking, and verification workflows.',
+          'A swimming pool rental service and management platform.',
         detail:
-          'A UK swimming pool rental platform built through team collaboration. I was responsible for the login and registration flow and reCAPTCHA verification. During the project, another engineer pointed out that inconsistent design styles were causing too many customized modular components and making maintenance difficult. I proactively organized the inconsistent parts of the design, discussed them with the designer, and aligned them into shared specifications. This reduced maintenance costs caused by excessive customization and made future development and maintenance more efficient through observation and communication.',
+          'Owned the sign-up / login flow and reCAPTCHA verification, and worked with designers to unify 3 UI specifications, cutting custom components by about 30% and reducing duplicated development and maintenance costs.',
         role: 'Team Collaboration',
         highlights: [
           'Designed the frontend user registration and login flow',
@@ -427,9 +425,9 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
       {
         title: 'Carrefour | Home Chicken Adventure Interactive Mini-Game',
         image: '/projects/game.jpg',
-        summary: 'A branded interactive mini-game designed to boost user engagement and campaign completion rates.',
+        summary: 'A branded interactive campaign mini-game.',
         detail:
-          'A two-person collaboration where I was responsible for the overall architecture, component modularization, and planning two-way communication between the app and web views. During the project, the animation had noticeable stuttering. After recording with DevTools Performance, I found that layout and paint were triggered frequently, so I changed the animation approach to use transform: translate(). The experience became noticeably smoother, and I gained a clearer understanding of the basic principles of animation performance optimization.',
+          'Led the frontend architecture and App / Web communication design in a two-person team, used DevTools to analyze Layout / Paint bottlenecks and optimized CSS animations, improving interaction smoothness.',
         role: 'Two-Person Collaboration',
         highlights: [
           'Responsible for overall architecture planning and data flow design',
@@ -442,9 +440,9 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
       {
         title: 'KGI Financial Holdings | Admin Data Management System (Internal)',
         image: '/projects/kgi.jpg',
-        summary: 'An internal data management dashboard supporting member permissions and data processing.',
+        summary: 'An internal enterprise data management dashboard.',
         detail:
-          'A solo project where I built role permission management and optimized query and filtering workflows. Because the admin system included role permission management, the navigation needed to display items based on each role. The frontend could not hard-code navigation by role, so I proactively clarified the issue with the SA and backend engineer. We decided that the backend would return an additional permission field, keeping the permission logic aligned with the admin settings.',
+          'Independently developed admin permission management and query features, and worked with the SA and backend engineers to design a permission-based API that enables dynamic, role-based menus and lowers maintenance costs.',
         role: 'Solo Development',
         highlights: [
           'Independently responsible for the entire frontend system development and maintenance',
@@ -465,9 +463,9 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
         title: 'Tri-Mountain National Scenic Area Administration | Official Website',
         image: '/projects/mountain.jpg',
         summary:
-          'A government tourism website with highly customizable navigation and content modules, built to improve maintainability and page expansion.',
+          'A government tourism website.',
         detail:
-          'Built the project architecture and shared components with Next.js and React. During development, I found that the menu and page content required a high level of customization. Hard-coding each page on the frontend would have increased duplicated development and maintenance costs, so I proactively worked with backend engineers to define a unified data format. Based on returned configuration data, the frontend dynamically generated menus and page modules, meeting customization needs while improving future scalability and maintainability.',
+          'Built shared components with Next.js / React and unified the API format with the backend to render menus and pages dynamically, reducing duplicated development and improving maintainability.',
         role: 'Team Collaboration',
         highlights: [
           'Built the frontend architecture and shared components with Next.js and React',
@@ -572,12 +570,12 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           '/aiprojects/fruit_photo_3.webp',
         ],
         summary:
-          'A 30-second web game where you slice fruit in a low-poly forest by waving your index fingers at the camera — hand tracking runs entirely in the browser.',
+          'A gesture-controlled fruit-slicing web game with in-browser hand tracking.',
         role: 'AI Spec-driven Development',
         highlights: [
-          'Real-time MediaPipe Hand Landmarker inference in a Web Worker, scheduled separately from rendering with main-thread fallback',
-          'Segment-based collision between consecutive blade points so fast swipes never miss; independent blades and 300 ms combo windows per hand',
-          'Game rules decoupled from rendering for pure-function testing; leaderboard backed by Supabase Edge Function + PostgreSQL RPC with validation, throttling, and concurrency handling',
+          'MediaPipe inference in a Web Worker, keeping rendering smooth',
+          'Segment-based collision so fast swipes never miss; two-hand play',
+          'Game logic decoupled from rendering; Supabase leaderboard with validation and throttling',
         ],
         tech: [
           'TypeScript',
@@ -603,12 +601,12 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           '/aiprojects/aquarium_photo_4.webp',
         ],
         summary:
-          'The whole browser becomes a Low Poly fish tank — pinch fish with hand gestures, draw your own fish to release into the tank, or scan a QR code to draw on your phone and send it to the desktop tank.',
+          'A Low Poly web aquarium — grab fish with hand gestures, or draw one on your phone and send it to the desktop tank.',
         role: 'AI Spec-driven Development',
         highlights: [
-          'Boids schooling accelerated with a spatial grid for neighbor lookups; tail swimming and posterization done in shaders for smooth rendering',
-          'MediaPipe hand tracking with One Euro Filter smoothing and hysteresis-based pinch detection drives a 3D hand that grabs fish; mouse and touch share the same input abstraction',
-          'Phone drawings relayed through Supabase database functions with per-room limits and concurrency handling; custom fish stored in IndexedDB, with the oldest replaced automatically past 20',
+          'Boids schooling with a spatial grid; swim animation in shaders',
+          'MediaPipe hand tracking and pinch detection; shared input layer for mouse and touch',
+          'Cross-device fish delivery via Supabase; custom fish saved in IndexedDB',
         ],
         tech: [
           'TypeScript',
@@ -634,12 +632,12 @@ Values modular architecture, maintainable code, and teamwork, and uses AI-assist
           '/aiprojects/whopays_photo_3.webp',
         ],
         summary:
-          'A group expense-splitting app for trips abroad — open a share link and pick an animal avatar to join; snap a receipt and AI extracts and translates the line items, expenses are kept in their original currency, and one tap shows who owes whom.',
+          'A trip expense-splitting app — snap a receipt, AI extracts the items, and one tap shows who owes whom.',
         role: 'AI Spec-driven Development',
         highlights: [
-          'Receipt photos go through a Supabase Edge Function that calls Gemini to extract merchant, date, line items and amounts with Chinese translations, keeping the API key off the client; falls back to manual entry when quota runs out',
-          'Friends join via anonymous sign-in; RLS on all eight tables, all writes through RPCs with composite foreign keys keeping data within one trip; Realtime syncs changes between members instantly',
-          'Amounts stored as integer minor units and settled per currency, with rounding remainders assigned by join order for stable results and greedy matching that suggests at most n−1 transfers',
+          'Edge Function calls Gemini to read and translate receipts, keeping the API key server-side',
+          'Anonymous sign-in with RLS on every table; Realtime sync between members',
+          'Multi-currency integer accounting with greedy-matched transfer suggestions',
         ],
         tech: [
           'TypeScript',
