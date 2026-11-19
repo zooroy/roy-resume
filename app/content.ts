@@ -99,14 +99,14 @@ export const copy: Record<Lang, Content> = {
         title: 'Swimple｜游泳池租借平台',
         image: '/projects/swim.jpg',
         summary:
-          '游泳池租借服務與管理平台。',
+          '英國游泳池租借平台，統一 UI 規格，減少約 30% 客製化元件。',
         detail:
-          '負責登入註冊及 reCAPTCHA 驗證，協同設計師統一 3 項 UI 規格，減少約 30% 客製化元件，降低重複開發與維護成本。',
+          '英國泳池租借平台，多人協作，負責登入註冊與 reCAPTCHA 驗證。',
         role: '多人協作',
         highlights: [
-          '負責前台使用者註冊與登入流程設計',
-          '整合第三方登入機制，處理帳號驗證流程',
-          '實作表單驗證、錯誤提示與頁面權限控管',
+          '問題：設計稿樣式不一致，導致元件大量客製化、難以維護',
+          '做法：主動盤點不一致處，與設計師協調統一為 3 項共用 UI 規格',
+          '成果：減少約 30% 客製化元件，降低重複開發與維護成本',
         ],
         tech: [
           'React',
@@ -122,14 +122,15 @@ export const copy: Record<Lang, Content> = {
       {
         title: '家樂福｜家有奇雞互動小遊戲',
         image: '/projects/game.jpg',
-        summary: '品牌活動互動小遊戲。',
+        summary:
+          '品牌活動互動小遊戲，主導前端架構並解決動畫卡頓。',
         detail:
-          '主導雙人團隊的前端架構與 App／Web 通訊設計，透過 DevTools 分析 Layout／Paint 瓶頸並優化 CSS 動畫，改善互動流暢度。',
+          '品牌活動互動小遊戲，主導雙人團隊的前端架構，並規劃 App 與 Web 雙向溝通。',
         role: '兩人協作',
         highlights: [
-          '負責整體架構規劃與資料流程設計',
-          '實作使用者帳號驗證與活動資格判斷',
-          '製作互動動畫與遊戲流程',
+          '問題：遊戲動畫明顯卡頓，影響活動體驗',
+          '做法：以 DevTools Performance 找出頻繁觸發 Layout／Paint，改用 transform 執行動畫',
+          '成果：動畫明顯流暢',
         ],
         tech: ['React', 'Next.js', 'TypeScript', 'React-Spring', 'axios'],
       },
@@ -137,14 +138,15 @@ export const copy: Record<Lang, Content> = {
       {
         title: '凱基金控｜後台資料管理系統（內部後台）',
         image: '/projects/kgi.jpg',
-        summary: '企業內部資料管理後台。',
+        summary:
+          '企業內部後台，獨立開發並設計依角色驅動的權限選單。',
         detail:
-          '獨立開發後台權限管理與查詢功能，協同 SA、Backend 設計 Permission-based API，實現動態權限選單，降低維護成本。',
+          '獨立負責內部後台前端，開發權限管理與資料查詢、篩選功能。',
         role: '獨立作業',
         highlights: [
-          '獨立負責整體前端系統開發與維護',
-          '串接 RESTful API，完成資料新增、查詢與編輯功能',
-          '實作會員權限功能與資料篩選模組',
+          '問題：選單需依角色權限顯示，前端寫死會與後台權限設定脫節',
+          '做法：主動與 SA、後端釐清，改由 API 回傳 permission 欄位驅動選單',
+          '成果：權限邏輯與後台設定一致，調整角色權限不需修改前端程式',
         ],
         tech: [
           'React',
@@ -160,16 +162,16 @@ export const copy: Record<Lang, Content> = {
         title: '參山國家風景區管理處｜官網',
         image: '/projects/mountain.jpg',
         summary:
-          '政府觀光官方網站。',
+          '政府觀光官網，模組化共用元件，減少約 30% 重複開發工時。',
         detail:
-          '使用 Next.js／React 建立共用元件，與 Backend 統一 API 格式，實現選單及頁面動態渲染，降低重複開發成本並提升維護效率。',
+          '使用 React、Formik 製作首長信箱及問卷調查功能，包含表單驗證與錯誤提示，並將 Layout、Button、Modal 等常用元件模組化，讓不同頁面可以直接使用，減少約 30% 重複開發工時。',
         role: '多人協作',
         highlights: [
-          '使用 Next.js／React 建立前端架構與共用元件',
-          '與後端協作制定統一資料格式，支援動態選單與頁面模組',
-          '降低逐頁客製化開發成本，提升後續頁面擴充與維護效率',
+          '問題：多個頁面重複實作相同的版面、按鈕與彈窗，開發工時浪費',
+          '做法：將 Layout、Button、Modal 模組化為共用元件；以 Formik 製作首長信箱與問卷表單，含驗證與錯誤提示',
+          '成果：不同頁面直接套用共用元件，減少約 30% 重複開發工時',
         ],
-        tech: ['React', 'Next.js', 'RESTful API', 'Sass'],
+        tech: ['React', 'Next.js', 'Formik', 'RESTful API', 'Sass'],
         link: 'https://www.trimt-nsa.gov.tw/zh-tw/',
       },
 
@@ -267,7 +269,7 @@ export const copy: Record<Lang, Content> = {
           '/aiprojects/fruit_photo_3.webp',
         ],
         summary:
-          '在鏡頭前揮手切水果的網頁遊戲，開網頁即可遊玩，並有線上排行榜。',
+          '鏡頭手勢切水果網頁遊戲，依手機實測回饋，將支援範圍收斂至桌機。',
         role: 'AI Spec-driven Development',
         highlights: [
           '規劃：與 AI 協作撰寫 OpenSpec 規格；手機實測體驗不佳，即時收斂支援範圍至桌機',
@@ -293,7 +295,7 @@ export const copy: Record<Lang, Content> = {
           '/aiprojects/aquarium_photo_4.webp',
         ],
         summary:
-          '用手勢和魚互動的網頁魚缸，多人可用手機畫魚放進同一座魚缸。',
+          '手勢互動網頁魚缸，沒有鏡頭可改用滑鼠，手機也能畫魚加入。',
         role: 'AI Spec-driven Development',
         highlights: [
           '規劃：與 AI 協作拆分 14 項能力規格，驗證流程本身也寫成規格',
@@ -319,7 +321,7 @@ export const copy: Record<Lang, Content> = {
           '/aiprojects/whopays_photo_3.webp',
         ],
         summary:
-          '出國旅遊的多人分帳 App，拍收據由 AI 辨識品項並翻譯，一鍵算出誰該付誰。',
+          '出國旅遊分帳 App，AI 辨識並翻譯收據，辨識失敗時可改手動輸入。',
         role: 'AI Spec-driven Development',
         highlights: [
           '規劃：與 AI 協作撰寫 OpenSpec 規格，先定義需求情境再實作',
@@ -386,14 +388,14 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
         title: 'Swimple | Swimming Pool Rental Platform',
         image: '/projects/swim.jpg',
         summary:
-          'A swimming pool rental service and management platform.',
+          'A UK swimming pool rental platform — unified UI specs and cut custom components by about 30%.',
         detail:
-          'Owned the sign-up / login flow and reCAPTCHA verification, and worked with designers to unify 3 UI specifications, cutting custom components by about 30% and reducing duplicated development and maintenance costs.',
+          'A UK swimming pool rental platform built by a team; I owned the sign-up / login flow and reCAPTCHA verification.',
         role: 'Team Collaboration',
         highlights: [
-          'Designed the frontend user registration and login flow',
-          'Integrated third-party login mechanisms and handled account verification',
-          'Implemented form validation, error prompts, and page-level access control',
+          'Problem: inconsistent design styles led to heavily customized components that were hard to maintain',
+          'Approach: audited the inconsistencies and aligned with the designer on 3 shared UI specifications',
+          'Result: cut custom components by about 30%, reducing duplicated development and maintenance costs',
         ],
         tech: [
           'React',
@@ -409,14 +411,15 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
       {
         title: 'Carrefour | Home Chicken Adventure Interactive Mini-Game',
         image: '/projects/game.jpg',
-        summary: 'A branded interactive campaign mini-game.',
+        summary:
+          'A branded interactive campaign mini-game — led the frontend architecture and fixed animation stutter.',
         detail:
-          'Led the frontend architecture and App / Web communication design in a two-person team, used DevTools to analyze Layout / Paint bottlenecks and optimized CSS animations, improving interaction smoothness.',
+          'A branded interactive campaign mini-game; I led the frontend architecture in a two-person team and planned two-way App / Web communication.',
         role: 'Two-Person Collaboration',
         highlights: [
-          'Responsible for overall architecture planning and data flow design',
-          'Implemented user account verification and campaign eligibility checks',
-          'Created interactive animations and game flow',
+          'Problem: game animations stuttered noticeably, hurting the campaign experience',
+          'Approach: used DevTools Performance to find frequent Layout / Paint triggers and switched animations to transform',
+          'Result: animations became noticeably smoother',
         ],
         tech: ['React', 'Next.js', 'TypeScript', 'React-Spring', 'axios'],
       },
@@ -424,14 +427,15 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
       {
         title: 'KGI Financial Holdings | Admin Data Management System (Internal)',
         image: '/projects/kgi.jpg',
-        summary: 'An internal enterprise data management dashboard.',
+        summary:
+          'An internal enterprise admin system — built solo, with role-driven permission menus.',
         detail:
-          'Independently developed admin permission management and query features, and worked with the SA and backend engineers to design a permission-based API that enables dynamic, role-based menus and lowers maintenance costs.',
+          'Solely owned the frontend of an internal admin system, building permission management and data query / filtering features.',
         role: 'Solo Development',
         highlights: [
-          'Independently responsible for the entire frontend system development and maintenance',
-          'Integrated RESTful APIs to implement data creation, querying, and editing features',
-          'Implemented member permission controls and data filtering modules',
+          'Problem: menus had to follow role permissions, and hard-coding them on the frontend would drift from the admin settings',
+          'Approach: clarified the issue with the SA and backend, and had the API return a permission field that drives the menu',
+          'Result: permission logic stays consistent with admin settings, and role permission changes need no frontend code changes',
         ],
         tech: [
           'React',
@@ -447,16 +451,16 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
         title: 'Tri-Mountain National Scenic Area Administration | Official Website',
         image: '/projects/mountain.jpg',
         summary:
-          'A government tourism website.',
+          'A government tourism website — modularized shared components, cutting duplicated development time by about 30%.',
         detail:
-          'Built shared components with Next.js / React and unified the API format with the backend to render menus and pages dynamically, reducing duplicated development and improving maintainability.',
+          'Built the director’s mailbox and survey features with React and Formik, including form validation and error messages, and modularized common components such as Layout, Button, and Modal so pages could use them directly, reducing duplicated development time by about 30%.',
         role: 'Team Collaboration',
         highlights: [
-          'Built the frontend architecture and shared components with Next.js and React',
-          'Collaborated with backend engineers to define a unified data format for dynamic menus and page modules',
-          'Reduced page-by-page customization costs and improved future scalability and maintainability',
+          'Problem: multiple pages re-implemented the same layouts, buttons, and modals, wasting development time',
+          'Approach: modularized Layout, Button, and Modal into shared components; built the director’s mailbox and survey forms with Formik, including validation and error messages',
+          'Result: pages reuse the shared components directly, reducing duplicated development time by about 30%',
         ],
-        tech: ['React', 'Next.js', 'RESTful API', 'Sass'],
+        tech: ['React', 'Next.js', 'Formik', 'RESTful API', 'Sass'],
         link: 'https://www.trimt-nsa.gov.tw/zh-tw/',
       },
 
@@ -554,7 +558,7 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
           '/aiprojects/fruit_photo_3.webp',
         ],
         summary:
-          'A web game where you slice fruit by waving your hands at the camera — just open the page to play, with an online leaderboard.',
+          'A camera-gesture fruit-slicing web game — narrowed support to desktop based on real mobile testing feedback.',
         role: 'AI Spec-driven Development',
         highlights: [
           'Plan: wrote OpenSpec specs with AI; after poor results in real mobile testing, narrowed support to desktop',
@@ -580,7 +584,7 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
           '/aiprojects/aquarium_photo_4.webp',
         ],
         summary:
-          'A web aquarium you interact with by hand gestures — multiple people can draw fish on their phones and add them to the same tank.',
+          'A gesture-driven web aquarium — falls back to mouse without a camera, and phones can draw fish to join.',
         role: 'AI Spec-driven Development',
         highlights: [
           'Plan: broke the product into 14 capability specs with AI, including the verification pipeline itself',
@@ -606,7 +610,7 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
           '/aiprojects/whopays_photo_3.webp',
         ],
         summary:
-          'A group expense-splitting app for trips abroad — snap a receipt, AI extracts and translates the items, and one tap shows who owes whom.',
+          'A trip expense-splitting app — AI reads and translates receipts, with manual entry when recognition fails.',
         role: 'AI Spec-driven Development',
         highlights: [
           'Plan: wrote OpenSpec specs with AI, defining requirement scenarios before implementation',
