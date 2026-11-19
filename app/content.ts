@@ -18,6 +18,7 @@ export type WorkExperience = {
   title: string;
   company: string;
   description: string;
+  items?: { title: string; description: string }[];
 };
 
 type Content = {
@@ -73,21 +74,52 @@ export const copy: Record<Lang, Content> = {
         title: '前端工程師',
         company: '雲端互動股份有限公司',
         description:
-          'Design System 與開發提速：將 UI 元件標準化與模組化，供 Swimple 後台、凱基金控等專案直接使用，縮短 40% 開發週期。',
+          '建立共用 Design System，統一 UI 樣式與元件規格，讓 Swimple 後台、凱基金控等專案能直接使用或組合現有元件，縮短約 40% 相似頁面開發工時。',
+        items: [
+          {
+            title: 'Swimple 後台｜表單驗證與登入流程',
+            description:
+              '使用 React Hook Form 搭配 Yup Schema 設定表單驗證規則，完成登入、註冊及錯誤提示功能，讓表單驗證方式一致，減少重複程式碼，也方便後續維護。',
+          },
+          {
+            title: '家樂福小遊戲｜輕量化元件與互動設計',
+            description:
+              '選用無預設樣式、體積輕量的 @mui/base 建立互動元件，並搭配 React Spring 製作動畫，將 Dialog 封裝成共用互動視窗，方便不同遊戲情境使用。',
+          },
+        ],
       },
       {
         period: '2019/10 ~ 2021/9',
         title: '前端工程師',
         company: '瑄品股份有限公司',
         description:
-          '參與 6 項政府 Web 專案，負責前端架構、元件模組化及開發分工，減少約 25% 重複開發工時，並提前完成專案交付。',
+          '參與 6 項政府 Web 專案，負責前端架構、共用元件開發及工作分配，透過元件模組化，減少重複開發並提升維護效率。',
+        items: [
+          {
+            title: '參山國家風景區｜共用元件架構',
+            description:
+              '使用 React、Formik 製作首長信箱及問卷調查功能，包含表單驗證與錯誤提示，並將 Layout、Button、Modal 等常用元件模組化，讓不同頁面可以直接使用，減少約 30% 重複開發工時。',
+          },
+          {
+            title: '宜蘭縣育兒資源網｜RWD 與互動設計',
+            description:
+              '使用 React Slick 製作首頁 Banner 輪播，依不同螢幕尺寸調整顯示方式，並封裝成共用元件，方便其他頁面使用，減少重複開發與維護成本。',
+          },
+        ],
       },
       {
-        period: '2017/4 ~ 2019/3',
-        title: '網頁設計前端人員',
+        period: '2017/6 ~ 2019/4',
+        title: '網頁前端人員',
         company: '匯通商行有限公司',
         description:
-          '使用 WordPress 建置電商及企業官網，透過 SEO 優化網站流量、HubSpot 設定自動化郵件，並負責品牌視覺與周邊商品設計。',
+          '使用 WordPress 開發電商及企業官網，整合 SEO、金流與郵件自動化功能，並負責品牌視覺與周邊商品設計。',
+        items: [
+          {
+            title: '匯通購物網｜電商網站開發',
+            description:
+              '使用 WordPress 搭配 Flatsome Theme 建置電商網站，串接綠界金流完成線上付款功能，並透過 Yoast SEO 優化網站搜尋曝光，整合 HubSpot 自動寄送潛在客戶開發郵件，減少人工操作並提升行銷效率。',
+          },
+        ],
       },
     ],
     skillTitle: 'SKILLS',
@@ -362,21 +394,52 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
         title: 'Frontend Engineer',
         company: 'Cloud Interactive Inc.',
         description:
-          'Design System & faster delivery: standardized and modularized UI components that were reused directly across projects such as the Swimple admin panel and KGI Financial, shortening development cycles by 40%.',
+          'Built a shared Design System that unified UI styles and component specs, letting projects such as the Swimple admin panel and KGI Financial use or compose existing components directly, cutting development time for similar pages by about 40%.',
+        items: [
+          {
+            title: 'Swimple Admin | Form Validation & Login Flow',
+            description:
+              'Defined form validation rules with React Hook Form and Yup schemas to build login, sign-up, and error messaging, keeping validation consistent, reducing duplicated code, and easing maintenance.',
+          },
+          {
+            title: 'Carrefour Mini-Game | Lightweight Components & Interaction Design',
+            description:
+              'Built interactive components with the unstyled, lightweight @mui/base, added animations with React Spring, and wrapped Dialog into a shared interactive modal reusable across game scenarios.',
+          },
+        ],
       },
       {
         period: '2019/10 ~ 2021/9',
         title: 'Frontend Engineer',
         company: 'Champtron Creative Labs, Inc.',
         description:
-          'Worked on 6 government web projects, responsible for frontend architecture, component modularization, and task allocation, reducing duplicated development effort by about 25% and delivering projects ahead of schedule.',
+          'Worked on 6 government web projects, responsible for frontend architecture, shared component development, and task allocation, reducing duplicated work and improving maintainability through component modularization.',
+        items: [
+          {
+            title: 'Tri-Mountain National Scenic Area | Shared Component Architecture',
+            description:
+              'Built the director’s mailbox and survey features with React and Formik, including form validation and error messages, and modularized common components such as Layout, Button, and Modal for direct reuse across pages, reducing duplicated development time by about 30%.',
+          },
+          {
+            title: 'Yilan County Parenting Resources | RWD & Interaction Design',
+            description:
+              'Built the homepage banner carousel with React Slick, adapting the display to different screen sizes, and wrapped it as a shared component for other pages, reducing duplicated development and maintenance costs.',
+          },
+        ],
       },
       {
-        period: '2017/10 ~ 2019/4',
-        title: 'Web Designer / Frontend Developer',
+        period: '2017/6 ~ 2019/4',
+        title: 'Web Frontend Developer',
         company: 'Huitong Products Ltd.',
         description:
-          'Built ecommerce and corporate websites with WordPress, grew site traffic through SEO, set up automated email campaigns with HubSpot, and led brand visuals and merchandise design.',
+          'Built ecommerce and corporate websites with WordPress, integrating SEO, payments, and email automation, and handled brand visuals and merchandise design.',
+        items: [
+          {
+            title: 'Huitong Shop | Ecommerce Website Development',
+            description:
+              'Built the ecommerce site with WordPress and the Flatsome theme, integrated ECPay for online payments, improved search visibility with Yoast SEO, and set up HubSpot to send automated lead-generation emails, reducing manual work and improving marketing efficiency.',
+          },
+        ],
       },
     ],
     skillTitle: 'SKILLS',
