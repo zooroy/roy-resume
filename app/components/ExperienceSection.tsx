@@ -55,7 +55,7 @@ export default function ExperienceSection({ title, experiences, lang }: Props) {
               {experienceIndex > 0 && (
                 <div
                   aria-hidden="true"
-                  className="flex justify-center gap-3 py-10"
+                  className="flex justify-center gap-3 py-6"
                 >
                   <span className="size-1.5 rounded-full bg-(--text-light-fg) opacity-40" />
                   <span className="size-1.5 rounded-full bg-(--text-light-fg) opacity-40" />

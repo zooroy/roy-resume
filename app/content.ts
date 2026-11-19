@@ -79,7 +79,7 @@ export const copy: Record<Lang, Content> = {
           {
             title: 'Swimple 後台｜表單驗證與登入流程',
             description:
-              '使用 React Hook Form 搭配 Yup Schema 設定表單驗證規則，完成登入、註冊及錯誤提示功能，讓表單驗證方式一致，減少重複程式碼，也方便後續維護。',
+              '使用 React Hook Form 搭配 Yup Schema 設定表單驗證規則，完成登入、註冊及錯誤提示功能，讓表單驗證方式一致，提升程式碼可讀性與維護性。',
           },
           {
             title: '家樂福小遊戲｜輕量化元件與互動設計',
@@ -93,7 +93,7 @@ export const copy: Record<Lang, Content> = {
         title: '前端工程師',
         company: '瑄品股份有限公司',
         description:
-          '參與 6 項政府 Web 專案，負責前端架構、共用元件開發及工作分配，透過元件模組化，減少重複開發並提升維護效率。',
+          '參與 6 項政府 Web 專案，負責前端架構、共用元件開發及工作分配，透過元件模組化，提升專案整合與團隊協作效率。',
         items: [
           {
             title: '參山國家風景區｜共用元件架構',
@@ -103,7 +103,7 @@ export const copy: Record<Lang, Content> = {
           {
             title: '宜蘭縣育兒資源網｜RWD 與互動設計',
             description:
-              '使用 React Slick 製作首頁 Banner 輪播，依不同螢幕尺寸調整顯示方式，並封裝成共用元件，方便其他頁面使用，減少重複開發與維護成本。',
+              '使用 React Slick 製作首頁 Banner 輪播，依不同螢幕尺寸調整顯示方式，並封裝成共用元件供其他頁面使用，確保跨裝置顯示與操作體驗一致。',
           },
         ],
       },
@@ -399,7 +399,7 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
           {
             title: 'Swimple Admin | Form Validation & Login Flow',
             description:
-              'Defined form validation rules with React Hook Form and Yup schemas to build login, sign-up, and error messaging, keeping validation consistent, reducing duplicated code, and easing maintenance.',
+              'Defined form validation rules with React Hook Form and Yup schemas to build login, sign-up, and error messaging, keeping validation consistent and improving code readability and maintainability.',
           },
           {
             title: 'Carrefour Mini-Game | Lightweight Components & Interaction Design',
@@ -413,7 +413,7 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
         title: 'Frontend Engineer',
         company: 'Champtron Creative Labs, Inc.',
         description:
-          'Worked on 6 government web projects, responsible for frontend architecture, shared component development, and task allocation, reducing duplicated work and improving maintainability through component modularization.',
+          'Worked on 6 government web projects, responsible for frontend architecture, shared component development, and task allocation, improving project integration and team collaboration through component modularization.',
         items: [
           {
             title: 'Tri-Mountain National Scenic Area | Shared Component Architecture',
@@ -423,7 +423,7 @@ Built a spec-driven development workflow with AI-assisted Development and SDD (S
           {
             title: 'Yilan County Parenting Resources | RWD & Interaction Design',
             description:
-              'Built the homepage banner carousel with React Slick, adapting the display to different screen sizes, and wrapped it as a shared component for other pages, reducing duplicated development and maintenance costs.',
+              'Built the homepage banner carousel with React Slick, adapting the display to different screen sizes, and wrapped it as a shared component for other pages, ensuring a consistent display and experience across devices.',
           },
         ],
       },
