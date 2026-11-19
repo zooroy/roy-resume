@@ -77,7 +77,7 @@ export const copy: Record<Lang, Content> = {
           '建立共用 Design System，統一 UI 樣式與元件規格，讓 Swimple 後台、凱基金控等專案能直接使用或組合現有元件，縮短約 40% 相似頁面開發工時。',
         items: [
           {
-            title: 'Swimple 後台｜表單驗證與登入流程',
+            title: 'Swimple 前台｜表單驗證與登入流程',
             description:
               '使用 React Hook Form 搭配 Yup Schema 設定表單驗證規則，完成登入、註冊及錯誤提示功能，讓表單驗證方式一致，提升程式碼可讀性與維護性。',
           },
